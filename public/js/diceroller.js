@@ -74,9 +74,20 @@ diceELs.forEach(element => {
 });
 
 const startRoll = (firstIndex) => {
+    
+    diceELs.forEach(element => {
+        if(element.getAttribute('rolling') == 'false'){
+            let randomNUM = Math.floor(Math.random() * diceArr.length)
+            element.innerHTML = questionmarkEL
+            firstIndex = 0
+        }
+    });
+    document.querySelector('#btn-roll').removeEventListener('click', startRoll)
     let timer = setInterval(() => {
-        let opacityLVL = ((diceELs[firstIndex].children[0].style.opacity * 100) + 1) / 100
+        // console.log(diceELs[firstIndex].children[0])
+        let opacityLVL = ((diceELs[firstIndex].children[0].style.opacity * 50) + 1) / 50
         if(opacityLVL >= .7){
+            if(diceELs[firstIndex].getAttribute('rolling') == 'false'){clearInterval(timer)}
             diceELs[firstIndex].children[0].style.opacity = .7;
             diceELs[firstIndex].children[1].classList.add('fill-yellow-200','opacity-100')
             startRotation(firstIndex); clearInterval(timer)
@@ -89,7 +100,7 @@ const startRoll = (firstIndex) => {
         startRoll(nextIndex)
         clearInterval(wait)
         
-    }, 200);
+    }, 100);
 }
 
 const startRotation = (index) => {
@@ -100,6 +111,7 @@ const startRotation = (index) => {
         if(diceELs[index].getAttribute('rolling') == 'false'){
             let oldEL= diceELs[index]
             let newEL = oldEL.cloneNode(true)
+            console.log(oldEL, newEL)
             oldEL.parentNode.replaceChild(newEL, oldEL)
             clearInterval(timer)
             diceELs[index].children[0].style.transform = `rotate(0deg)`
@@ -114,9 +126,23 @@ const activateDICE = () => {
     diceELs.forEach(element => {
         element.addEventListener('click', freezeDieEL = (e) => {
             if (e.target.classList.contains('dice')) {
+                let refreshEnabled = true
                 e.target.innerHTML = diceArr[Math.floor(Math.random() * diceArr.length)];
                 e.target.setAttribute('rolling', 'false');
+                diceELs.forEach(element => {
+                    if(element.getAttribute('rolling') == "true"){ refreshEnabled = false }
+                });
+                if(refreshEnabled === true){
+
+                    let rollBtnEL = document.querySelector('#btn-roll')
+                    let stayBtnEL = document.querySelector('#btn-stay')
+                    // rollBtnEL.style.opacity = .8
+                    // stayBtnEL.style.opacity = .8
+                    
+                    rollBtnEL.addEventListener('click', startRoll)
+                }
             }
+
         })
     });
     let timer = setInterval(() => {
@@ -130,3 +156,15 @@ const activateDICE = () => {
 startRoll(0)
 
 
+// const diceAnim = () => {
+//     let rollBtnEL = document.querySelector('#roller-svg')
+//     console.log(rollBtnEL)
+//     let num = 0
+//     let timer = setInterval(() => {
+//         num++
+//         // console.log(num)
+//         if(num > 359){num = 0}
+//         rollBtnEL.style = `transform: rotate(${num}deg)`
+//     }, 1);
+// }
+// diceAnim()
