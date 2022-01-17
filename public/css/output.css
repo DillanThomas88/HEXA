@@ -504,6 +504,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-column-start: 3;
 }
 
+.col-start-4 {
+  grid-column-start: 4;
+}
+
 .row-span-2 {
   grid-row: span 2 / span 2;
 }
@@ -848,6 +852,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   fill: #86efac;
 }
 
+.fill-zinc-700 {
+  fill: #3f3f46;
+}
+
+.fill-zinc-900 {
+  fill: #18181b;
+}
+
+.fill-zinc-500 {
+  fill: #71717a;
+}
+
 .stroke-green-600 {
   stroke: #16a34a;
 }
@@ -933,6 +949,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .opacity-100 {
   opacity: 1;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-70 {
+  opacity: 0.7;
 }
 
 @media (prefers-reduced-motion: no-preference) {
