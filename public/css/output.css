@@ -723,6 +723,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(253 224 71 / var(--tw-border-opacity));
 }
 
+.border-yellow-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 240 138 / var(--tw-border-opacity));
+}
+
+.border-yellow-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 249 195 / var(--tw-border-opacity));
+}
+
 .bg-zinc-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 39 42 / var(--tw-bg-opacity));
@@ -742,6 +752,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .fill-yellow-400 {
   fill: #facc15;
+}
+
+.fill-yellow-200 {
+  fill: #fef08a;
 }
 
 .stroke-green-600 {

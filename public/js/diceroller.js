@@ -78,7 +78,7 @@ const startRoll = (firstIndex) => {
         let opacityLVL = ((diceELs[firstIndex].children[0].style.opacity * 100) + 1) / 100
         if(opacityLVL >= .7){
             diceELs[firstIndex].children[0].style.opacity = .7;
-            diceELs[firstIndex].children[1].classList.add('fill-yellow-400','opacity-100')
+            diceELs[firstIndex].children[1].classList.add('fill-yellow-200','opacity-100')
             startRotation(firstIndex); clearInterval(timer)
         }
         diceELs[firstIndex].children[0].style.opacity = opacityLVL
@@ -121,7 +121,7 @@ const activateDICE = () => {
     });
     let timer = setInterval(() => {
         diceELs.forEach(element => {
-            element.children[0].classList.add('border-yellow-300')
+            element.children[0].classList.add('border-yellow-100')
         });
         clearInterval(timer)
     }, 10);
