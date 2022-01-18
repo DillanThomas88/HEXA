@@ -613,6 +613,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 2.5rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -724,6 +728,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .content-center {
   align-content: center;
+}
+
+.items-start {
+  align-items: flex-start;
 }
 
 .items-end {
@@ -989,6 +997,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .fill-zinc-200 {
   fill: #e4e4e7;
+}
+
+.fill-zinc-600 {
+  fill: #52525b;
 }
 
 .p-4 {
@@ -1263,6 +1275,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(253 224 71 / var(--tw-text-opacity));
 }
 
+.text-green-300 {
+  --tw-text-opacity: 1;
+  color: rgb(134 239 172 / var(--tw-text-opacity));
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -1305,6 +1322,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .opacity-80 {
   opacity: 0.8;
+}
+
+.opacity-60 {
+  opacity: 0.6;
 }
 
 .shadow-sm {
