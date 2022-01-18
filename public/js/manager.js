@@ -1,0 +1,1 @@
+//  const { addScore } = require('./score');

@@ -12,7 +12,7 @@
 <body
     class="relative flex flex-col w-screen h-screen bg-zinc-900 text-zinc-200 uppercase text-4xl font-bold overflow-y-hidden overflow-x-hidden ">
     <header
-        class="shadow-sm shadow-black bg-black opacity-70 text-white fixed top-0 w-screen flex justify-center text-2xl font-bold border-b border-zinc-600 py-1 px-4 flex flex-row justify-between">
+        class="shadow-sm shadow-black bg-black opacity-70 text-white fixed top-0 w-screen flex justify-center text-2xl font-bold border-b border-zinc-600 py-1 px-4 h-14 flex flex-row justify-between">
 
         <!--Modal-->
         <div
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-2/6 flex justify-start items-center">
+        <div class="w-1/6 flex justify-start items-center">
             <svg xmlns="http://www.w3.org/2000/svg"
                 class="modal-open h-6 w-6 fill-zinc-600 cursor-pointer transition duration-150 ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
                 viewBox="0 0 20 20">
@@ -66,8 +66,8 @@
 
 
         </div>
-        <div class="w-2/6 flex justify-center tracking-widest text-center text-3xl font-thin">roller</div>
-        <div class="w-2/6 flex justify-end items-center ">
+        <div class="w-3/6 flex justify-center items-center tracking-widest text-3xl font-thin max-h-max">karma</div>
+        <div class="w-1/6 flex justify-end items-center ">
             <svg xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6 fill-zinc-600 cursor-pointer transition duration-150 ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
                 viewBox="0 0 20 20">
@@ -91,7 +91,7 @@
                     </svg>
                 </button>
                 <p class="flex justify-center items-center row-start-3 col-start-1 row-span-2 text-sm font-medium">
-                    <span class="text-green-400 text-2xl pb-2">90.9</span> <span class=" font-semibold opacity-50 text-2xl pb-2 text-green-400"> %</span> <br> <span class="opacity-50">chance</span>
+                    <span class="text-green-400 text-2xl pb-2">97.7</span> <span class=" font-semibold opacity-50 text-2xl pb-2 text-green-400"> %</span> <br> <span class="opacity-50">chance</span>
                 </p>
                 <div style="min-height: 60px;" parent-int="0" id="die-1"
                     class="dice flex justify-center row-start-1 col-start-2 hover:cursor-pointer"></div>
@@ -123,7 +123,7 @@
                     <span class="opacity-50">post</span> <span class="opacity-50 font-thin text-2xl text-blue-400 pb-2">&</span> <span class="text-blue-400 text-2xl pb-2">save</span>
                 </p>
                             <p class="flex justify-center items-center row-start-4 col-start-1 row-span-2 text-5xl pl-3 pb-4 font-medium  opacity-10">
-                <span class=" text-zinc-200 ">10</span> <span class="opacity-30 font-thin"></span><span class="text-zinc-300 text-sm ">+</span>
+                <span id="score-element" class=" text-zinc-200 ">10</span> <span class="opacity-30 font-thin"></span><span class="text-zinc-300 text-sm ">+</span>
             </p>
                 
             </div>
@@ -141,5 +141,5 @@
 
 <script src="./public/js/diceroller.js"></script>
 <script src="./public//js/modal.js"></script>
-
+<script src="./public//js/score.js"></script>
 </html>

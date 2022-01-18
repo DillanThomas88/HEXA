@@ -1,3 +1,20 @@
+const scoreEL = document.querySelector('#score-element')
+scoreEL.innerHTML = 0
+const colorObj = {
+    red: 'fill-red-400',
+    orange: 'fill-orange-400',
+    yellow: 'fill-yellow-400',
+    green: 'fill-green-400',
+    blue: 'fill-blue-400',
+    purple: 'fill-purple-400',
+    darkred: 'fill-red-500',
+    darkorange: 'fill-orange-500',
+    darkyellow: 'fill-yellow-500',
+    darkgreen: 'fill-green-500',
+    darkblue: 'fill-blue-500',
+    darkpurple: 'fill-purple-500'
+}
+
 const diceArr = [
     `<svg data-die="1"  class=" pointer-events-none fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
     <g>
@@ -67,6 +84,7 @@ const questionmarkEL = `                    <div class="z-0 pointer-events-none 
      <path d="m74.238 106.88c0 5.6562-4.582 10.242-10.238 10.242s-10.238-4.5859-10.238-10.242 4.582-10.238 10.238-10.238 10.238 4.582 10.238 10.238"/>
     </g>
    </svg>`
+
 
 diceELs.forEach(element => {
     let randomNUM = Math.floor(Math.random() * diceArr.length)
@@ -147,16 +165,16 @@ const activateDICE = () => {
 
                 switch (dupedDice) {
                     case 3:
-                        updateDiceColors(number, 'green');
+                        updateDiceColorsAndData(number, colorObj.orange);
                         break;
                     case 4:
-                        updateDiceColors(number, 'blue');
+                        updateDiceColorsAndData(number, colorObj.green);
                         break;
                     case 5:
-                        updateDiceColors(number, 'orange');
+                        updateDiceColorsAndData(number, colorObj.darkblue);
                         break;
                     case 6:
-                        updateDiceColors(number, 'yellow');
+                        updateDiceColorsAndData(number, colorObj.darkpurple);
                         break;
 
                     default:
@@ -173,7 +191,9 @@ const activateDICE = () => {
                 //     rollBtnEL.addEventListener('click', startRoll)
                 // }
             }
+            let diceStatsObj = getDiceStatistics()
 
+            calculatePlayerScore(diceStatsObj)
 
 
         })
@@ -190,49 +210,127 @@ startRoll(0)
 
 
 
-function updateDiceColors(number, color) {
+function updateDiceColorsAndData(number, color) {
     let newArr = document.querySelectorAll('.dice')
-    console.log(number)
+    // console.log(number)
 
     newArr.forEach(element => {
         if (parseInt(element.children[0].getAttribute('data-die')) == number) {
             let targetEL = element
             targetEL.innerHTML = diceArr[number - 1]
+            targetEL.children[0].classList.add(color);
+            targetEL.children[0].setAttribute('data-color', color.split("-").splice(1, 1).join(""))
+            // console.log(color.split("-").splice(1,1).join(""))
 
-
-
-            //  targetEL.innerHTML = ""
-            // switch (color) {
-            //     case 'green':
-            //         console.log(`fill-green-300`)
-            //         break;
-            //     case 'blue':
-            //         console.log(`fill-blue-300`)
-            //         break;
-            //     case 'purple':
-            //         console.log(`fill-orange-300`)
-            //         break;
-            //     case 'yellow':
-            //         console.log(`fill-yellow-300`)
-            //         break;
-
-            //     default:
-            //         break;
-            // }
-            targetEL.children[0].classList.add((`fill-${color}-300`));
-            // element.children[0].classList.add(`fill-${color}-300`);
         }
     });
 }
-// const diceAnim = () => {
-//     let rollBtnEL = document.querySelector('#roller-svg')
-//     console.log(rollBtnEL)
-//     let num = 0
-//     let timer = setInterval(() => {
-//         num++
-//         // console.log(num)
-//         if(num > 359){num = 0}
-//         rollBtnEL.style = `transform: rotate(${num}deg)`
-//     }, 1);
-// }
-// diceAnim()
+
+const getDiceStatistics = () => {
+    playerPackage = {}
+    const scoreEL = document.querySelector('#score-element')
+    const diceArray = document.querySelectorAll('.dice')
+    diceArray.forEach(element => {
+        let die = element.children[0]
+        let numberInt
+        if (die.getAttribute('data-die')) {
+            numberInt = parseInt(die.getAttribute('data-die'))
+        }
+        if (die.getAttribute('data-color')) {
+            let color = die.getAttribute('data-color')
+            if (playerPackage[color]) { playerPackage[color].total++ }
+            else {
+                playerPackage[color] = {
+                    total: 1,
+                    value: parseInt(die.getAttribute('data-die'))
+                }
+            }
+        } else {
+            if (numberInt == 1) {
+                die.setAttribute('data-type', 'one')
+                let color = die.getAttribute('data-type')
+                if (playerPackage[color]) { playerPackage[color]++ }
+                else { playerPackage[color] = 1 }
+
+            } else if (numberInt == 5) {
+                die.setAttribute('data-type', 'five')
+                let color = die.getAttribute('data-type')
+                if (playerPackage[color]) { playerPackage[color]++ }
+                else { playerPackage[color] = 1 }
+            } else if (die.getAttribute('data-die')) {
+                if (die.getAttribute('data-type')) {
+                } else { die.setAttribute('data-type', 'common') }
+                let common = die.getAttribute('data-type')
+                if (playerPackage[common]) { playerPackage[common].push(numberInt) }
+                else { playerPackage[common] = [numberInt] }
+            }
+        }
+    });
+    console.log(playerPackage)
+    return playerPackage
+}
+
+const calculatePlayerScore = (diceObject) => {
+    const properties = Object.keys(diceObject)
+    let total = 0
+    properties.forEach(element => {
+        console.log(element)
+        let colorString
+        let bonus
+        switch (element) {
+            case getColor(colorObj.orange):
+
+                colorString = String(getColor(colorObj.orange))
+                if (diceObject[colorString].total == 6) { total = 250 }
+                else if (diceObject[colorString].value == 1) { total += 30 }
+                else { total += diceObject[colorString].value * 10 }
+                break;
+
+            case getColor(colorObj.green):
+
+                colorString = String(getColor(colorObj.green))
+                bonus = 100
+                total += (diceObject[colorString].value * 10) + bonus
+                break;
+
+            case getColor(colorObj.blue):
+
+                colorString = String(getColor(colorObj.blue))
+                bonus = 200
+                total += (diceObject[colorString].value * 10) + bonus
+                break;
+
+            case getColor(colorObj.purple):
+
+                colorString = String(getColor(colorObj.purple))
+                bonus = 300
+                total += (diceObject[colorString].value * 10) + bonus
+                break;
+            case 'one':
+
+                colorString = 'one'
+                total += (diceObject[colorString] * 10)
+                break;
+
+            case 'five':
+
+                colorString = 'five'
+                total += (diceObject[colorString] * 5)
+                break;
+
+            case 'common':
+
+                colorString = 'common'
+                total += 0
+                break;
+
+            default:
+                break;
+        }
+
+    });
+    scoreEL.innerHTML = total
+}
+const getColor = (color) => {
+    return color.split("-").splice(1, 1).join("")
+}
