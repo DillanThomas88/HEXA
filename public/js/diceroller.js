@@ -1,18 +1,18 @@
 const diceArr = [
-    `<svg data-die="0"  class=" pointer-events-none fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    `<svg data-die="1"  class=" pointer-events-none fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
     <g>
      <path d="m88.688 14.629c13.613 0 24.688 11.074 24.688 24.688v49.371c0 13.613-11.074 24.688-24.688 24.688l-49.375-0.003906c-13.613 0-24.688-11.074-24.688-24.688l0.003906-49.371c0-13.613 11.074-24.688 24.688-24.688l49.371 0.003906m0-8.2305h-49.375c-18.176 0-32.914 14.738-32.914 32.914v49.371c0 18.18 14.738 32.918 32.914 32.918h49.371c18.18 0 32.918-14.738 32.918-32.914v-49.375c0-18.176-14.738-32.914-32.914-32.914z"/>
      <path d="m72.23 64c0 4.543-3.6875 8.2305-8.2305 8.2305s-8.2305-3.6875-8.2305-8.2305 3.6875-8.2305 8.2305-8.2305 8.2305 3.6875 8.2305 8.2305"/>
     </g>
    </svg>`,
-    `<svg data-die="1" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    `<svg data-die="2" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
    <g>
     <path d="m88.688 14.629c13.613 0 24.688 11.074 24.688 24.688v49.371c0 13.613-11.074 24.688-24.688 24.688l-49.375-0.003906c-13.613 0-24.688-11.074-24.688-24.688l0.003906-49.371c0-13.613 11.074-24.688 24.688-24.688l49.371 0.003906m0-8.2305h-49.375c-18.176 0-32.914 14.738-32.914 32.914v49.371c0 18.18 14.738 32.918 32.914 32.918h49.371c18.18 0 32.918-14.738 32.918-32.914v-49.375c0-18.176-14.738-32.914-32.914-32.914z"/>
     <path d="m47.543 39.312c0 4.5469-3.6836 8.2305-8.2305 8.2305-4.543 0-8.2266-3.6836-8.2266-8.2305 0-4.543 3.6836-8.2266 8.2266-8.2266 4.5469 0 8.2305 3.6836 8.2305 8.2266"/>
     <path d="m96.914 88.688c0 4.543-3.6836 8.2266-8.2266 8.2266-4.5469 0-8.2305-3.6836-8.2305-8.2266 0-4.5469 3.6836-8.2305 8.2305-8.2305 4.543 0 8.2266 3.6836 8.2266 8.2305"/>
    </g>
   </svg>`,
-    `<svg data-die="2" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    `<svg data-die="3" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
   <g>
    <path d="m88.688 14.629c13.613 0 24.688 11.074 24.688 24.688v49.371c0 13.613-11.074 24.688-24.688 24.688l-49.375-0.003906c-13.613 0-24.688-11.074-24.688-24.688l0.003906-49.371c0-13.613 11.074-24.688 24.688-24.688l49.371 0.003906m0-8.2305h-49.375c-18.176 0-32.914 14.738-32.914 32.914v49.371c0 18.18 14.738 32.918 32.914 32.918h49.371c18.18 0 32.918-14.738 32.918-32.914v-49.375c0-18.176-14.738-32.914-32.914-32.914z"/>
    <path d="m47.543 39.312c0 4.5469-3.6836 8.2305-8.2305 8.2305-4.543 0-8.2266-3.6836-8.2266-8.2305 0-4.543 3.6836-8.2266 8.2266-8.2266 4.5469 0 8.2305 3.6836 8.2305 8.2266"/>
@@ -20,7 +20,7 @@ const diceArr = [
    <path d="m72.23 64c0 4.543-3.6875 8.2305-8.2305 8.2305s-8.2305-3.6875-8.2305-8.2305 3.6875-8.2305 8.2305-8.2305 8.2305 3.6875 8.2305 8.2305"/>
   </g>
  </svg>`,
-    `<svg data-die="3" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    `<svg data-die="4" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
  <g>
   <path d="m88.688 14.629c13.613 0 24.688 11.074 24.688 24.688v49.371c0 13.613-11.074 24.688-24.688 24.688l-49.375-0.003906c-13.613 0-24.688-11.074-24.688-24.688l0.003906-49.371c0-13.613 11.074-24.688 24.688-24.688l49.371 0.003906m0-8.2305h-49.375c-18.176 0-32.914 14.738-32.914 32.914v49.371c0 18.18 14.738 32.918 32.914 32.918h49.371c18.18 0 32.918-14.738 32.918-32.914v-49.375c0-18.176-14.738-32.914-32.914-32.914z"/>
   <path d="m47.543 39.312c0 4.5469-3.6836 8.2305-8.2305 8.2305-4.543 0-8.2266-3.6836-8.2266-8.2305 0-4.543 3.6836-8.2266 8.2266-8.2266 4.5469 0 8.2305 3.6836 8.2305 8.2266"/>
@@ -29,7 +29,7 @@ const diceArr = [
   <path d="m47.543 88.688c0 4.543-3.6836 8.2266-8.2305 8.2266-4.543 0-8.2266-3.6836-8.2266-8.2266 0-4.5469 3.6836-8.2305 8.2266-8.2305 4.5469 0 8.2305 3.6836 8.2305 8.2305"/>
  </g>
 </svg>`,
-    `<svg data-die="4" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    `<svg data-die="5" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
 <g>
  <path d="m88.688 14.629c13.613 0 24.688 11.074 24.688 24.688v49.371c0 13.613-11.074 24.688-24.688 24.688l-49.375-0.003906c-13.613 0-24.688-11.074-24.688-24.688l0.003906-49.371c0-13.613 11.074-24.688 24.688-24.688l49.371 0.003906m0-8.2305h-49.375c-18.176 0-32.914 14.738-32.914 32.914v49.371c0 18.18 14.738 32.918 32.914 32.918h49.371c18.18 0 32.918-14.738 32.918-32.914v-49.375c0-18.176-14.738-32.914-32.914-32.914z"/>
  <path d="m47.543 39.312c0 4.5469-3.6836 8.2305-8.2305 8.2305-4.543 0-8.2266-3.6836-8.2266-8.2305 0-4.543 3.6836-8.2266 8.2266-8.2266 4.5469 0 8.2305 3.6836 8.2305 8.2266"/>
@@ -39,7 +39,7 @@ const diceArr = [
  <path d="m72.23 64c0 4.543-3.6875 8.2305-8.2305 8.2305s-8.2305-3.6875-8.2305-8.2305 3.6875-8.2305 8.2305-8.2305 8.2305 3.6875 8.2305 8.2305"/>
 </g>
 </svg>`,
-    `<svg data-die="5" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    `<svg data-die="6" class=" fill-zinc-100" width="44pt" height="44pt" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
 <g>
  <path d="m88.688 14.629c13.613 0 24.688 11.074 24.688 24.688v49.371c0 13.613-11.074 24.688-24.688 24.688l-49.375-0.003906c-13.613 0-24.688-11.074-24.688-24.688l0.003906-49.371c0-13.613 11.074-24.688 24.688-24.688l49.371 0.003906m0-8.2305h-49.375c-18.176 0-32.914 14.738-32.914 32.914v49.371c0 18.18 14.738 32.918 32.914 32.918h49.371c18.18 0 32.918-14.738 32.918-32.914v-49.375c0-18.176-14.738-32.914-32.914-32.914z"/>
  <path d="m47.543 39.312c0 4.5469-3.6836 8.2305-8.2305 8.2305-4.543 0-8.2266-3.6836-8.2266-8.2305 0-4.543 3.6836-8.2266 8.2266-8.2266 4.5469 0 8.2305 3.6836 8.2305 8.2266"/>
@@ -74,89 +74,113 @@ diceELs.forEach(element => {
 });
 
 const startRoll = (firstIndex) => {
-    
+
     diceELs.forEach(element => {
-        if(element.getAttribute('rolling') == 'false'){
+        if (element.getAttribute('rolling') == 'false') {
             let randomNUM = Math.floor(Math.random() * diceArr.length)
             element.innerHTML = questionmarkEL
             firstIndex = 0
         }
     });
-    document.querySelector('#btn-roll').removeEventListener('click', startRoll)
+    // document.querySelector('#btn-roll').removeEventListener('click', startRoll)
     let timer = setInterval(() => {
         // console.log(diceELs[firstIndex].children[0])
         let opacityLVL = ((diceELs[firstIndex].children[0].style.opacity * 50) + 1) / 50
-        if(opacityLVL >= .7){
-            if(diceELs[firstIndex].getAttribute('rolling') == 'false'){clearInterval(timer)}
+        if (opacityLVL >= .7) {
+            if (diceELs[firstIndex].getAttribute('rolling') == 'false') { clearInterval(timer) }
             diceELs[firstIndex].children[0].style.opacity = .7;
-            diceELs[firstIndex].children[1].classList.add('fill-yellow-200','opacity-100')
+            diceELs[firstIndex].children[1].classList.add('fill-yellow-200', 'opacity-100')
             startRotation(firstIndex); clearInterval(timer)
         }
         diceELs[firstIndex].children[0].style.opacity = opacityLVL
     }, 10);
     let wait = setInterval(() => {
         let nextIndex = firstIndex + 1
-        if(nextIndex > diceELs.length-1){return}
+        if (nextIndex > diceELs.length - 1) { return }
         startRoll(nextIndex)
         clearInterval(wait)
-        
+
     }, 100);
 }
 
 const startRotation = (index) => {
-    if(index >= diceELs.length-1){activateDICE()}
+    if (index >= diceELs.length - 1) { activateDICE() }
     let deg = 0
     let timer = setInterval(() => {
         deg += 10
-        if(diceELs[index].getAttribute('rolling') == 'false'){
-            diceELs[index].removeEventListener('click', freezeDieEL)
+        if (diceELs[index].getAttribute('rolling') == 'false') {
             clearInterval(timer)
-            diceELs[index].children[0].style.transform = `rotate(0deg)`
-            console.log(diceELs[index].children[0].style.transform )
+            return
+            // console.log(diceELs[index].children[0].style.transform)
+            // diceELs[index].children[0].style.transform = `rotate(0deg)`
         }
-        if(deg >=360) {deg = 1}
+        if (deg >= 360) { deg = 1 }
         diceELs[index].children[0].style.transform = `rotate(${deg}deg)`
-        
+
     }, 1);
 }
 
 const activateDICE = () => {
     diceELs.forEach(element => {
+
         element.addEventListener('click', freezeDieEL = (e) => {
+
             if (e.target.classList.contains('dice')) {
                 let refreshEnabled = true
-                let number = Math.floor(Math.random() * diceArr.length)
-                e.target.innerHTML = diceArr[number];
+                let number = Math.floor(Math.random() * diceArr.length + 1)
+                e.target.innerHTML = diceArr[number - 1];
                 e.target.setAttribute('rolling', 'false');
-                if(number === 0 || number === 4){e.target.children[0].classList.add('fill-yellow-300')}
-                else {e.target.children[0].classList.add('fill-zinc-700')}
-                let triple = 0
-                diceELs.forEach(element => {
-                    if(element.getAttribute('rolling') == "true"){ refreshEnabled = false }
-                    if(parseInt(element.children[0].getAttribute('data-die')) == number){triple++}
-                });
-                console.log(triple)
-                if(triple >= 3){
-                    diceELs.forEach(element => {
-                        if(element.children[0].getAttribute('data-die') == number){console.log(element.children[0]); element.children[0].classList.add('fill-purple-300')}
-                    });
-                }
-                if(refreshEnabled === true){
+                if (number === 1 || number === 5) { e.target.children[0].classList.add('fill-zinc-300') }
+                else { e.target.children[0].classList.add('fill-zinc-700') }
+                let dupedDice = 0
 
-                    let rollBtnEL = document.querySelector('#btn-roll')
-                    let stayBtnEL = document.querySelector('#btn-stay')
-                    // rollBtnEL.style.opacity = .8
-                    // stayBtnEL.style.opacity = .8
-                    
-                    rollBtnEL.addEventListener('click', startRoll)
+                diceELs.forEach(element => {
+                    if (element.getAttribute('rolling') == "true") { refreshEnabled = false }
+                    if (parseInt(element.children[0].getAttribute('data-die')) == number) { dupedDice++ }
+
+                });
+                // console.log(dupedDice)
+                let old_element = e.target
+                let new_element = old_element.cloneNode(true);
+                old_element.parentNode.replaceChild(new_element, old_element);
+
+
+                switch (dupedDice) {
+                    case 3:
+                        updateDiceColors(number, 'green');
+                        break;
+                    case 4:
+                        updateDiceColors(number, 'blue');
+                        break;
+                    case 5:
+                        updateDiceColors(number, 'orange');
+                        break;
+                    case 6:
+                        updateDiceColors(number, 'yellow');
+                        break;
+
+                    default:
+                        break;
                 }
+
+                // if (refreshEnabled === true) {
+
+                //     let rollBtnEL = document.querySelector('#btn-roll')
+                //     let stayBtnEL = document.querySelector('#btn-stay')
+                //     // rollBtnEL.style.opacity = .8
+                //     // stayBtnEL.style.opacity = .8
+
+                //     rollBtnEL.addEventListener('click', startRoll)
+                // }
             }
+
+
 
         })
     });
     let timer = setInterval(() => {
         diceELs.forEach(element => {
-            element.children[0].classList.add('border-yellow-100')
+            element.children[0].classList.add('border-yellow-200')
         });
         clearInterval(timer)
     }, 10);
@@ -165,6 +189,41 @@ const activateDICE = () => {
 startRoll(0)
 
 
+
+function updateDiceColors(number, color) {
+    let newArr = document.querySelectorAll('.dice')
+    console.log(number)
+
+    newArr.forEach(element => {
+        if (parseInt(element.children[0].getAttribute('data-die')) == number) {
+            let targetEL = element
+            targetEL.innerHTML = diceArr[number - 1]
+
+
+
+            //  targetEL.innerHTML = ""
+            // switch (color) {
+            //     case 'green':
+            //         console.log(`fill-green-300`)
+            //         break;
+            //     case 'blue':
+            //         console.log(`fill-blue-300`)
+            //         break;
+            //     case 'purple':
+            //         console.log(`fill-orange-300`)
+            //         break;
+            //     case 'yellow':
+            //         console.log(`fill-yellow-300`)
+            //         break;
+
+            //     default:
+            //         break;
+            // }
+            targetEL.children[0].classList.add((`fill-${color}-300`));
+            // element.children[0].classList.add(`fill-${color}-300`);
+        }
+    });
+}
 // const diceAnim = () => {
 //     let rollBtnEL = document.querySelector('#roller-svg')
 //     console.log(rollBtnEL)
