@@ -81,17 +81,17 @@
         <main class="h-full   min-h-full overflow-y-hidden ">
 
             <div
-                class=" scale-75  p-4 dice-container grid grid-cols-3 grid-rows-6 gap-x-12 gap-y-5 w-full justify-end  2xl:px-96 ">
+                class=" scale-75   dice-container grid grid-cols-3 grid-rows-6 gap-x-6 gap-y-4 w-full justify-end  2xl:px-96 ">
                 <button id="btn-stay"
-                    class="flex justify-center items-center row-start-4 col-start-3 row-span-2 opacity-10">
+                    class="flex justify-center items-center row-start-2 col-start-3 row-span-2 opacity-10">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 fill-zinc-200 " viewBox="0 0 20 20"
                         fill="currentColor">
                         <path
                             d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                     </svg>
                 </button>
-                <p class="flex justify-center row-start-4 col-start-1 text-sm font-medium">
-                    <span class="text-blue-400">90.9</span> <span class="opacity-30 font-thin"> %</span> <br> <span>chance</span>
+                <p class="flex justify-center items-center row-start-3 col-start-1 row-span-2 text-sm font-medium">
+                    <span class="text-green-400">90.9</span> <span class="opacity-30 font-thin"> %</span> <br> <span>chance</span>
                 </p>
                 <div style="min-height: 60px;" parent-int="0" id="die-1"
                     class="dice flex justify-center row-start-1 col-start-2 hover:cursor-pointer"></div>
@@ -107,7 +107,7 @@
                     class="dice flex justify-center row-start-6 col-start-2 hover:cursor-pointer"></div>
 
                 <button id="btn-roll"
-                    class="flex justify-center items-center uppercase row-start-4 col-start-1 row-span-2 opacity-10 -scale-x-100 ">
+                    class="flex justify-center items-center uppercase row-start-2 col-start-1 row-span-2 opacity-10 -scale-x-100 ">
                     <svg class="h-16 w-16 fill-zinc-300 " version="1.1" viewBox="0 0 128 128"
                         xmlns="http://www.w3.org/2000/svg">
                         <g>
@@ -118,19 +118,21 @@
                         </g>
                     </svg>
                 </button>
-                <p class="flex justify-center items-end row-start-3 col-start-3 text-5xl pl-2 font-medium mt-3">
-                    <span class=" text-yellow-300 mb-3">0</span> <span class="opacity-30 font-this"></span> <br> <span class="text-zinc-300 text-lg flex h-full items-center">+</span>
+
+                <p class="flex justify-center items-center row-start-3 col-start-3 row-span-2 text-sm font-medium">
+                    <span>save</span> <span class="opacity-30 font-thin">&</span> <span class="text-zinc-200">post</span>
                 </p>
-                <p class="flex justify-center row-start-4 col-start-3 text-sm font-medium">
-                    <span>save</span> <span class="opacity-30 font-this">&</span> <br> <span class="text-zinc-200">post</span>
-                </p>
+                            <p class="flex justify-center items-center row-start-4 col-start-1 row-span-2 text-5xl pl-3 pb-4 font-medium  opacity-10">
+                <span class=" text-zinc-200 ">3550</span> <span class="opacity-30 font-thin"></span><span class="text-zinc-300 text-sm">+</span>
+            </p>
                 
             </div>
+
 
         </main>
 
     </div>
-    <footer class="fixed bottom-3 w-screen flex justify-center text-xs font-thin opacity-40 ">
+    <footer class="fixed bottom-3 w-screen flex justify-center text-xs font-thin opacity-80 ">
 
         <span class="opacity-30">Copyright 2022 </span><span class="font-bold">dt88</span>. <span class="opacity-30">
             All Rights Reserved.</span>
