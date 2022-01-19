@@ -145,7 +145,7 @@ const activateDICE = () => {
 
             if (e.target.classList.contains('dice')) {
                 let refreshEnabled = true
-                let number = Math.floor(Math.random() * 1 + 1)  //--------------------------------------------------------------change
+                let number = Math.floor(Math.random() * diceArr.length + 1)  //--------------------------------------------------------------change
                 e.target.innerHTML = diceArr[number - 1];
                 e.target.setAttribute('rolling', 'false');
                 if (number === 1 || number === 5) { e.target.children[0].classList.add('fill-zinc-300') }
@@ -218,6 +218,7 @@ function updateDiceColorsAndData(number, color) {
         if (parseInt(element.children[0].getAttribute('data-die')) == number) {
             let targetEL = element
             targetEL.innerHTML = diceArr[number - 1]
+            targetEL.children[0].classList.toggle('fill-zinc-100') // <------------------------ important 
             targetEL.children[0].classList.add(color);
             targetEL.children[0].setAttribute('data-color', color.split("-").splice(1, 1).join(""))
             // console.log(targetEL)
