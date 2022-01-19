@@ -1004,6 +1004,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: transparent;
 }
 
+.fill-red-400 {
+  fill: #f87171;
+}
+
 .fill-current {
   fill: currentColor;
 }
@@ -1018,10 +1022,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .fill-zinc-300 {
   fill: #d4d4d8;
-}
-
-.fill-red-400 {
-  fill: #f87171;
 }
 
 .fill-orange-400 {
