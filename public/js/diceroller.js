@@ -145,7 +145,7 @@ const activateDICE = () => {
 
             if (e.target.classList.contains('dice')) {
                 let refreshEnabled = true
-                let number = Math.floor(Math.random() * diceArr.length + 1)
+                let number = Math.floor(Math.random() * 1 + 1)  //--------------------------------------------------------------change
                 e.target.innerHTML = diceArr[number - 1];
                 e.target.setAttribute('rolling', 'false');
                 if (number === 1 || number === 5) { e.target.children[0].classList.add('fill-zinc-300') }
@@ -220,7 +220,8 @@ function updateDiceColorsAndData(number, color) {
             targetEL.innerHTML = diceArr[number - 1]
             targetEL.children[0].classList.add(color);
             targetEL.children[0].setAttribute('data-color', color.split("-").splice(1, 1).join(""))
-            // console.log(color.split("-").splice(1,1).join(""))
+            // console.log(targetEL)
+            // console.log(color.split("-").splice(1,1).join(""))s
 
         }
     });
@@ -266,15 +267,16 @@ const getDiceStatistics = () => {
             }
         }
     });
-    console.log(playerPackage)
+    // console.log(playerPackage)
     return playerPackage
 }
 
 const calculatePlayerScore = (diceObject) => {
     const properties = Object.keys(diceObject)
+    let prevTotal = parseInt(scoreEL.innerHTML)
     let total = 0
     properties.forEach(element => {
-        console.log(element)
+        // console.log(element)
         let colorString
         let bonus
         switch (element) {
@@ -329,8 +331,51 @@ const calculatePlayerScore = (diceObject) => {
         }
 
     });
+    animateScore(prevTotal, total)
     scoreEL.innerHTML = total
 }
+
 const getColor = (color) => {
     return color.split("-").splice(1, 1).join("")
+}
+
+const animateScore = (oldScore, newScore) => {
+    let incriment = oldScore
+    let difference = newScore - oldScore
+    if (oldScore === newScore) { return }
+    const addEL = document.querySelector('#add-element')
+    const containerEL = document.querySelector('#add-container')
+    scoreAdditive(containerEL, addEL, difference)
+    
+    let timer = setInterval(() => {
+        if (incriment === newScore) { 
+            clearInterval(timer);
+            return 
+        }
+        incriment++
+        if(incriment % 2){
+            scoreEL.classList.toggle('scale-110')
+            scoreEL.classList.add('opacity-80')
+        }
+        scoreEL.innerHTML = incriment
+        
+    }, 20);
+}
+
+const scoreAdditive = (container, element, integer) => {
+    if(container.classList.contains('hidden')){
+        container.style.opacity = 1
+        container.classList.toggle('hidden')
+        let interval = 0
+        let timer = setInterval(() => {
+            interval++
+            container.style.opacity = `${1 - (interval / 300)}`
+            if(interval >= 300){
+                clearInterval(timer)
+                container.classList.toggle('hidden')
+    
+            }
+        }, 1);
+    }
+    element.innerHTML = integer
 }
