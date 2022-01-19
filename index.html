@@ -10,14 +10,14 @@
 </head>
 
 <body
-    class="relative flex flex-col w-screen h-screen bg-zinc-900 text-zinc-200 uppercase text-4xl font-bold overflow-hidden ">
+    class="relative flex flex-col w-screen  bg-zinc-900 text-zinc-200 uppercase text-4xl font-bold overflow-y-hidden overflow-x-hidden ">
     <!--Modal-->
     <div
-        class=" z-50 modal opacity-0 pointer-events-none fixed w-screen h-full top-0 left-0 flex items-center justify-center pt-4 pb-10 ">
+        class=" z-50 modal opacity-0 pointer-events-none fixed w-screen h-full top-0 left-0 flex items-center justify-center  ">
         <div class=" modal-overlay absolute w-screen h-full bg-black opacity-50"></div>
 
         <div
-            class="modal-container bg-zinc-900 w-11/12 h-full md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            class="modal-container bg-zinc-900 w-11/12 h-full md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto pt-4  pb-10">
 
             <div
                 class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
@@ -27,11 +27,11 @@
             <!-- Add margin if you want to see some of the overlay behind the modal-->
             <div class="modal-content pr-4 ">
                 <!--Title-->
-                <div class="relative flex w-full justify-end items-center">
+                <div class=" flex justify-center items-center">
                     <p
-                        class="w-full flex justify-center align-center text-6xl font-semibold normal-case text-zinc-800 pt-6  ">
+                        class=" flex justify-center align-center text-6xl font-semibold normal-case text-zinc-800 pt-6  ">
                         HEXA</p>
-                    <div class=" fixed -mr-1 modal-close cursor-pointer z-50 float-right">
+                    <div class=" fixed top-6 right-7  modal-close cursor-pointer z-50 float-right">
                         <svg class="fill-current text-white mt-1" xmlns="http://www.w3.org/2000/svg" width="18"
                             height="18" viewBox="0 0 18 18">
                             <path
