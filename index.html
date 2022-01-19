@@ -315,8 +315,8 @@
                     </button>
                     <p
                         class="flex justify-center items-center row-start-3 col-start-1 col-span-1 row-span-2 text-sm font-medium">
-                        <span class="text-green-400 text-2xl pb-2">97.7</span> <span
-                            class=" font-semibold opacity-50 text-2xl pb-2 text-green-400"> %</span> <br> <span
+                        <span id="percentage-element" class=" text-2xl pb-2 percentage-value" style="color: #3b82f6">91.2</span> <span
+                            class=" font-semibold opacity-50 text-2xl pb-2 percentage-value" style="color: #3b82f6"> %</span> <br> <span
                             class="opacity-50">chance</span>
                     </p>
                     <div style="min-height: 60px;" parent-int="0" id="die-1"
@@ -347,12 +347,12 @@
 
                     <p class="flex justify-center items-center row-start-3 col-start-3 row-span-2 text-sm font-medium">
                         <span class="opacity-50">post</span> <span
-                            class="opacity-50 font-thin text-2xl text-blue-400 pb-2">&</span> <span
-                            class="text-blue-400 text-2xl pb-2">save</span>
+                            class="opacity-50 font-thin text-2xl  pb-2 percentage-value" style="color: #3b82f6">&</span> <span
+                            class=" text-2xl pb-2 percentage-value" style="color: #3b82f6">save</span>
                     </p>
                     <p
-                        class="  flex justify-center items-center row-start-4 col-start-1 col-span-1 row-span-2 text-5xl pb-4 font-medium  ">
-                        <span id="score-element" class=" text-zinc-200 opacity-10">10</span> <span
+                        class="  flex justify-center items-center row-start-4 col-start-1 col-span-1 row-span-2 text-5xl pb-4font-medium  ">
+                        <span id="score-element" class=" text-zinc-200 opacity-10">10</span><span class="text-sm mt-5 pt-2 l-2 text-zinc-700">p</span> <span
                             class="opacity-30 font-thin"></span><span class="text-zinc-300 text-sm "></span>
                     </p>
                     <span
@@ -380,9 +380,13 @@
     </section>
 
 </body>
+<script src="./public/js/misc/color.js"></script>
+<script src="./public/js/misc/svg.js"></script>
+<script src="./public/js/misc/helper-functions.js"></script>
 
-<script src="./public//js/modal.js"></script>
+
+
+<script src="./public/js/secondary/modal.js"></script>
 <script src="./public/js/diceroller.js"></script>
-<script src="./public//js/score.js"></script>
 
 </html>
