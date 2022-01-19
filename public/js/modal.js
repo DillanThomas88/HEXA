@@ -1,6 +1,7 @@
 var openmodal = document.querySelectorAll('.modal-open')
 // --------------
-
+let tem = document.querySelector('.modal')
+tem.style.opacity = 0
 // --------------
 for (var i = 0; i < openmodal.length; i++) {
   openmodal[i].addEventListener('click', function(event){
@@ -36,7 +37,35 @@ function toggleModal () {
   const modal = document.querySelector('.modal')
   modal.classList.toggle('pointer-events-none')
   body.classList.toggle('modal-active')
-modal.classList.toggle('opacity-0')
+  modal.classList.toggle('active')
+  modalAnimate()
+// modal.classList.toggle('opacity-0')
+}
+
+
+function modalAnimate () {
+  const modal = document.querySelector('.modal')
+  let duration = 15
+  let incriment = 0
+  if(modal.classList.contains('active')){
+    incriment = duration
+    let timer = setInterval(() => {  
+      incriment-- 
+      if(incriment < 0){clearInterval(timer); return}
+      modal.style.opacity = `${incriment/duration}`
+      console.log(incriment/duration)
+    }, 1);
+
+
+  } else {
+
+    let timer = setInterval(() => {
+      incriment++
+      if(incriment > duration){clearInterval(timer); return}
+      modal.style.opacity = `${incriment/duration}`
+      console.log(incriment/duration)
+    }, 1);
+  }
 }
 
  
