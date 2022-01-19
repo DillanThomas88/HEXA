@@ -13,8 +13,8 @@
     class="relative flex flex-col w-screen  bg-zinc-900 text-zinc-200 uppercase text-4xl font-bold overflow-y-hidden overflow-x-hidden ">
     <!--Information Modal-->
     <div
-        class=" z-50 modal active pointer-events-none fixed w-screen h-full flex items-center justify-center  ">
-        <div class=" modal-overlay absolute w-screen h-full bg-black opacity-50"></div>
+        class=" z-50 modal active pointer-events-none fixed w-screen h-full flex items-center justify-center opacity-0 ">
+        <div class=" modal-overlay absolute w-screen h-full bg-black opacity-0"></div>
 
         <div
             class="modal-container bg-zinc-900 w-full h-full md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto pt-4  pb-10">
@@ -28,8 +28,7 @@
             <div class="modal-content pr-4 ">
                 <!--Title-->
                 <div class=" flex justify-center items-center">
-                    <p
-                        class=" flex justify-center align-center text-7xl font-semibold normal-case text-zinc-800 pt-4 ">
+                    <p class=" flex justify-center align-center text-7xl font-semibold normal-case text-zinc-800 pt-4 ">
                         HEXA</p>
                     <div class=" fixed top-3 right-3  modal-close cursor-pointer z-50">
                         <svg class="fill-current text-white mt-1" xmlns="http://www.w3.org/2000/svg" width="18"
@@ -46,7 +45,8 @@
                     <section id="info-rules" class="my-3">
                         <header class="text-left font-medium text-zinc-100">Objective</header>
                         <hr style="height: 1px;" class=" bg-zinc-800 border-none my-1">
-                        <p class="normal-case text-zinc-500 text-justify">The objective of the game of Hexa is to score as many points
+                        <p class="normal-case text-zinc-500 text-justify">The objective of the game of Hexa is to score
+                            as many points
                             as you can by rolling 'scoring' dice</p>
                     </section>
                     <!-- scoring---------------------------------------------------------------------------------------- -->
@@ -54,21 +54,25 @@
                         <header class="text-left font-medium text-zinc-100">Scoring</header>
                         <hr style="height: 1px;" class=" bg-zinc-800 border-none my-1">
                         <p class="normal-case text-zinc-500 text-justify">
-                            Begin by rolling all six dice and check to see if you have rolled any scoring dice or combinations. Any dice that score will be set aside and then you may choose to roll all the remaining dice. 
+                            Begin by rolling all six dice and check to see if you have rolled any scoring dice or
+                            combinations. Any dice that score will be set aside and then you may choose to roll all the
+                            remaining dice.
                         </p>
                         <br>
                         <p class="normal-case text-zinc-500 text-justify">
-                            If all six dice have been set aside for scoring, you can choose to roll all six dice again and continue adding to your accumulated score or you can save your points.
+                            If all six dice have been set aside for scoring, you can choose to roll all six dice again
+                            and continue adding to your accumulated score or you can save your points.
                         </p>
                         <br>
                         <p class="normal-case text-zinc-500 text-justify pb-4">
-                           Your turn continues until  either you decide to stop or until you fail to roll any scoring dice, which will result in you loosing your accumulated score for that round.
+                            Your turn continues until either you decide to stop or until you fail to roll any scoring
+                            dice, which will result in you loosing your accumulated score for that round.
                         </p>
 
                         <div class="w-full grid  gap-y-6 text-center items-center text-zinc-600">
-                            <!-- default combos---------------------------------------------------------------- -->
+                            <!-- Basic scoring---------------------------------------------------------------- -->
                             <!-- <hr style="height: 1px;" class=" bg-zinc-800 border-none mt-4"> -->
-                            <div class=" mt-2 text-left font-medium text-zinc-400">standard values</div>
+                            <div class=" mt-2 text-left font-medium text-zinc-400">basic scoring</div>
                             <div>
                                 <div class="grid grid-cols-4">
                                     <div class="col-start-1 col-span-2 justify-left items-center flex flex-row">
@@ -82,7 +86,8 @@
                                     </div>
                                     <div class="col-start-3"> common</div>
                                     <div class="col-start-4 w-full text-right">
-                                        <div class="text-zinc-400 ">0 <span class=" text-zinc-700 lowercase">p</span></div>
+                                        <div class="text-zinc-400 ">0 <span class=" text-zinc-700 lowercase">p</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-4">
@@ -97,7 +102,8 @@
                                     </div>
                                     <div class="col-start-3 text-zinc-300"> five</div>
                                     <div class="col-start-4 w-full text-right">
-                                        <div class="text-zinc-400 ">5 <span class=" text-zinc-700 lowercase ">p</span></div>
+                                        <div class="text-zinc-400 ">5 <span class=" text-zinc-700 lowercase ">p</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-4">
@@ -112,11 +118,12 @@
                                     </div>
                                     <div class="col-start-3 text-zinc-300"> one</div>
                                     <div class="col-start-4 w-full text-right">
-                                        <div class="text-zinc-400 ">10 <span class=" text-zinc-700 lowercase">p</span></div>
+                                        <div class="text-zinc-400 ">10 <span class=" text-zinc-700 lowercase">p</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- default combos---------------------------------------------------------------- -->
+                            <!-- standard combos---------------------------------------------------------------- -->
                             <!-- <hr style="height: 1px;" class=" bg-zinc-800 border-none mt-4"> -->
                             <div class=" text-left font-medium text-zinc-400">standard combos</div>
                             <div>
@@ -180,13 +187,14 @@
                                     </div>
                                     <div class="col-start-3 text-purple-200"> hexa</div>
                                     <div class="col-start-4 w-full text-right">
-                                        <div class="text-purple-200 ">300 <span class=" text-zinc-700 lowercase">p</span>
+                                        <div class="text-purple-200 ">300 <span
+                                                class=" text-zinc-700 lowercase">p</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- <hr style="height: 1px;" class=" bg-zinc-800 border-none mt-4"> -->
-                            <!-- special---------------------------------------------------------------- -->
+                            <!-- special combos---------------------------------------------------------------- -->
                             <div class=" text-left font-medium text-zinc-400">special combos</div>
                             <div>
 
@@ -205,11 +213,11 @@
                                     </div>
                                     <div class="col-start-3 text-green-200 text-xs">supaquad</div>
                                     <div class="col-start-4 w-full text-right">
-                                        <div class="text-green-200 ">120 <span class=" text-zinc-700 lowercase">p</span>
+                                        <div class="text-green-200 ">125 <span class=" text-zinc-700 lowercase">p</span>
                                         </div>
                                     </div>
                                 </div>
-    
+
                                 <div class="grid grid-cols-4">
                                     <div class="col-start-1 col-span-2 justify-left items-center flex flex-row">
                                         <!-- dice svgs go here -->
@@ -247,21 +255,14 @@
                                     </div>
                                     <div class="col-start-3 text-orange-200 text-xs">two trips</div>
                                     <div class="col-start-4 w-full text-right">
-                                        <div class="text-orange-200 ">250 <span class=" text-zinc-700 lowercase">p</span>
+                                        <div class="text-orange-200 ">250 <span
+                                                class=" text-zinc-700 lowercase">p</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                           
                         </div>
-
-
                     </section>
-
-
-
-
-
                 </div>
                 <!--Footer-->
                 <div class="flex justify-end pt-2">
@@ -350,15 +351,16 @@
                             class="text-blue-400 text-2xl pb-2">save</span>
                     </p>
                     <p
-                        class="flex justify-center items-center row-start-4 col-start-1 col-span-1 row-span-2 text-5xl pb-4 font-medium  ">
+                        class="  flex justify-center items-center row-start-4 col-start-1 col-span-1 row-span-2 text-5xl pb-4 font-medium  ">
                         <span id="score-element" class=" text-zinc-200 opacity-10">10</span> <span
                             class="opacity-30 font-thin"></span><span class="text-zinc-300 text-sm "></span>
                     </p>
-                    <span id="add-container"
-                        class=" hidden flex flex-col justify-center items-center max-h-max items-center row-start-5 col-start-1 col-span-1 row-span-2 text-xl pb-4 font-medium  ">
+                    <span
+                        class="relative flex flex-col justify-start items-center max-h-max row-start-5 col-start-1 col-span-1 row-span-2 text-xl pt-5 font-medium  ">
+                        <ul  id="add-container" class="relative">
+                        </ul>
                         <p>
-                            <span class="opacity-80 -ml-4">+</span>
-                            <span id="add-element" class=" text-green-400">0</span>
+
                         </p>
 
                     </span>
@@ -379,8 +381,8 @@
 
 </body>
 
-<script src="./public/js/diceroller.js"></script>
 <script src="./public//js/modal.js"></script>
+<script src="./public/js/diceroller.js"></script>
 <script src="./public//js/score.js"></script>
 
 </html>
