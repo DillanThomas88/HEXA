@@ -1,7 +1,7 @@
 var openmodal = document.querySelectorAll('.modal-open')
 // --------------
 let tem = document.querySelector('.modal')
-let distance = 20
+let distance = 30
 tem.style.opacity = 0
 tem.style.top = `${distance}px`
 
