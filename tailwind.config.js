@@ -14,6 +14,8 @@ module.exports = {
 
       'md': '768px',
 
+      'ipadair': '820px',
+
       'lg': '1024px',
 
       'xl': '1280px',
