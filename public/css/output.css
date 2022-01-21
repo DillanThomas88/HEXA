@@ -774,28 +774,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   row-gap: 1.5rem;
 }
 
-.gap-x-6 {
-  -moz-column-gap: 1.5rem;
-       column-gap: 1.5rem;
+.gap-x-0 {
+  -moz-column-gap: 0px;
+       column-gap: 0px;
 }
 
 .gap-y-5 {
   row-gap: 1.25rem;
-}
-
-.gap-x-3 {
-  -moz-column-gap: 0.75rem;
-       column-gap: 0.75rem;
-}
-
-.gap-x-1 {
-  -moz-column-gap: 0.25rem;
-       column-gap: 0.25rem;
-}
-
-.gap-x-0 {
-  -moz-column-gap: 0px;
-       column-gap: 0px;
 }
 
 .overflow-y-auto {
@@ -986,6 +971,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .fill-purple-500 {
   fill: #a855f7;
+}
+
+.fill-yellow-100 {
+  fill: #fef9c3;
 }
 
 .object-contain {
@@ -1322,34 +1311,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 390px) {
-  .\31 2pro\:mt-20 {
-    margin-top: 5rem;
-  }
-
   .\31 2pro\:mt-28 {
     margin-top: 7rem;
   }
 
   .\31 2pro\:h-20 {
     height: 5rem;
-  }
-
-  .\31 2pro\:scale-150 {
-    --tw-scale-x: 1.5;
-    --tw-scale-y: 1.5;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .\31 2pro\:scale-110 {
-    --tw-scale-x: 1.1;
-    --tw-scale-y: 1.1;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .\31 2pro\:scale-100 {
-    --tw-scale-x: 1;
-    --tw-scale-y: 1;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .\31 2pro\:scale-95 {

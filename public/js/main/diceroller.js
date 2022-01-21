@@ -1,65 +1,73 @@
-
+let refreshbtn = document.querySelector('#btn-roll')
 const scoreEL = document.querySelector('#score-element')
 scoreEL.innerHTML = 0
 
 let diceParents = []
 let unlockedDice = []
+let score = 0
 
 const startNewRoll = (arr) => {
+    let newarr = []
     if (arr) {
-        arr.forEach(element => {
+        diceParents = arr
+        newarr = arr
+        diceParents.forEach(element => {
             element.innerHTML = questionmarkEL
         });
+        console.log('after first turn')
     } else {
         diceParents = getDiceParentElements()
         diceParents.forEach(element => {
             element.innerHTML = questionmarkEL
         });
+        console.log('first turn')
+
+        newarr = diceParents
 
     }
-    init(0)
+    // console.log(newarr)
+
+    init(0, newarr)
 }
 
 
-const init = (firstIndex) => {
+const init = (firstIndex, xxarr) => {
 
-    let x = Array.from(document.querySelectorAll('.dice'))
-    let xArr = x.filter(die => !die.classList.contains('locked'))
-    xArr.forEach(element => {
+    xxarr.forEach(element => {
         if (element.getAttribute('rolling') == 'false') {
             // let randomNUM = Math.floor(Math.random() * diceArr.length)
             element.innerHTML = questionmarkEL
             firstIndex = 0
         }
     });
-    diceParents = getDiceParentElements()
+    // diceParents = getDiceParentElements()
     // console.log(diceParents)
-    // document.querySelector('#btn-roll').removeEventListener('click', startRoll)
+
     let timer = setInterval(() => {
         // console.log(diceELs[firstIndex].children[0])
-        let opacityLVL = ((xArr[firstIndex].children[0].style.opacity * 50) + 1) / 50
+        let opacityLVL = ((xxarr[firstIndex].children[0].style.opacity * 50) + 1) / 50
         if (opacityLVL >= .7) {
-            if (xArr[firstIndex].getAttribute('rolling') == 'false') { clearInterval(timer) }
-            xArr[firstIndex].children[0].style.opacity = .7;
-            xArr[firstIndex].children[0].classList.toggle('border-zinc-100')
-            console.log('am')
-            xArr[firstIndex].children[1].classList.toggle('fill-zinc-100')
-            xArr[firstIndex].children[1].classList.toggle('opacity-5')
-            xArr[firstIndex].children[1].classList.add('fill-zinc-200', 'opacity-100')
+            if (xxarr[firstIndex].getAttribute('rolling') == 'false') { clearInterval(timer) }
+            xxarr[firstIndex].children[0].style.opacity = .7;
+            xxarr[firstIndex].children[0].classList.toggle('border-zinc-100')
+            xxarr[firstIndex].children[1].classList.toggle('fill-zinc-100')
+            xxarr[firstIndex].children[1].classList.toggle('opacity-5')
+            xxarr[firstIndex].children[1].classList.add('fill-zinc-200', 'opacity-100')
             diceRotatingAnimation(firstIndex); clearInterval(timer)
         }
-        xArr[firstIndex].children[0].style.opacity = opacityLVL
+        xxarr[firstIndex].children[0].style.opacity = opacityLVL
     }, 10);
     let wait = setInterval(() => {
         let nextIndex = firstIndex + 1
-        if (nextIndex > xArr.length - 1) { return }
-        init(nextIndex)
+        if (nextIndex > xxarr.length - 1) { return }
+        init(nextIndex, xxarr)
         clearInterval(wait)
-
+        
     }, 100);
 }
 
 const diceRotatingAnimation = (index) => {
+    console.log('rotating', index)
     if (index >= diceParents.length - 1) { diceReady() }
     let deg = 0
     let timer = setInterval(() => {
@@ -82,7 +90,7 @@ const diceReady = () => {
         element.addEventListener('click', freezeDieEL = (e) => {
 
             if (e.target.classList.contains('dice')) {
-                let number = Math.floor(Math.random() * diceArr.length + 1)  //--------------------------------------------------------------change
+                let number = Math.floor(Math.random() * 5 + 1)  //--------------------------------------------------------------change
                 e.target.innerHTML = diceArr[number - 1];
                 e.target.setAttribute('rolling', 'false');
                 e.target.classList.add('dice-activated')
@@ -133,6 +141,7 @@ const diceReady = () => {
 
 
             let diceStatsObj = createPlayerStatsObject()
+            // console.log(diceStatsObj)
             ifAllDiceRolledReadyNextRoll(diceStatsObj)
 
         })
@@ -210,16 +219,22 @@ const createPlayerStatsObject = () => {
 const beginPlayerScoreCalculation = (diceObject) => {
     const properties = Object.keys(diceObject)
     let prevTotal = parseInt(scoreEL.innerHTML)
-    let totalObject = { common: 0, standard: 0, special: 0, pair: 0, bonus: 0 }
+    let totalObject = { common: 0, standard: 0, special: 0, pair: 0, bonus: 0, total: 0 }
+    // console.log(diceObject)
     properties.forEach(element => {
-        // console.log(diceObject)
+        // console.log(totalObject.total)
         let colorString
         let bonus
         switch (element) {
             case getColor(colorObj.orange):
 
                 colorString = String(getColor(colorObj.orange))
-                if (diceObject[colorString].total == 6) { totalObject.special = 250 }
+                if (diceObject[colorString].total == 6) { 
+                    totalObject.special = 250 
+                    totalObject.total = 6
+                    return
+                    // console.log(diceObject)
+                }
                 else if (diceObject[colorString].value == 1) { totalObject.standard += 30 }
                 else { totalObject.standard += diceObject[colorString].value * 10 }
                 break;
@@ -230,12 +245,23 @@ const beginPlayerScoreCalculation = (diceObject) => {
                 let pair = 0
                 if (diceObject.common) {
                     if (diceObject.common.length === 2) {
-                        if (diceObject.common[0] === diceObject.common[1]) { totalObject.pair = 25 }
+                        if (diceObject.common[0] === diceObject.common[1]) { 
+                            totalObject.pair = 25
+                            totalObject.bonus = 100
+                            totalObject.total = 6
+                            return 
+                        }
                     }
                 }
-                if (diceObject.one === 2 || diceObject.five === 2) { totalObject.pair = 25 }
-                totalObject.bonus = 100
-                totalObject.standard += (diceObject[colorString].value * 10)
+                if (diceObject.one === 2 || diceObject.five === 2) { 
+                    totalObject.pair = 25
+                    totalObject.bonus = 100
+                    totalObject.total = 6
+                    return  
+                }
+                // totalObject.bonus = 100
+                // totalObject.standard += (diceObject[colorString].value * 10)
+                // totalObject.total += 4
                 break;
 
             case getColor(colorObj.blue):
@@ -243,6 +269,7 @@ const beginPlayerScoreCalculation = (diceObject) => {
                 colorString = getColor(colorObj.blue)
                 totalObject.bonus = 200
                 totalObject.standard += (diceObject[colorString].value * 10)
+                totalObject.total += 5
                 break;
 
             case getColor(colorObj.purple):
@@ -250,52 +277,64 @@ const beginPlayerScoreCalculation = (diceObject) => {
                 colorString = getColor(colorObj.purple)
                 totalObject.bonus = 300
                 totalObject.standard += (diceObject[colorString].value * 10)
+                totalObject.total = 6
                 break;
             case 'one':
 
                 colorString = 'one'
                 totalObject.common += (diceObject[colorString] * 10)
+                totalObject.total += 1
                 break;
 
             case 'five':
 
                 colorString = 'five'
                 totalObject.common += (diceObject[colorString] * 5)
+                totalObject.total += 1
                 break;
 
             default:
                 break;
         }
-
+        // console.log(totalObject)
     });
-    animateScoreAccumulator(totalObject)
+    animateScoreAccumulator(totalObject, diceObject)
     // console.log(totalObject)
 
     let div
 }
 
-const animateScoreAccumulator = (scoreObj) => {
+const animateScoreAccumulator = (scoreObj, diceObj) => {
     // let incriment = oldScore
     // let difference = scoreObj - oldScore
     // if (oldScore === scoreObj) { return }
     const addEL = document.querySelector('#add-element')
 
     let scoreArr = getScoreArray(scoreObj)
+
+    checkForSpecialCombo(scoreArr, diceObj)
+
+    // console.log(diceObj)
+    // console.log(scoreArr)
+
     let scoretotal = 0
     for (let i = 0; i < scoreArr.length; i++) {
         const element = scoreArr[i];
         scoretotal += element
     }
+    
+    if(scoretotal === score){ console.log('you lost')}
 
     appendScoreChildren(scoreArr, 0)
 
-    let incriment = 0
+    let incriment = score
     let timer = setInterval(() => {
         if (incriment === scoretotal) {
             clearInterval(timer);
             if (scoreEL.classList.contains('scale-110')) {
                 scoreEL.classList.toggle('scale-110')
             }
+            score = scoretotal
             return
         }
         incriment++
@@ -309,6 +348,7 @@ const animateScoreAccumulator = (scoreObj) => {
 }
 
 const appendScoreChildren = (arr, index) => {
+    // console.log(arr)
     let appendtimer = 375
     let fadeDuration = 500
     const containerEL = document.querySelector('#add-container')
@@ -349,47 +389,42 @@ const appendScoreChildren = (arr, index) => {
 }
 
 const ifAllDiceRolledReadyNextRoll = (obj) => {
-    let x = Array.from(document.querySelectorAll('.dice-activated'))
+    let x = Array.from(document.querySelectorAll('.dice-activated')) 
+    // console.log(x.length)
     if (x.length === 6) {
         // console.log(obj)
         beginPlayerScoreCalculation(obj)
         // const propertyNames = Object.keys(x)
+        // console.log(x)
         let newX = x.filter(die => die.children[0].getAttribute('data-type') != 'common')
+        // console.log(newX);
         newX.forEach(element => {
             element.classList.add('locked')
+            // console.log(element)
 
         });
 
         unlockedDice = newX
         let y = Array.from(document.querySelectorAll('.dice'))
         let xArr = y.filter(die => !die.classList.contains('locked'))
-        // xArr.forEach(element => {
-        //     element.innerHTML = questionmarkEL
-        // });
-        // startNewRoll(xArr)
         let statsArr = Object.entries(obj).filter(data => data[0] != 'common').filter(data => data[0] != 'one').filter(data => data[0] != 'five')
-        // console.log(statsArr)
+        // console.log(xArr)
 
         let percentage = calculatenNextChance(statsArr, xArr.length)
-
+        // console.log(percentage)
         waitFor(500, updatePercentageEL, percentage)
+        waitFor(1000, activateReRollBtn, xArr)
+        
     }
 }
-const waitFor = (miliseconds, func, param) => {
-    let timer = setInterval(() => {
-        clearInterval(timer)
-        func(param)
-    }, 500);
-}
-
-
-startNewRoll()
 
 function updatePercentageEL(percentage) {
+    // console.log(percentage)
     let eL = document.querySelector('#percentage-element')
     const currentPercentage = parseInt(eL.innerHTML.split("").filter(data => data != '.').join(""))
     let interval = currentPercentage
     let timer = setInterval(() => {
+        // console.log(percentage)
         // console.log(currentPercentage,percentage)
         if (currentPercentage == percentage) { clearInterval(timer); return }
         else if (currentPercentage < percentage) { interval++ }
@@ -399,7 +434,7 @@ function updatePercentageEL(percentage) {
             eL.innerHTML = percentage / 10
         }
         switch (true) {
-            case (interval >= 900):                
+            case (interval >= 900):
                 updateColorTo('#3b82f6')
                 break;
             case (interval >= 800 && interval < 900):
@@ -431,7 +466,11 @@ function updatePercentageEL(percentage) {
 function updateColorTo(color) {
     document.querySelectorAll('.percentage-value').forEach(element => {
         element.style.color = color
-            
+
     })
 }
 
+
+
+// debugger
+startNewRoll()
