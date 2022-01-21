@@ -41,9 +41,9 @@ function toggleModal () {
   modal.classList.toggle('pointer-events-none')
   body.classList.toggle('modal-active')
   modal.classList.toggle('active')
+  modal.classList.toggle('opacity-0')
   modalFade()
   modalMove()
-// modal.classList.toggle('opacity-0')
 }
 
 

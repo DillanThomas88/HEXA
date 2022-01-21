@@ -323,8 +323,15 @@ const animateScoreAccumulator = (scoreObj, diceObj) => {
         scoretotal += element
     }
     
-    if(scoretotal === score){ console.log('you lost')}
-
+    // if you lose -------------------------------------------------------------
+    if(scoretotal === score){ 
+        score = 0
+        scoreEL.innerHTML = score
+        return
+    }
+    // console.log(scoreArr)
+    // if you win --------------------------------------------------------------
+    if(scoretotal < score){scoretotal += score}
     appendScoreChildren(scoreArr, 0)
 
     let incriment = score
@@ -348,11 +355,16 @@ const animateScoreAccumulator = (scoreObj, diceObj) => {
 }
 
 const appendScoreChildren = (arr, index) => {
-    // console.log(arr)
     let appendtimer = 375
     let fadeDuration = 500
     const containerEL = document.querySelector('#add-container')
-    if (arr[index]) {
+
+    cleanArray = arr.filter(data => typeof data ===  'number').filter(data => data != 0)
+    if(index >= cleanArray.length){return}
+    if (!cleanArray) { return console.log('error')
+    } else {
+        // console.log(cleanArray)
+
         let liEL = document.createElement('li')
         let apanEL0 = document.createElement('span')
         let apanEL1 = document.createElement('span')
@@ -363,7 +375,7 @@ const appendScoreChildren = (arr, index) => {
         apanEL0.innerHTML = '+'
 
         apanEL1.setAttribute('id', `li-${i}`)
-        apanEL1.innerHTML = arr[index]
+        apanEL1.innerHTML = cleanArray[index]
         divEL.append(apanEL0, apanEL1)
         liEL.append(divEL)
         containerEL.append(liEL)
@@ -383,7 +395,7 @@ const appendScoreChildren = (arr, index) => {
 
         let appendDuration = setInterval(() => {
             clearInterval(appendDuration)
-            appendScoreChildren(arr, index + 1)
+            appendScoreChildren(cleanArray, index + 1)
         }, appendtimer);
     }
 }
@@ -408,7 +420,27 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
         let y = Array.from(document.querySelectorAll('.dice'))
         let xArr = y.filter(die => !die.classList.contains('locked'))
         let statsArr = Object.entries(obj).filter(data => data[0] != 'common').filter(data => data[0] != 'one').filter(data => data[0] != 'five')
-        // console.log(xArr)
+        if(xArr.length === 0){
+            // if successful reroll all the dice imediatly!----------
+
+                for (let i = 0; i < y.length; i++) {
+                    const element = y[i];
+                    element.removeEventListener('click', freezeDieEL)
+                    // debugger
+                    removeAllChildNodes(element);
+                    element.classList.toggle('dice-activated')
+                    element.classList.toggle('locked')
+                    element.toggleAttribute('rolling')
+                }
+                console.log(y)
+                startNewRoll(y)
+            // refreshbtn.classList.toggle('opacity-10')
+            // refreshbtn.children[0].classList.toggle('fill-zinc-300')
+            // refreshbtn.children[0].classList.add('fill-zinc-200')
+                
+                    return
+        }
+        console.log(xArr)
 
         let percentage = calculatenNextChance(statsArr, xArr.length)
         // console.log(percentage)
