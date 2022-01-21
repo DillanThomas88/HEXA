@@ -38,7 +38,7 @@ const getDiceParentElements = () => {
 
 const calculatenNextChance = (arr, length) => {
     if(!arr.common){  }
-    console.log(arr)
+    // console.log(arr)
     let numOfDifferentDice = 2
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
