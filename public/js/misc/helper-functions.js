@@ -88,6 +88,7 @@ const checkForSpecialCombo = (arr, diceObj) => {
 const waitFor = (miliseconds, func, param) => {
     let timer = setInterval(() => {
         clearInterval(timer)
+        document.querySelector('#btn-roll').classList.toggle('animate-pulse')
         func(param)
     }, miliseconds);
 }

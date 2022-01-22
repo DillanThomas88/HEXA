@@ -5,6 +5,7 @@ const activateReRollBtn = (arr) => {
         target.removeEventListener('click',wipeadnRoll)
         target.children[0].classList.add('fill-zinc-300')
         target.children[0].classList.toggle('fill-zinc-200')
+        target.classList.toggle('animate-pulse')
         refreshbtn.classList.toggle('opacity-10')
         // console.log(target)
         // console.log(arr)
