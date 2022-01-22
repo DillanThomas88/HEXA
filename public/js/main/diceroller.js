@@ -1,13 +1,10 @@
 let refreshbtn = document.querySelector('#btn-roll')
 const scoreEL = document.querySelector('#score-element')
 scoreEL.innerHTML = 0
-
 let diceParents = []
 let unlockedDice = []
-let playerPackage = {}
 let score = 0
 let roundTotal = 0
-
 const startNewRoll = (arr) => {
     let newarr = []
     if (arr) {
@@ -100,7 +97,7 @@ const diceReady = () => {
 
             playerPackage = createPlayerStatsObject()
             let colordata = beginPlayerScoreCalculation(playerPackage)
-            console.log(colordata);
+            // console.log(colordata);
 
             colorDice(colordata)
 
@@ -119,7 +116,7 @@ const diceReady = () => {
 
 function setDataColorAttribute(number, color) {
     let newArr = document.querySelectorAll('.dice')
-    console.log(newArr)
+    // console.log(newArr)
 
     newArr.forEach(element => {
         if (parseInt(element.children[0].getAttribute('data-die')) == number) {
@@ -182,6 +179,7 @@ const createPlayerStatsObject = () => {
 }
 
 const beginPlayerScoreCalculation = (diceObject) => {
+
     const properties = Object.values(diceObject)
     let scoreObj = {
         specialCombo: {},
@@ -189,6 +187,7 @@ const beginPlayerScoreCalculation = (diceObject) => {
         one: properties[0]*10,
         five: properties[4]*5,
     }
+
     
     if(properties === [1,1,1,1,1,1]){
         scoreObj.specialCombo.name = 'straight' 
@@ -205,9 +204,13 @@ const beginPlayerScoreCalculation = (diceObject) => {
             scoreObj.one = 0
             scoreObj.five = 0
             // console.log(scoreObj);
+            softUpdate(playerData.standard.hexa, playerDataCopy.standard.hexa, scoreObj.standardCombo)
+
             return scoreObj
         } else if ( element === 5){
+
             standardComboFunc('penta', 200, i)
+            softUpdate(playerData.standard.penta, playerDataCopy.standard.penta, scoreObj.standardCombo)
             // console.log(scoreObj);
         } else if(element === 4){
             for (let j = 0; j < properties.length; j++) {
@@ -225,7 +228,8 @@ const beginPlayerScoreCalculation = (diceObject) => {
                     return scoreObj
                 }
             }
-            standardComboFunc('quad', 100, i)    
+            standardComboFunc('quad', 100, i)  
+            softUpdate(playerData.standard.quad, playerDataCopy.standard.quad, scoreObj.standardCombo)  
             // console.log(scoreObj);        
         } else if (element === 3){
             for (let j = 0; j < properties.length; j++) {
@@ -239,14 +243,21 @@ const beginPlayerScoreCalculation = (diceObject) => {
                         scoreObj.one = 0
                         scoreObj.five = 0
                         // console.log(scoreObj);
+
                         return scoreObj
                     }
                 }
             }
             if(i + 1 === 1){
                 standardComboFunc('triple',20, i)
-            } else{ standardComboFunc('triple',0, i) }
-            // console.log(scoreObj);
+                softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.standardCombo)
+            } else{ 
+                standardComboFunc('triple',0, i)
+
+                softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.standardCombo)
+                
+            }
+
         } else {
             // console.log('error?')
         }
@@ -254,8 +265,24 @@ const beginPlayerScoreCalculation = (diceObject) => {
     }
     // console.log(scoreObj)
     
-    
     return scoreObj
+
+
+    function softUpdate(original, copy, compair, ) {
+        console.log(compair)
+        for (let i = 0; i < copy.length; i++) {
+            const element = copy[i]
+            
+            if (element.index === compair.diceNumber - 1) {
+                element.status = 'unlocked'
+                if (element.total === original[i].total) {
+                    console.log(element.total)
+                    element.total += 1
+                    console.log(element.total)
+                }
+            }
+        }
+    }
 
     function standardComboFunc(n, num, i) {
         if(i + 1 == 1){scoreObj.one = 0}
@@ -351,15 +378,15 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
     let x = Array.from(document.querySelectorAll('.dice-activated'))
     // console.log(x.length)
     if (x.length === 6) {
-        console.log(obj)
-         let scoreObj = beginPlayerScoreCalculation(obj)
+        // console.log(obj)
+         scoreObj = beginPlayerScoreCalculation(obj)
         // console.log(scoreObj)
 
         giveDiceAttributes(scoreObj)
 
          animateScoreAccumulator(scoreObj, obj)
         // const propertyNames = Object.keys(x)
-        // console.log(x)
+        console.log(scoreObj)
         let newX = x.filter(die => die.getAttribute('data-type') != 'common')
         // console.log(newX);
         newX.forEach(element => {
@@ -430,6 +457,7 @@ function rerollThis(arr) {
         // ------------------------------------ win
         score += roundTotal
         roundTotal = 0
+        swapUpdateLocalStorage()
     }
     // console.log(arr)
     // --------------------------------------- else

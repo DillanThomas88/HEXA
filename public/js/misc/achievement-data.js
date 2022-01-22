@@ -1,4 +1,4 @@
-
+let playerData = ''
 function newUserSetUp() {
     const achievementList = {
         saved: [
@@ -314,13 +314,6 @@ function addIndex(arr) {
     }
 }
 
-if(!window.localStorage.getItem('user-data')){
-    let achievementList = newUserSetUp();
-    window.localStorage.setItem('user-data', JSON.stringify(achievementList));
-} else {
-
-    playerData = JSON.parse(window.localStorage.getItem('user-data'));
-}
 
 const createLockedAchievement = (title) => {
     let statsContainer = document.querySelector('#stats-container')
@@ -334,15 +327,15 @@ const createLockedAchievement = (title) => {
     statsContainer.append(div1)
     div1.append(div2)
     div2.append(div3)
-    div3.append(p,div4)
+    div3.append(p, div4)
     div4.append(span1)
 
     div1.classList.add('pt-4', 'bottom-16', 'w-full')
-    div2.classList.add('border-l-4', 'border-zinc-700', 'normal-case','py-2','px-3','flex','flex-col','justify-between','align-center')
+    div2.classList.add('border-l-4', 'border-zinc-700', 'normal-case', 'py-2', 'px-3', 'flex', 'flex-col', 'justify-between', 'align-center')
     div3.classList.add('-mt-1', 'flex', 'items-center')
-    div4.classList.add('text-zinc-600','font-bold','text-xs',)
+    div4.classList.add('text-zinc-600', 'font-bold', 'text-xs',)
 
-    p.classList.add('text-2xl','text-zinc-800','flex','items-center', 'uppercase')
+    p.classList.add('text-2xl', 'text-zinc-800', 'flex', 'items-center', 'uppercase')
     p.innerHTML = locked
     span1.classList.add('text-zinc-400')
     span1.textContent = title
@@ -352,7 +345,24 @@ const createLockedAchievement = (title) => {
 }
 
 const showAchievement = (obj, color) => {
-    let borderColor = `border-${color}-800`
+    let applyColor = ''
+    switch (color) {
+        case 'orange':
+            applyColor = 'border-orange-500'
+            break;
+        case 'green':
+            applyColor = 'border-green-500'
+            break;
+        case 'blue':
+            applyColor = 'border-blue-500'
+            break;
+        case 'purple':
+            applyColor = 'border-purple-500'
+            break;
+
+        default:
+            break;
+    }
     let statsContainer = document.querySelector('#stats-container')
     let div1 = document.createElement('div')
     let div2 = document.createElement('div')
@@ -369,23 +379,23 @@ const showAchievement = (obj, color) => {
     statsContainer.append(div1)
     div1.append(div2)
     div2.append(div3)
-    div3.append(div4,div5)
-    div4.append(span1,span2,span3)
-    div5.append(span4,span5,span6)
+    div3.append(div4, div5)
+    div4.append(span1, span2, span3)
+    div5.append(span4, span5, span6)
     console.log(`border-${color}-800`);
     div1.classList.add('pt-4', 'bottom-16', 'w-full')
-    div2.classList.add('border-l-4', borderColor, 'normal-case','py-2','px-3','flex','flex-col','justify-between','mx-6','align-center')
+    div2.classList.add('border-l-4', applyColor, 'normal-case', 'py-2', 'px-3', 'flex', 'flex-col', 'justify-between', 'align-center')
     div3.classList.add('-mt-1')
-    div4.classList.add('text-xs','text-zinc-100','flex','justify-between','items-center')
+    div4.classList.add('text-xs', 'text-zinc-100', 'flex', 'justify-between', 'items-center')
     div5.classList.add('text-zinc-100', 'font-bold', 'text-xs', 'flex')
 
-    span1.classList.add('w-3/5', 'text-2xl' ,'justify-start')
-    span2.classList.add('w-2/6', 'flex' ,'justify-start' ,'text-zinc-700')
-    span3.classList.add('w-1/6' ,'flex', 'justify-end')
+    span1.classList.add('w-3/5', 'text-2xl', 'justify-start')
+    span2.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
+    span3.classList.add('w-1/6', 'flex', 'justify-end')
     span4.classList.add('w-3/5')
-    span5.classList.add('w-2/6', 'flex' ,'justify-start', 'text-zinc-700')
-    span6.classList.add('w-1/6' ,'flex' ,'justify-end' )
-    
+    span5.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
+    span6.classList.add('w-1/6', 'flex', 'justify-end')
+
     span1.textContent = obj.title
     span2.textContent = 'Times Rolled'
     span3.textContent = obj.total
@@ -394,7 +404,7 @@ const showAchievement = (obj, color) => {
     span6.textContent = obj.fact
 }
 
-appendAll();
+
 
 function appendAll() {
     const statsHeader = document.querySelector('#stats-header')
@@ -402,32 +412,23 @@ function appendAll() {
     let { saved, standard, special } = playerData;
     let { hexa, penta, quad, triple } = standard;
     let arr = [saved, special, triple, quad, penta, hexa]
-    let arr2 = ['Regular','Special','Standard']
+    let arr2 = ['Regular', 'Special', 'Standard']
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
 
-        if(arr2[i]){
+        if (arr2[i]) {
             let hr = document.createElement('hr')
-            hr.classList.add('mt-4','bg-zinc-800', 'border-none', 'my-1')
+            hr.classList.add('mt-4', 'bg-zinc-800', 'border-none', 'my-1')
             hr.style.height = '1px'
             let div = document.createElement('div')
             div.textContent = arr2[i]
             div.classList.add('text-zinc-800', 'text-lg')
-            statsCont.append(hr,div)
+            statsCont.append(hr, div)
 
         }
         appendAchievements(element)
-        
+
     }
-    // statsCont.appendChild(hr)
-    // appendAchievements(saved);
-    // statsCont.appendChild(hr)
-    // appendAchievements(special);
-    // statsCont.appendChild(hr)
-    // appendAchievements(triple);
-    // appendAchievements(quad);
-    // appendAchievements(penta);
-    // appendAchievements(hexa);
     statsHeader.textContent = `(${unlocked} out of ${totalAchievs}) Unlocked`
 }
 
@@ -435,14 +436,35 @@ function appendAchievements(arr) {
 
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
-        if (element.status === 'locked' ) {
+        if (element.status === 'locked') {
             totalAchievs++
             createLockedAchievement(element.title);
         } else {
             totalAchievs++
             unlocked++
-            showAchievement(element, 'purple')
+            console.log(element.title)
+            switch (element.title.split(" ")[0].toLowerCase()) {
+                case 'triple':
+                    showAchievement(element, 'orange')
+                    break;
+                case 'quad':
+                    showAchievement(element, 'green')
+                    break;
+                case 'penta':
+                    showAchievement(element, 'blue')
+                    break;
+                case 'hexa':
+                    showAchievement(element, 'purple')
+                    break;
+
+                default:
+                    // showAchievement(element, 'yellow')
+                    break;
+            }
+
         }
     }
 
 }
+
+
