@@ -338,13 +338,13 @@ const createLockedAchievement = (title) => {
     div4.append(span1)
 
     div1.classList.add('pt-4', 'bottom-16', 'w-full')
-    div2.classList.add('border-l-4', 'border-zinc-800', 'normal-case','py-2','px-3','flex','flex-col','justify-between','mx-6','align-center')
-    div3.classList.add('-mt-1')
-    div4.classList.add('text-zinc-600','font-bold','text-xs')
+    div2.classList.add('border-l-4', 'border-zinc-700', 'normal-case','py-2','px-3','flex','flex-col','justify-between','align-center')
+    div3.classList.add('-mt-1', 'flex', 'items-center')
+    div4.classList.add('text-zinc-600','font-bold','text-xs',)
 
-    p.classList.add('text-2xl','text-zinc-700','flex','items-center')
+    p.classList.add('text-2xl','text-zinc-800','flex','items-center', 'uppercase')
     p.innerHTML = locked
-
+    span1.classList.add('text-zinc-400')
     span1.textContent = title
 
 
@@ -398,15 +398,36 @@ appendAll();
 
 function appendAll() {
     const statsHeader = document.querySelector('#stats-header')
+    const statsCont = document.querySelector('#stats-container')
     let { saved, standard, special } = playerData;
     let { hexa, penta, quad, triple } = standard;
+    let arr = [saved, special, triple, quad, penta, hexa]
+    let arr2 = ['Regular','Special','Standard']
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
 
-    appendAchievements(saved);
-    appendAchievements(special);
-    appendAchievements(triple);
-    appendAchievements(quad);
-    appendAchievements(penta);
-    appendAchievements(hexa);
+        if(arr2[i]){
+            let hr = document.createElement('hr')
+            hr.classList.add('mt-4','bg-zinc-800', 'border-none', 'my-1')
+            hr.style.height = '1px'
+            let div = document.createElement('div')
+            div.textContent = arr2[i]
+            div.classList.add('text-zinc-800', 'text-lg')
+            statsCont.append(hr,div)
+
+        }
+        appendAchievements(element)
+        
+    }
+    // statsCont.appendChild(hr)
+    // appendAchievements(saved);
+    // statsCont.appendChild(hr)
+    // appendAchievements(special);
+    // statsCont.appendChild(hr)
+    // appendAchievements(triple);
+    // appendAchievements(quad);
+    // appendAchievements(penta);
+    // appendAchievements(hexa);
     statsHeader.textContent = `(${unlocked} out of ${totalAchievs}) Unlocked`
 }
 
