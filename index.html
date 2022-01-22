@@ -13,14 +13,14 @@
     class="relative flex flex-col w-screen  bg-zinc-900 text-zinc-200 uppercase text-4xl font-bold overflow-y-hidden overflow-x-hidden ">
     <!--Information Modal-->
     <div
-        class=" z-50 modal active pointer-events-none fixed w-screen ipadair:w-full h-full flex items-center justify-center opacity-0 ">
-        <div class=" modal-overlay absolute w-screen ipadair:w-full h-full bg-black opacity-50"></div>
+        class=" z-50 info-modal info-active pointer-events-none fixed w-screen ipadair:w-full h-full flex items-center justify-center opacity-0 ">
+        <div class=" info-modal-overlay absolute w-screen ipadair:w-full h-full bg-black opacity-50"></div>
 
         <div
             class="modal-container bg-zinc-900 w-full h-full md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto pt-4  pb-10">
 
             <div
-                class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+                class="info-modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
                 <span class="text-sm"></span>
             </div>
 
@@ -30,7 +30,7 @@
                 <div class=" flex justify-center items-center">
                     <p class=" flex justify-center align-center text-7xl font-semibold normal-case text-zinc-800 pt-4 ">
                         HEXA</p>
-                    <div class=" fixed top-3 right-3  modal-close cursor-pointer z-50">
+                    <div class=" fixed top-3 right-3  info-modal-close cursor-pointer z-50">
                         <svg class="fill-current text-white mt-1" xmlns="http://www.w3.org/2000/svg" width="18"
                             height="18" viewBox="0 0 18 18">
                             <path
@@ -277,25 +277,48 @@
             </div>
         </div>
     </div>
+<!-- stats modal -->
+    <div class="stats-modal hidden fixed w-screen h-full z-50 bg-zinc-900 overflow-y-auto">
+        <div class=" fixed top-3 right-3  stats-modal-close cursor-pointer z-50">
+            <svg class="fill-current text-white mt-1" xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 18 18">
+                <path
+                    d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                </path>
+            </svg>
+        </div>
+        <div class="w-full flex flex-col content-center overflow-y-auto">
+            <header id="stats-header" class="h-20 flex justify-center items-center text-zinc-800 text-lg"></header>
+            <section id="stats-container" class="overflow-y-auto pb-4">  
+       
+                <!-- Achievement list -->
+                
+            </section>
+            <footer class="fixed w-screen h-20 bg-gradient-to-t from-zinc-900 bottom-0"></footer>
 
+        </div>
+
+
+    </div>
 
     <section class="flex flex-col h-screen ">
         <!-- header--------------------------------------------------------------------- -->
         <header class="shadow-sm shadow-black bg-black opacity-70 text-white fixed top-0 w-screen ipadair:w-full flex justify-center items-center text-2xl font-bold border-b border-zinc-600 
             py-1 px-4 ipadair:px-16 h-14 12pro:h-20  ipadair:h-24         flex flex-row justify-between">
             <div class="w-1/6 flex justify-start ">
-                <svg class="modal-open h-8 w-8 ipadair:h-12 ipadair:w-12  fill-zinc-600 cursor-pointer transition duration-150 ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
+                <svg class="info-modal-open h-8 w-8 ipadair:h-12 ipadair:w-12  fill-zinc-600 cursor-pointer transition duration-150 ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
                     viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path
                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
                 </svg>
-                <!-- <button class=" bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal</button> -->
+                <!-- <button class=" bg-transparent border border-zinc-500 hover:border-indigo-500 text-zinc-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal</button> -->
             </div>
             <div class="w-3/6 flex justify-center  tracking-widest text-2xl 12pro:text-3xl ipadair:text-5xl  font-thin">
                 hexa</div>
             <div class="w-1/6 flex justify-end ">
-                <svg class="h-8 w-8 ipadair:h-12 ipadair:w-12   fill-zinc-600 cursor-pointer transition duration-150  ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
+                <svg id="btn-stats"
+                    class="h-8 w-8 ipadair:h-12 ipadair:w-12   fill-zinc-600 cursor-pointer transition duration-150  ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
                     viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
@@ -340,7 +363,8 @@
 
                     <button id="btn-roll"
                         class="relative flex justify-center items-center uppercase row-start-2 col-start-1 col-span-1 row-span-2 opacity-10  ">
-                        <div class=" pointer-events-none absolute bottom-8 right-8 text-xl font-medium row-start-1 col-start-1 col-span-1 row-span-2">
+                        <div
+                            class=" pointer-events-none absolute bottom-8 right-8 text-xl font-medium row-start-1 col-start-1 col-span-1 row-span-2">
                             3
                         </div>
                         <svg class="pointer-events-none h-16 w-16 fill-zinc-300 -scale-x-100" version="1.1"
@@ -391,13 +415,18 @@
 
 </body>
 
+<!-- INITIALIZATION -->
 <script src="./public/js/misc/color.js"></script>
 <script src="./public/js/misc/svg.js"></script>
+<script src="./public/js/misc/achievement-data.js"></script>
+<script src="./public/js/secondary/info-modal.js"></script>
+<script src="./public/js/secondary/stats-modal.js"></script>
+
+<!-- PRE-GAME -->
 <script src="./public/js/misc/helper-functions.js"></script>
 <script src="./public/js/main/eventlisteners.js"></script>
 
-
-<script src="./public/js/secondary/modal.js"></script>
+<!-- MAIN -->
 <script src="./public/js/main/diceroller.js"></script>
 
 </html>

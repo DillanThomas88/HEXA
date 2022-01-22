@@ -1,9 +1,9 @@
-var openmodal = document.querySelectorAll('.modal-open')
+var openmodal = document.querySelectorAll('.info-modal-open')
 // --------------
-let tem = document.querySelector('.modal')
+let ya = document.querySelector('.info-modal')
 let distance = 30
-tem.style.opacity = 0
-tem.style.top = `${distance}px`
+ya.style.opacity = 0
+ya.style.top = `${distance}px`
 
 // --------------
 for (var i = 0; i < openmodal.length; i++) {
@@ -13,10 +13,10 @@ for (var i = 0; i < openmodal.length; i++) {
   })
 }
 
-const overlay = document.querySelector('.modal-overlay')
+const overlay = document.querySelector('.info-modal-overlay')
 overlay.addEventListener('click', toggleModal)
 
-var closemodal = document.querySelectorAll('.modal-close')
+var closemodal = document.querySelectorAll('.info-modal-close')
 for (var i = 0; i < closemodal.length; i++) {
   closemodal[i].addEventListener('click', toggleModal)
 }
@@ -29,7 +29,7 @@ document.onkeydown = function(evt) {
   } else {
     isEscape = (evt.keyCode === 27)
   }
-  if (isEscape && document.body.classList.contains('modal-active')) {
+  if (isEscape && document.body.classList.contains('info-modal-active')) {
     toggleModal()
   }
 };
@@ -37,10 +37,10 @@ document.onkeydown = function(evt) {
 
 function toggleModal () {
   const body = document.querySelector('body')
-  const modal = document.querySelector('.modal')
+  const modal = document.querySelector('.info-modal')
   modal.classList.toggle('pointer-events-none')
-  body.classList.toggle('modal-active')
-  modal.classList.toggle('active')
+  body.classList.toggle('info-modal-active')
+  modal.classList.toggle('info-active')
   modal.classList.toggle('opacity-0')
   modalFade()
   modalMove()
@@ -48,11 +48,11 @@ function toggleModal () {
 
 
 function modalFade () {
-  const modal = document.querySelector('.modal')
+  const modal = document.querySelector('.info-modal')
   let duration = 40
   let incriment = 0
 
-  if(modal.classList.contains('active')){
+  if(modal.classList.contains('info-active')){
 
     incriment = duration
     let timer = setInterval(() => {  
@@ -74,8 +74,8 @@ function modalFade () {
 }
 
 function modalMove () {
-  const modal = document.querySelector('.modal')
-  if(modal.classList.contains('active')){
+  const modal = document.querySelector('.info-modal')
+  if(modal.classList.contains('info-active')){
     let incriment = 0
     let timer = setInterval(() => {
       incriment++
