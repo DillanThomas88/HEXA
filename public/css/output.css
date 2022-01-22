@@ -472,10 +472,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   pointer-events: none;
 }
 
-.static {
-  position: static;
-}
-
 .fixed {
   position: fixed;
 }
@@ -511,60 +507,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   right: 0.75rem;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
-.left-0 {
-  left: 0px;
-}
-
-.-left-0 {
-  left: -0px;
-}
-
-.right-10 {
-  right: 2.5rem;
-}
-
-.top-5 {
-  top: 1.25rem;
-}
-
-.right-5 {
-  right: 1.25rem;
-}
-
-.top-8 {
-  top: 2rem;
+.bottom-8 {
+  bottom: 2rem;
 }
 
 .right-8 {
   right: 2rem;
-}
-
-.top-6 {
-  top: 1.5rem;
-}
-
-.right-6 {
-  right: 1.5rem;
-}
-
-.left-8 {
-  left: 2rem;
-}
-
-.top-10 {
-  top: 2.5rem;
-}
-
-.bottom-10 {
-  bottom: 2.5rem;
-}
-
-.bottom-8 {
-  bottom: 2rem;
 }
 
 .z-50 {
@@ -601,10 +549,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .row-span-2 {
   grid-row: span 2 / span 2;
-}
-
-.row-span-1 {
-  grid-row: span 1 / span 1;
 }
 
 .row-start-2 {
@@ -723,14 +667,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 3rem;
 }
 
-.h-6 {
-  height: 1.5rem;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
 .max-h-max {
   max-height: -webkit-max-content;
   max-height: -moz-max-content;
@@ -773,14 +709,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: auto;
 }
 
-.w-6 {
-  width: 1.5rem;
-}
-
-.w-10 {
-  width: 2.5rem;
-}
-
 .scale-90 {
   --tw-scale-x: .9;
   --tw-scale-y: .9;
@@ -793,67 +721,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.scale-150 {
-  --tw-scale-x: 1.5;
-  --tw-scale-y: 1.5;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .-scale-x-100 {
   --tw-scale-x: -1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.-scale-x-110 {
-  --tw-scale-x: -1.1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-scale-x-150 {
-  --tw-scale-x: -1.5;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.scale-x-100 {
-  --tw-scale-x: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-@-webkit-keyframes bounce {
-  0%, 100% {
-    transform: translateY(-25%);
-    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
-            animation-timing-function: cubic-bezier(0.8,0,1,1);
-  }
-
-  50% {
-    transform: none;
-    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
-            animation-timing-function: cubic-bezier(0,0,0.2,1);
-  }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(-25%);
-    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
-            animation-timing-function: cubic-bezier(0.8,0,1,1);
-  }
-
-  50% {
-    transform: none;
-    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
-            animation-timing-function: cubic-bezier(0,0,0.2,1);
-  }
-}
-
-.animate-bounce {
-  -webkit-animation: bounce 1s infinite;
-          animation: bounce 1s infinite;
 }
 
 .cursor-pointer {
@@ -1035,6 +909,66 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: transparent;
 }
 
+.bg-orange-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 215 170 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 240 138 / var(--tw-bg-opacity));
+}
+
+.bg-green-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 247 208 / var(--tw-bg-opacity));
+}
+
+.bg-blue-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+
+.bg-purple-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(233 213 255 / var(--tw-bg-opacity));
+}
+
+.bg-red-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
+.bg-green-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+}
+
+.bg-orange-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 237 213 / var(--tw-bg-opacity));
+}
+
+.bg-rose-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 164 175 / var(--tw-bg-opacity));
+}
+
+.bg-zinc-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 244 245 / var(--tw-bg-opacity));
+}
+
 .fill-current {
   fill: currentColor;
 }
@@ -1109,6 +1043,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .fill-yellow-100 {
   fill: #fef9c3;
+}
+
+.fill-yellow-200 {
+  fill: #fef08a;
+}
+
+.fill-orange-100 {
+  fill: #ffedd5;
+}
+
+.fill-green-100 {
+  fill: #dcfce7;
 }
 
 .object-contain {
@@ -1214,19 +1160,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 2rem;
 }
 
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .font-bold {
@@ -1247,10 +1188,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .font-thin {
   font-weight: 100;
-}
-
-.font-light {
-  font-weight: 300;
 }
 
 .uppercase {

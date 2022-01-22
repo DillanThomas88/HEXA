@@ -78,7 +78,6 @@ function modalMove () {
   if(modal.classList.contains('active')){
     let incriment = 0
     let timer = setInterval(() => {
-      console.log('hey')
       incriment++
       if(incriment >= distance){clearInterval(timer); modal.style.top = `${distance}px`; return}
       modal.style.top = `${incriment}px`

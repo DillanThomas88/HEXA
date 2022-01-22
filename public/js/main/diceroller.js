@@ -24,27 +24,14 @@ const startNewRoll = (arr) => {
             element.innerHTML = questionmarkEL
         }
         // console.log('first turn')
-
         newarr = diceParents
-
     }
-    // console.log(newarr)
 
     init(0, newarr)
 }
 
 
 const init = (firstIndex, xxarr) => {
-
-    // xxarr.forEach(element => {
-    //     if (element.getAttribute('rolling') == 'false') {
-    //         // let randomNUM = Math.floor(Math.random() * diceArr.length)
-    //         element.innerHTML = questionmarkEL
-    //         firstIndex = 0
-    //     }
-    // });
-    // diceParents = getDiceParentElements()
-    // console.log(diceParents)
 
     let timer = setInterval(() => {
         // console.log(diceELs[firstIndex].children[0])
@@ -93,58 +80,31 @@ const diceReady = () => {
         element.addEventListener('click', freezeDieEL = (e) => {
 
             if (e.target.classList.contains('dice')) {
-                let number = Math.floor(Math.random() * 6 + 1)  //--------------------------------------------------------------change
+                let number = Math.floor(Math.random() * getDiceParentElements().length + 1)  //--------------------------------------------------------------change
                 e.target.innerHTML = diceArr[number - 1];
                 e.target.setAttribute('rolling', 'false');
                 e.target.classList.add('dice-activated')
                 e.target.children[0].classList.toggle('fill-zinc-100')
                 if (number === 1 || number === 5) { e.target.children[0].classList.add('fill-zinc-300') }
                 else { e.target.children[0].classList.add('fill-zinc-700') }
-                let dupedDice = 0
 
-                diceParents.forEach(element => {
 
-                    if (parseInt(element.children[0].getAttribute('data-die')) == number) { dupedDice++ }
-
-                });
                 // console.log(dupedDice)
                 let old_element = e.target
                 let new_element = old_element.cloneNode(true);
                 old_element.parentNode.replaceChild(new_element, old_element);
 
 
-                switch (dupedDice) {
-                    case 3:
-                        setDataColorAttribute(number, colorObj.orange);
-                        break;
-                    case 4:
-                        setDataColorAttribute(number, colorObj.green);
-                        break;
-                    case 5:
-                        setDataColorAttribute(number, colorObj.darkblue);
-                        break;
-                    case 6:
-                        setDataColorAttribute(number, colorObj.darkpurple);
-                        break;
-
-                    default:
-                        break;
-                }
-
-                // if (refreshEnabled === true) {
-
-                //     let rollBtnEL = document.querySelector('#btn-roll')
-                //     let stayBtnEL = document.querySelector('#btn-stay')
-                //     // rollBtnEL.style.opacity = .8
-                //     // stayBtnEL.style.opacity = .8
-
-                //     rollBtnEL.addEventListener('click', startRoll)
-                // }
             }
 
 
             playerPackage = createPlayerStatsObject()
-            // console.log(playerPackage)
+            let colordata = beginPlayerScoreCalculation(playerPackage)
+            console.log(colordata);
+
+            colorDice(colordata)
+
+
             ifAllDiceRolledReadyNextRoll(playerPackage)
 
         })
@@ -159,7 +119,7 @@ const diceReady = () => {
 
 function setDataColorAttribute(number, color) {
     let newArr = document.querySelectorAll('.dice')
-    // console.log(number)
+    console.log(newArr)
 
     newArr.forEach(element => {
         if (parseInt(element.children[0].getAttribute('data-die')) == number) {
@@ -176,7 +136,14 @@ function setDataColorAttribute(number, color) {
 }
 
 const createPlayerStatsObject = () => {
-    let playerPackage = {}
+    let playerPackage = {
+        one: 0,
+        two: 0,
+        three: 0,
+        four: 0,
+        five: 0,
+        six: 0
+    }
     const scoreEL = document.querySelector('#score-element')
     const diceArray = document.querySelectorAll('.dice')
     diceArray.forEach(element => {
@@ -185,129 +152,120 @@ const createPlayerStatsObject = () => {
         if (die.getAttribute('data-die')) {
             numberInt = parseInt(die.getAttribute('data-die'))
         }
-        if (die.getAttribute('data-color')) {
-            let color = die.getAttribute('data-color')
-            if (playerPackage[color]) { playerPackage[color].total++ }
-            else {
-                playerPackage[color] = {
-                    total: 1,
-                    value: parseInt(die.getAttribute('data-die'))
-                }
-            }
-        } else {
-            if (numberInt == 1) {
-                die.setAttribute('data-type', 'one')
-                let color = die.getAttribute('data-type')
-                if (playerPackage[color]) { playerPackage[color]++ }
-                else { playerPackage[color] = 1 }
+        switch (numberInt) {
+            case 1:
+                playerPackage.one++
+                break;
+            case 2:
+                playerPackage.two++
+                break;
+            case 3:
+                playerPackage.three++
+                break;
+            case 4:
+                playerPackage.four++
+                break;
+            case 5:
+                playerPackage.five++
+                break;
+            case 6:
+                playerPackage.six++
+                break;
 
-            } else if (numberInt == 5) {
-                die.setAttribute('data-type', 'five')
-                let color = die.getAttribute('data-type')
-                if (playerPackage[color]) { playerPackage[color]++ }
-                else { playerPackage[color] = 1 }
-            } else if (die.getAttribute('data-die')) {
-                if (die.getAttribute('data-type')) {
-                } else { die.setAttribute('data-type', 'common') }
-                let common = die.getAttribute('data-type')
-                if (playerPackage[common]) { playerPackage[common].push(numberInt) }
-                else { playerPackage[common] = [numberInt] }
-            }
+            default:
+                break;
         }
+
     });
     // console.log(playerPackage)
     return playerPackage
 }
 
 const beginPlayerScoreCalculation = (diceObject) => {
-    const properties = Object.keys(diceObject)
-    let prevTotal = parseInt(scoreEL.innerHTML)
-    let totalObject = { common: 0, standard: 0, special: 0, pair: 0, bonus: 0, total: 0 }
-    // console.log(diceObject)
-    properties.forEach(element => {
-        // console.log(totalObject)
-        let colorString
-        let bonus
-        switch (element) {
-            case getColor(colorObj.orange):
-
-                colorString = String(getColor(colorObj.orange))
-                if (diceObject[colorString].total == 6) {
-                    totalObject.special = 250
-                    totalObject.total = 6
-                    return
-                    // console.log(diceObject)
+    const properties = Object.values(diceObject)
+    let scoreObj = {
+        specialCombo: {},
+        standardCombo: {},
+        one: properties[0]*10,
+        five: properties[4]*5,
+    }
+    
+    if(properties === [1,1,1,1,1,1]){
+        scoreObj.specialCombo.name = 'straight' 
+        scoreObj.specialCombo.value = 150 
+        scoreObj.one = 0
+        scoreObj.five = 0
+        return scoreObj
+    }
+    
+    for (let i = 0; i < properties.length; i++) {
+        const element = properties[i];
+        if(element === 6){
+            standardComboFunc('hexa', 300, i)
+            scoreObj.one = 0
+            scoreObj.five = 0
+            // console.log(scoreObj);
+            return scoreObj
+        } else if ( element === 5){
+            standardComboFunc('penta', 200, i)
+            // console.log(scoreObj);
+        } else if(element === 4){
+            for (let j = 0; j < properties.length; j++) {
+                const element2 = properties[j];
+                if(element2 === 2){
+                    let add = 0
+                    if(j + 1 === 1){ add = 20} else if ( j + 1 === 5){add = 10}
+                    scoreObj.specialCombo.name = 'supaquad'
+                    scoreObj.specialCombo.diceNumber1 = i + 1
+                    scoreObj.specialCombo.diceNumber2 = j + 1
+                    scoreObj.specialCombo.value = 125 + add
+                    scoreObj.one = 0
+                    scoreObj.five = 0
+                    // console.log(scoreObj);
+                    return scoreObj
                 }
-                else if (diceObject[colorString].value == 1) { totalObject.standard += 30 }
-                else { totalObject.standard += diceObject[colorString].value * 10 }
-                break;
-
-            case getColor(colorObj.green):
-
-                colorString = getColor(colorObj.green)
-                let pair = 0
-                if (diceObject.common) {
-                    if (diceObject.common.length === 2) {
-                        if (diceObject.common[0] === diceObject.common[1]) {
-                            let dObj = document.querySelectorAll(`[data-die='${diceObject.common[0]}']`)
-                            for (let i = 0; i < dObj.length; i++) {
-                                const element = dObj[i];
-                                element.setAttribute('data-type', 'yellow')
-                                
-                            }
-                            totalObject.pair = 25
-                            totalObject.bonus = 100
-                            totalObject.total = 6
-                            return
-                        }
+            }
+            standardComboFunc('quad', 100, i)    
+            // console.log(scoreObj);        
+        } else if (element === 3){
+            for (let j = 0; j < properties.length; j++) {
+                const element2 = properties[j];
+                if(j != i){
+                    if(element2 === 3){
+                        scoreObj.specialCombo.name = 'triplepair'
+                        scoreObj.specialCombo.diceNumber1 = i + 1
+                        scoreObj.specialCombo.diceNumber2 = j + 1
+                        scoreObj.specialCombo.value = 250
+                        scoreObj.one = 0
+                        scoreObj.five = 0
+                        // console.log(scoreObj);
+                        return scoreObj
                     }
                 }
-                if (diceObject.one === 2 || diceObject.five === 2) {
-                    totalObject.pair = 25
-                    totalObject.bonus = 100
-                    totalObject.total = 6
-                    return
-                }
-                // totalObject.bonus = 100
-                // totalObject.standard += (diceObject[colorString].value * 10)
-                // totalObject.total += 4
-                break;
-
-            case getColor(colorObj.blue):
-
-                colorString = getColor(colorObj.blue)
-                totalObject.bonus = 200
-                totalObject.standard += (diceObject[colorString].value * 10)
-                totalObject.total += 5
-                break;
-
-            case getColor(colorObj.purple):
-
-                colorString = getColor(colorObj.purple)
-                totalObject.bonus = 300
-                totalObject.standard += (diceObject[colorString].value * 10)
-                totalObject.total = 6
-                break;
-            case 'one':
-
-                colorString = 'one'
-                totalObject.common += (diceObject[colorString] * 10)
-                totalObject.total += 1
-                break;
-
-            case 'five':
-
-                colorString = 'five'
-                totalObject.common += (diceObject[colorString] * 5)
-                totalObject.total += 1
-                break;
-
-            default:
-                break;
+            }
+            if(i + 1 === 1){
+                standardComboFunc('triple',20, i)
+            } else{ standardComboFunc('triple',0, i) }
+            // console.log(scoreObj);
+        } else {
+            // console.log('error?')
         }
-        // console.log(totalObject)
-    });
-    animateScoreAccumulator(totalObject, diceObject)
+
+    }
+    // console.log(scoreObj)
+    
+    
+    return scoreObj
+
+    function standardComboFunc(n, num, i) {
+        if(i + 1 == 1){scoreObj.one = 0}
+        if(i + 1 == 5){scoreObj.five = 0}
+        scoreObj.standardCombo.name = n
+        scoreObj.standardCombo.diceNumber = i + 1
+        scoreObj.standardCombo.value = num + ((i + 1) * 10)
+        
+    }
+    // animateScoreAccumulator(totalObject, diceObject)
     // console.log(totalObject)
 
 }
@@ -318,24 +276,18 @@ const animateScoreAccumulator = (scoreObj, diceObj) => {
     // if (oldScore === scoreObj) { return }
     const addEL = document.querySelector('#add-element')
 
-    let scoreArr = getScoreArray(scoreObj)
+    let totalAndArray = getScoreArray(scoreObj)
 
-    checkForSpecialCombo(scoreArr, diceObj)
+    // checkForSpecialCombo(scoreObj, diceObj)
 
     // console.log(diceObj)
     // console.log(scoreArr)
 
-    let scoretotal = 0
-    for (let i = 0; i < scoreArr.length; i++) {
-        const element = scoreArr[i];
-        scoretotal += element
-    }
-    // console.log(scoretotal, roundTotal)
 
-    if (scoretotal > roundTotal) {
+    if (totalAndArray.total > roundTotal) {
         // if you win -------------------------------------------------------------
-        accumulatorUpdate(scoretotal)
-        appendScoreChildren(scoreArr, 0)
+        accumulatorUpdate(totalAndArray.total )
+        appendScoreChildren(totalAndArray.arr, 0)
     } else {
         // if you lose --------------------------------------------------------------
         accumulatorUpdate(0)
@@ -351,6 +303,7 @@ const appendScoreChildren = (arr, index) => {
     let appendtimer = 375
     let fadeDuration = 500
     const containerEL = document.querySelector('#add-container')
+
 
     cleanArray = arr.filter(data => typeof data === 'number').filter(data => data != 0)
     if (index >= cleanArray.length) { return }
@@ -398,11 +351,16 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
     let x = Array.from(document.querySelectorAll('.dice-activated'))
     // console.log(x.length)
     if (x.length === 6) {
-        // console.log(obj)
-        beginPlayerScoreCalculation(obj)
+        console.log(obj)
+         let scoreObj = beginPlayerScoreCalculation(obj)
+        // console.log(scoreObj)
+
+        giveDiceAttributes(scoreObj)
+
+         animateScoreAccumulator(scoreObj, obj)
         // const propertyNames = Object.keys(x)
         // console.log(x)
-        let newX = x.filter(die => die.children[0].getAttribute('data-type') != 'common')
+        let newX = x.filter(die => die.getAttribute('data-type') != 'common')
         // console.log(newX);
         newX.forEach(element => {
             element.classList.add('locked')
@@ -418,32 +376,37 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
 function accumulatorUpdate(goal) {
     let starterNumber = score + roundTotal
     let willcontinue = true
-    if(goal === 0){
+    if (goal === 0) {
         score = 0
         willcontinue = false
     }
     let timer = setInterval(() => {
 
-        if(!willcontinue) {starterNumber-=5}
-        else {starterNumber++}
+        if (!willcontinue) { starterNumber -= 5 }
+        else { starterNumber++ }
 
+        if(starterNumber < 0){ 
+            starterNumber = 0
+            scoreEL.innerHTML = starterNumber
+        }
 
         if (starterNumber === goal + score) {
             clearInterval(timer)
             scoreEL.innerHTML = goal + score
             if (scoreEL.classList.contains('scale-110')) {
                 scoreEL.classList.toggle('scale-110')
-                console.log( goal, score)
+                // console.log( goal, score)
+                // --------------------------------------------------- goal score
             }
             return
         }
-        
+
         if (starterNumber % 2) {
             scoreEL.classList.toggle('scale-110')
             scoreEL.classList.add('opacity-80')
         }
         scoreEL.innerHTML = starterNumber
-    }, 10)
+    }, 5)
     roundTotal = goal
     // console.log( starterNumber , goal  , roundTotal, score)
 }
@@ -451,22 +414,25 @@ function accumulatorUpdate(goal) {
 function nextRoundStart(obj) {
     let y = getDiceParentElements()
     let xArr = y.filter(die => !die.classList.contains('locked'))
-    let statsArr = Object.entries(obj).filter(data => data[0] != 'common').filter(data => data[0] != 'one').filter(data => data[0] != 'five')
-    let percentage = calculatenNextChance(statsArr, xArr.length)
-
-    waitFor(500, updatePercentageEL, percentage)
-    waitFor(1000, activateReRollBtn, xArr)
+    // console.log(xArr);
+    // waitFor(500, updatePercentageEL, percentage)
+    waitFor(500, activateReRollBtn, xArr)
 }
 
 function rerollThis(arr) {
-    if(arr.length === 0){
+    if (arr.length === 0) {
         // succesfull round
         arr = getDiceParentElements()
-        console.log('win')
+        for (let k = 0; k < arr.length; k++) {
+            const element = arr[k];
+            element.toggleAttribute('data-type')
+        }
+        // ------------------------------------ win
         score += roundTotal
         roundTotal = 0
     }
-    console.log('else')
+    // console.log(arr)
+    // --------------------------------------- else
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i]
         element.removeEventListener('click', freezeDieEL)
@@ -478,7 +444,7 @@ function rerollThis(arr) {
         }
         element.toggleAttribute('rolling')
     }
-    console.log(arr)
+    // console.log(arr)
     startNewRoll(arr)
 }
 
@@ -491,7 +457,7 @@ function updatePercentageEL(percentage) {
         // console.log(percentage)
         // console.log(currentPercentage,percentage)
         if (currentPercentage == percentage) { clearInterval(timer); return }
-        else if (currentPercentage < percentage) { interval+=2 }
+        else if (currentPercentage < percentage) { interval += 2 }
         else { interval-- }
         if (interval === percentage) {
             clearInterval(timer)
@@ -524,8 +490,8 @@ function updatePercentageEL(percentage) {
             default:
                 break;
         }
-        if(interval > 912){ clearInterval(timer); interval = 912}
-        if(interval < 333){clearInterval(timer); interval = 333}
+        if (interval > 912) { clearInterval(timer); interval = 912 }
+        if (interval < 333) { clearInterval(timer); interval = 333 }
         eL.innerHTML = interval / 10
     }, 1)
 }

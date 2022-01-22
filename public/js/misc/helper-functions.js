@@ -2,27 +2,30 @@ const getColor = (color) => {
     return color.split("-").splice(1, 1).join("")
 }
 const getScoreArray = (obj) => {
-    let { common, standard, special, pair, bonus , total } = obj
-    let arr = [special, bonus, pair, standard, common, total]
-    const containerEL = document.querySelector('#add-container')
-    if (pair === 25) {
-        arr[0] = bonus + pair
-        arr[1] = 0
-        arr[2] = 0
-        arr.special = {name:'supaquad', fiveOrOne: true}
-        if(common === 0){arr.special.fiveOrOne = false}
+    // console.log(obj)
+    let { one, five, standardCombo, specialCombo } = obj
+
+    let obj2 = {
+        arr: [specialCombo, standardCombo, one, five],
+        total: 0
     }
-    if (special === 250){
-        arr.special = {name:'twotriples'}
+
+    for (let i = 0; i < obj2.arr.length; i++) {
+        const element = obj2.arr[i];
+        if(typeof element == 'object'){
+            if(element.value){
+                obj2.arr[i] =  element.value
+            }  else { obj2.arr[i] =  0 }
+        } 
     }
-    if (total === 6) {
-        arr[5] = 0
-        arr.total = {total: total } 
-    } else { arr[5] = 0; arr.total = {total: total}}
-            
+    for (let j = 0; j < obj2.arr.length; j++) {
+        const element = obj2.arr[j];
+        obj2.total+= element
+    }
+    let cleanArr = obj2.arr.filter(int => int != 0)
     
-    arr.filter(int => int != 0)
-    return arr
+    obj2.arr = cleanArr
+    return obj2
 }
 
 const getDiceParentElements = () => {
@@ -92,5 +95,46 @@ const waitFor = (miliseconds, func, param) => {
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
+    }
+}
+
+const giveDiceAttributes = (obj) => {
+    let {one, five, specialCombo, standardCombo} = obj
+    if(specialCombo.name){
+        setDataTypeAttribute(specialCombo.diceNumber1)
+        setDataTypeAttribute(specialCombo.diceNumber2)
+        // console.log(standardCombo.diceNumber1)
+        // console.log(standardCombo.diceNumber2)
+        return
+    }
+
+    if(standardCombo.name){
+        setDataTypeAttribute(standardCombo.diceNumber)
+        // console.log(standardCombo.diceNumber)
+    }
+    if(one !== 0){
+        setDataTypeAttribute(1)
+        // console.log('one')
+    }
+    if(five !== 0){
+        setDataTypeAttribute(5)
+        // console.log('five')
+    }
+    
+    let parents = getDiceParentElements()
+    for (let j = 0; j < parents.length; j++) {
+        const element = parents[j];
+        if(!element.hasAttribute('data-type')){
+            element.setAttribute('data-type', 'common')
+        }
+    }
+
+    function setDataTypeAttribute(int) {
+        let x = document.querySelectorAll(`[data-die='${int}']`)
+        for (let i = 0; i < x.length; i++) {
+            const y = x[i]
+            
+            y.parentElement.setAttribute('data-type', 'score')
+        }
     }
 }
