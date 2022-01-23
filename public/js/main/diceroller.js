@@ -77,7 +77,7 @@ const diceReady = () => {
         element.addEventListener('click', freezeDieEL = (e) => {
 
             if (e.target.classList.contains('dice')) {
-                let number = Math.floor(Math.random() * 2 + 1)  //--------------------------------------------------------------change
+                let number = Math.floor(Math.random() * getDiceParentElements().length + 1)  //--------------------------------------------------------------change
                 e.target.innerHTML = diceArr[number - 1];
                 e.target.setAttribute('rolling', 'false');
                 e.target.classList.add('dice-activated')
