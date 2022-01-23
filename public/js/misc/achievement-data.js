@@ -3,55 +3,55 @@ let allTotals = 0
 function newUserSetUp() {
     const achievementList = {
         saved: [
-            {
+            novice = {
                 title: 'NOVICE',
                 desc: "Earn a score of 300 and save it!",
                 image: '',
                 status: 'locked',
             },
-            {
+            beginner = {
                 title: 'BEGINNER',
                 desc: "Earn a score of 500 and save it!",
                 image: '',
                 status: 'locked',
             },
-            {
+            adept = {
                 title: 'ADEPT',
                 desc: "Earn a score of 1000 and save it!",
                 image: '',
                 status: 'locked',
             },
-            {
+            expert = {
                 title: 'EXPERT',
                 desc: "Earn a score of 1500 and save it!",
                 image: '',
                 status: 'locked',
             },
-            {
+            master = {
                 title: 'MASTER',
                 desc: "Earn a score of 2000 and save it!",
                 image: '',
                 status: 'locked',
             },
-            {
+            grandmaster = {
                 title: 'GRAND MASTER',
                 desc: "Earn a score of 2500 and save it!",
                 image: '',
                 status: 'locked',
             },
-            {
+            legend = {
                 title: 'LEGEND',
                 desc: "Earn a score of 3000 and save it!",
                 image: '',
                 status: 'locked',
             },
-            {
+            god = {
                 title: 'GOD',
                 desc: "Earn a score of 3500 and save it!",
                 image: '',
                 status: 'locked',
             },
-            {
+            unreal = {
                 title: 'UNREAL',
                 desc: "Earn a score of 4000 and save it!",
                 image: '',
@@ -261,7 +261,7 @@ function newUserSetUp() {
             ]
         },
         special: [
-            {
+            triplepair = {
                 title: 'TRIPLE PAIRS',
                 desc: "Three Pairs Of Two",
                 fact: '3.86% (1 in 26)',
@@ -269,7 +269,7 @@ function newUserSetUp() {
                 status: 'locked',
                 total: 0,
             },
-            {
+            straight = {
                 title: 'STRAIGHT',
                 desc: "One Of Every Kind",
                 fact: '1.54% (1 in 65)',
@@ -277,7 +277,7 @@ function newUserSetUp() {
                 status: 'locked',
                 total: 0,
             },
-            {
+            doubletriple =  {
                 title: 'DOUBLE TRIPLE',
                 desc: "Two Pairs Of Three",
                 fact: '0.64% (1 in 155)',
@@ -285,7 +285,7 @@ function newUserSetUp() {
                 status: 'locked',
                 total: 0,
             },
-            {
+            supaquad = {
                 title: 'SUPER QUAD',
                 desc: "Four Of A Kind With A Pair",
                 fact: 'Unknown',
@@ -317,6 +317,7 @@ function addIndex(arr) {
 
 
 const createLockedAchievement = (title) => {
+    // console.log(title)
     let statsContainer = document.querySelector('#stats-container')
     let div1 = document.createElement('div')
     let div2 = document.createElement('div')
@@ -412,12 +413,12 @@ function appendAll() {
     const statsHeader = document.querySelector('#stats-header')
     const statsCont = document.querySelector('#stats-container')
 
-      console.log(statsCont)
+    //   console.log(statsCont)
     let { saved, standard, special } = playerData;
     let { hexa, penta, quad, triple } = standard;
+    let { straight, doubletriple, triplepair, supaquad} = special
     let arr = [saved, special, triple, quad, penta, hexa]
     let arr2 = ['Regular', 'Special', 'Standard']
-
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
 
@@ -437,7 +438,7 @@ function appendAll() {
     statsHeader.textContent = `(${unlocked} out of ${totalAchievs}) Unlocked`
     let div = document.createElement('div')
     statsHeader.append(div)
-    div.classList.add('absolute','-bottom-5', 'right-0', 'text-zinc-300', 'text-sm')
+    div.classList.add('absolute', '-bottom-5', 'right-0', 'text-zinc-300', 'text-sm')
     div.textContent = allTotals
 }
 
@@ -465,6 +466,12 @@ function appendAchievements(arr) {
                     break;
                 case 'hexa':
                     showAchievement(element, 'purple')
+                    break;
+                case 'double':
+                    showAchievement(element, 'orange')
+                    break;
+                case 'straight':
+                    showAchievement(element, 'rose')
                     break;
 
                 default:

@@ -33,7 +33,7 @@ const getAllTotalsAndChance = () => {
         for (let j = 0; j < parents.length; j++) {
             const element = parents[j];
             element.fact = `${((element.total/allTotals)*100).toFixed(2)}%`
-            console.log(element);
+            // console.log(element);
             
         }
     }

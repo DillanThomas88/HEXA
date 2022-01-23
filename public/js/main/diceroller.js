@@ -77,7 +77,7 @@ const diceReady = () => {
         element.addEventListener('click', freezeDieEL = (e) => {
 
             if (e.target.classList.contains('dice')) {
-                let number = Math.floor(Math.random() * getDiceParentElements().length + 1)  //--------------------------------------------------------------change
+                let number = Math.floor(Math.random() * 2 + 1)  //--------------------------------------------------------------change
                 e.target.innerHTML = diceArr[number - 1];
                 e.target.setAttribute('rolling', 'false');
                 e.target.classList.add('dice-activated')
@@ -443,8 +443,9 @@ function accumulatorUpdate(goal) {
 function nextRoundStart(obj) {
     let y = getDiceParentElements()
     let xArr = y.filter(die => !die.classList.contains('locked'))
-    // console.log(xArr);
-    // waitFor(500, updatePercentageEL, percentage)
+
+    let percentage = calculatenNextChance(playerPackage, xArr.length)
+    waitFor(500, updatePercentageEL, percentage)
     waitFor(500, activateReRollBtn, xArr)
 }
 
@@ -481,7 +482,6 @@ function rerollThis(arr) {
 }
 
 function updatePercentageEL(percentage) {
-    // console.log(percentage)
     let eL = document.querySelector('#percentage-element')
     const currentPercentage = parseInt(eL.innerHTML.split("").filter(data => data != '.').join(""))
     let interval = currentPercentage

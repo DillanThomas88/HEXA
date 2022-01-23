@@ -39,22 +39,39 @@ const getDiceParentElements = () => {
     ]
 }
 
-const calculatenNextChance = (arr, length) => {
-    if(!arr.common){  }
-    // console.log(arr)
+const calculatenNextChance = (obj, length) => {
+    let {one, two, three, four, five , six} = obj
+    let arr = [one,two,three,four,five,six]
     let numOfDifferentDice = 2
+    let percentage
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
-        if(element[1].value !== 1 && element[1].value !== 5){
+        if(element >= 3 && i + 1 != 1 && i + 1 != 5){
             numOfDifferentDice++
-
+        }
+        if ((element === 3)){
+            for (let j = 0; j < arr.length; j++) {
+                const el2 = arr[j];
+                if(el2 === 3 && j != i){
+                    return percentage = 912
+                }
+            }
+        } else if (element === 4){
+            for (let k = 0; k < arr.length; k++) {
+                const el3 = arr[k];
+                if(el3 === 2 && k != i){
+                    return percentage = 912
+                }
+            }
         }
     }
+
+
     let decimal = (6 - numOfDifferentDice)/6
     let ratio = Math.pow(decimal, length)
 
     // console.log(decimal, ratio)
-    let percentage = ((1 - ratio) * 100).toFixed(1)* 10
+    percentage = ((1 - ratio) * 100).toFixed(1)* 10
     // console.log(percentage)
     if(percentage === 0){return percentage = 912}
     return percentage
@@ -88,7 +105,7 @@ const checkForSpecialCombo = (arr, diceObj) => {
 const waitFor = (miliseconds, func, param) => {
     let timer = setInterval(() => {
         clearInterval(timer)
-        document.querySelector('#btn-roll').classList.toggle('animate-pulse')
+        // document.querySelector('#btn-roll').classList.toggle('animate-pulse')
         func(param)
     }, miliseconds);
 }
