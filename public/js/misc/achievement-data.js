@@ -1,4 +1,5 @@
 let playerData = ''
+let allTotals = 0
 function newUserSetUp() {
     const achievementList = {
         saved: [
@@ -382,7 +383,6 @@ const showAchievement = (obj, color) => {
     div3.append(div4, div5)
     div4.append(span1, span2, span3)
     div5.append(span4, span5, span6)
-    console.log(`border-${color}-800`);
     div1.classList.add('pt-4', 'bottom-16', 'w-full')
     div2.classList.add('border-l-4', applyColor, 'normal-case', 'py-2', 'px-3', 'flex', 'flex-col', 'justify-between', 'align-center')
     div3.classList.add('-mt-1')
@@ -402,17 +402,22 @@ const showAchievement = (obj, color) => {
     span4.textContent = obj.desc
     span5.textContent = 'Chance'
     span6.textContent = obj.fact
+    allTotals += obj.total
 }
 
 
 
 function appendAll() {
+    allTotals = 0
     const statsHeader = document.querySelector('#stats-header')
     const statsCont = document.querySelector('#stats-container')
+
+      console.log(statsCont)
     let { saved, standard, special } = playerData;
     let { hexa, penta, quad, triple } = standard;
     let arr = [saved, special, triple, quad, penta, hexa]
     let arr2 = ['Regular', 'Special', 'Standard']
+
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
 
@@ -430,6 +435,10 @@ function appendAll() {
 
     }
     statsHeader.textContent = `(${unlocked} out of ${totalAchievs}) Unlocked`
+    let div = document.createElement('div')
+    statsHeader.append(div)
+    div.classList.add('absolute','-bottom-5', 'right-0', 'text-zinc-300', 'text-sm')
+    div.textContent = allTotals
 }
 
 function appendAchievements(arr) {
@@ -442,7 +451,8 @@ function appendAchievements(arr) {
         } else {
             totalAchievs++
             unlocked++
-            console.log(element.title)
+            // alltotals += element.value
+            // console.log(element.title)
             switch (element.title.split(" ")[0].toLowerCase()) {
                 case 'triple':
                     showAchievement(element, 'orange')
@@ -464,6 +474,8 @@ function appendAchievements(arr) {
 
         }
     }
+
+
 
 }
 

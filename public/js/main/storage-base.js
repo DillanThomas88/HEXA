@@ -13,6 +13,29 @@ appendAll();
 
 
 const swapUpdateLocalStorage = () => {
+    getAllTotalsAndChance()
     window.localStorage.setItem('user-data', JSON.stringify(playerDataCopy));
-    playerDataCopy = JSON.parse(JSON.stringify(playerData));
+    let timer = setInterval(() => {
+        playerDataCopy = JSON.parse(JSON.stringify(playerData));
+        clearInterval(timer)
+    }, 100);
+}
+
+
+const getAllTotalsAndChance = () => {
+    let {saved, standard, special} = playerDataCopy
+    let {hexa, penta, quad, triple} = standard
+
+    let arr = [special,hexa,penta,quad,triple]
+
+    for (let i = 0; i < arr.length; i++) {
+        const parents = arr[i];
+        for (let j = 0; j < parents.length; j++) {
+            const element = parents[j];
+            element.fact = `${((element.total/allTotals)*100).toFixed(2)}%`
+            console.log(element);
+            
+        }
+    }
+
 }

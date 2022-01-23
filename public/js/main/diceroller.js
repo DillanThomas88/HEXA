@@ -204,13 +204,13 @@ const beginPlayerScoreCalculation = (diceObject) => {
             scoreObj.one = 0
             scoreObj.five = 0
             // console.log(scoreObj);
-            softUpdate(playerData.standard.hexa, playerDataCopy.standard.hexa, scoreObj.standardCombo)
+            softUpdate(playerData.standard.hexa, playerDataCopy.standard.hexa, scoreObj.standardCombo.diceNumber)
 
             return scoreObj
         } else if ( element === 5){
 
             standardComboFunc('penta', 200, i)
-            softUpdate(playerData.standard.penta, playerDataCopy.standard.penta, scoreObj.standardCombo)
+            softUpdate(playerData.standard.penta, playerDataCopy.standard.penta, scoreObj.standardCombo.diceNumber)
             // console.log(scoreObj);
         } else if(element === 4){
             for (let j = 0; j < properties.length; j++) {
@@ -225,11 +225,12 @@ const beginPlayerScoreCalculation = (diceObject) => {
                     scoreObj.one = 0
                     scoreObj.five = 0
                     // console.log(scoreObj);
+                    softUpdate(playerData.standard.quad, playerDataCopy.standard.quad, scoreObj.specialCombo.diceNumber1)
                     return scoreObj
                 }
             }
             standardComboFunc('quad', 100, i)  
-            softUpdate(playerData.standard.quad, playerDataCopy.standard.quad, scoreObj.standardCombo)  
+            softUpdate(playerData.standard.quad, playerDataCopy.standard.quad, scoreObj.standardCombo.diceNumber)  
             // console.log(scoreObj);        
         } else if (element === 3){
             for (let j = 0; j < properties.length; j++) {
@@ -243,18 +244,19 @@ const beginPlayerScoreCalculation = (diceObject) => {
                         scoreObj.one = 0
                         scoreObj.five = 0
                         // console.log(scoreObj);
-
+                        softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.specialCombo.diceNumber1)
+                        softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.specialCombo.diceNumber2)
                         return scoreObj
                     }
                 }
             }
             if(i + 1 === 1){
                 standardComboFunc('triple',20, i)
-                softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.standardCombo)
+                softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.standardCombo.diceNumber)
             } else{ 
                 standardComboFunc('triple',0, i)
 
-                softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.standardCombo)
+                softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.standardCombo.diceNumber)
                 
             }
 
@@ -269,16 +271,16 @@ const beginPlayerScoreCalculation = (diceObject) => {
 
 
     function softUpdate(original, copy, compair, ) {
-        console.log(compair)
+        // console.log(compair)
         for (let i = 0; i < copy.length; i++) {
             const element = copy[i]
             
-            if (element.index === compair.diceNumber - 1) {
+            if (element.index === compair - 1) {
                 element.status = 'unlocked'
                 if (element.total === original[i].total) {
-                    console.log(element.total)
+                    // console.log(element.total)
                     element.total += 1
-                    console.log(element.total)
+                    // console.log(element.total)
                 }
             }
         }
@@ -386,7 +388,7 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
 
          animateScoreAccumulator(scoreObj, obj)
         // const propertyNames = Object.keys(x)
-        console.log(scoreObj)
+        // console.log(scoreObj)
         let newX = x.filter(die => die.getAttribute('data-type') != 'common')
         // console.log(newX);
         newX.forEach(element => {
@@ -458,6 +460,8 @@ function rerollThis(arr) {
         score += roundTotal
         roundTotal = 0
         swapUpdateLocalStorage()
+
+
     }
     // console.log(arr)
     // --------------------------------------- else
