@@ -1,15 +1,14 @@
 
-let totalAchievs = 0
-let unlocked = 0
 function newUserSetUp() {
 
     const achievementList = {
-        version: 0.1,
         successfulRolls: 0,
         failedRolls: 0,
         totalSaved: 0,
         totalLost: 0,
-        saved: [
+        unlocked: 0,
+        achievements: 0,
+        game: [
             novice = {
                 title: 'NOVICE',
                 desc: "Earn a score of 300 and save it!",
@@ -305,7 +304,7 @@ function newUserSetUp() {
     
     let standard = achievementList.standard;
 
-    addIndex(achievementList.saved);
+    addIndex(achievementList.game);
     addIndex(standard.hexa);
     addIndex(standard.penta);
     addIndex(standard.quad);
@@ -431,11 +430,8 @@ function appendAchievements(arr) {
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
         if (element.status === 'locked') {
-            totalAchievs++
             createLockedAchievement(element.title);
         } else {
-            totalAchievs++
-            unlocked++
             // console.log(element)
             switch (element.title.split(" ")[0].toLowerCase()) {
                 case 'triple':
@@ -479,11 +475,13 @@ function appendAll() {
         statsCont.removeChild(statsCont.lastChild);
       }
 
+      cleanUserData()
+
     //   console.log(playerDataCopy)
-    let { saved, standard, special } = playerDataCopy;
+    let { game, standard, special } = playerDataCopy;
     let { hexa, penta, quad, triple } = standard;
     let { straight, doubletriple, triplepair, supaquad} = special
-    let arr = [saved, special, triple, quad, penta, hexa]
+    let arr = [game, special, triple, quad, penta, hexa]
     let arr2 = ['Regular', 'Special', 'Standard']
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
@@ -502,7 +500,11 @@ function appendAll() {
         // console.log(element)
 
     }
-    document.querySelector('#achievement-out-of').textContent = `(${unlocked} out of ${totalAchievs}) Unlocked`
+    document.querySelector('#achievement-out-of').textContent = `(${playerDataCopy.unlocked} out of ${playerDataCopy.achievements}) Unlocked`
+    document.querySelector('#saved-amount').textContent = playerDataCopy.totalSaved
+    document.querySelector('#saved-times').textContent = playerDataCopy.successfulRolls
+    document.querySelector('#lost-amount').textContent = playerDataCopy.totalLost
+    document.querySelector('#lost-times').textContent = playerDataCopy.failedRolls
 
     // let div = document.createElement('div')
     // statsHeader.append(div)
@@ -511,11 +513,13 @@ function appendAll() {
 }
 
 // updateUserData()
-const getTotalSuccessfulRols = () => {
+const cleanUserData = () => {
     playerDataCopy.successfulRolls = 0
-    let { standard, special } = playerDataCopy;
+    playerDataCopy.achievements = 0
+    playerDataCopy.unlocked = 0
+    let {game, standard, special } = playerDataCopy;
     let { hexa, penta, quad, triple } = standard;
-    let arr = [ special, triple, quad, penta, hexa]
+    let arr = [ game, special, triple, quad, penta, hexa]
 
     for (let i = 0; i < arr.length; i++) {
         const parents = arr[i];
@@ -523,7 +527,9 @@ const getTotalSuccessfulRols = () => {
             const element = parents[j];
             if(element.status === 'unlocked'){
                 playerDataCopy.successfulRolls += element.total
+                playerDataCopy.unlocked++
             }
+            playerDataCopy.achievements++
         }
         
     }

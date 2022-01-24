@@ -473,9 +473,11 @@ function rerollThis(arr) {
             element.toggleAttribute('data-type')
         }
         // ------------------------------------ win
+        playerDataCopy.successfulRolls++
+        playerDataCopy.totalSaved += roundTotal
+        swapUpdateLocalStorage()
         score += roundTotal
         roundTotal = 0
-        swapUpdateLocalStorage()
 
 
     }
