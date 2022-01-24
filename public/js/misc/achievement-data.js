@@ -502,12 +502,12 @@ function appendAll() {
         // console.log(element)
 
     }
-    statsHeader.textContent = `(${unlocked} out of ${totalAchievs}) Unlocked`
+    document.querySelector('#achievement-out-of').textContent = `(${unlocked} out of ${totalAchievs}) Unlocked`
 
-    let div = document.createElement('div')
-    statsHeader.append(div)
-    div.classList.add( '-bottom-5', 'right-0', 'text-zinc-300', 'text-sm')
-    div.textContent = playerDataCopy.successfulRolls
+    // let div = document.createElement('div')
+    // statsHeader.append(div)
+    // div.classList.add( '-bottom-5', 'right-0', 'text-zinc-300', 'text-sm')
+    // div.textContent = playerDataCopy.successfulRolls
 }
 
 // updateUserData()

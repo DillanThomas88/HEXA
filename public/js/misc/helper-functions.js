@@ -156,3 +156,8 @@ const giveDiceAttributes = (obj) => {
         }
     }
 }
+
+const saveSuccessfulOrFailedTotal = (int) => {
+
+    
+}
