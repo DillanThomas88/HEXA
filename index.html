@@ -288,7 +288,8 @@
             </svg>
         </div>
         <div class="w-full flex flex-col content-center overflow-y-auto">
-            <header id="stats-header" class="flex flex-col  flex font-medium normal-case items-center text-zinc-500 text-sm ">
+            <header id="stats-header"
+                class="flex flex-col  flex font-medium normal-case items-center text-zinc-500 text-sm ">
                 <section class=" w-full pb-2 pt-14 uppercase">
                     <div class="flex flex-row justify-between py-1">
                         <span class="text-zinc-700">Saved
@@ -360,10 +361,9 @@
                             class=" pointer-events-none absolute bottom-8 right-8 text-xl font-medium row-start-1 col-start-3 col-span-1 row-span-2">
                             3
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 fill-zinc-200 " viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path
-                                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        <svg class="pointer-events-none h-20 w-20 fill-zinc-200 " viewBox="0 0 24 24">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
                         </svg>
                     </button>
                     <p
@@ -391,7 +391,7 @@
                         class="relative flex justify-center items-center uppercase row-start-2 col-start-1 col-span-1 row-span-2 opacity-10  ">
                         <div
                             class=" pointer-events-none absolute bottom-8 right-8 text-xl font-medium row-start-1 col-start-1 col-span-1 row-span-2">
-                            3
+
                         </div>
                         <svg class="pointer-events-none h-16 w-16 fill-zinc-300 -scale-x-100" version="1.1"
                             viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
@@ -413,8 +413,18 @@
                         class="  flex justify-center items-center row-start-4 col-start-1 col-span-1 row-span-2 text-5xl pb-4 font-medium  ">
                         <span id="score-element" class=" text-zinc-200 opacity-10">10</span><span
                             class="text-sm mt-5 pt-2 l-2 text-zinc-700">p</span> <span
-                            class="opacity-30 font-thin"></span><span class="text-zinc-300 text-sm "></span>
+                            class="opacity-30 font-thin"></span><span class="text-zinc-300 text-sm ">
+
+                        </span>
                     </p>
+                    <p
+                    class="  flex justify-center items-center row-start-4 col-start-3 col-span-1 row-span-2 text-5xl pb-4 font-medium  ">
+                    <span id="score-element" class=" text-zinc-200 opacity-10">0</span><span
+                        class="text-sm mt-5 pt-2 l-2 text-zinc-700">p</span> <span
+                        class="opacity-30 font-thin"></span><span class="text-zinc-300 text-sm ">
+
+                    </span>
+                </p>
                     <span
                         class="relative flex flex-col justify-start items-center max-h-max row-start-5 col-start-1 col-span-1 row-span-2 text-xl pt-5 font-medium  ">
                         <ul id="add-container" class="relative">

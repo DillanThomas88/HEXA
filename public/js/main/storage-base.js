@@ -37,4 +37,4 @@ function setUpNewAchievements() {
 getTotalSuccessfulRols()
 appendAll()
 
-console.log(playerDataCopy)
+// console.log(playerDataCopy)
