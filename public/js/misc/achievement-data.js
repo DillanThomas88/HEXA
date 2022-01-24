@@ -2,10 +2,10 @@
 function newUserSetUp() {
 
     const achievementList = {
-        successfulRolls: 0,
-        failedRolls: 0,
+        successfullRolls: 0,
         totalSaved: 0,
         totalLost: 0,
+        totalRolls: 0,
         unlocked: 0,
         achievements: 0,
         game: [
@@ -410,7 +410,7 @@ const showAchievement = (obj, color) => {
     span5.textContent = 'Chance'
 
     const getPercentage = (int) => {
-        let percentage = (int/playerDataCopy.successfulRolls)* 100
+        let percentage = (int/playerDataCopy.totalRolls)* 100
         if(String(percentage).split("").length != 2){
             return percentage.toFixed(2)
         } else {
@@ -435,19 +435,19 @@ function appendAchievements(arr) {
             // console.log(element)
             switch (element.title.split(" ")[0].toLowerCase()) {
                 case 'triple':
-                    showAchievement(element, 'orange')
-                    break;
-                case 'quad':
                     showAchievement(element, 'green')
                     break;
-                case 'penta':
+                case 'quad':
                     showAchievement(element, 'blue')
                     break;
-                case 'hexa':
+                case 'penta':
                     showAchievement(element, 'purple')
                     break;
-                case 'double':
+                case 'hexa':
                     showAchievement(element, 'orange')
+                    break;
+                case 'double':
+                    showAchievement(element, 'green')
                     break;
                 case 'straight':
                     showAchievement(element, 'rose')
@@ -499,10 +499,10 @@ function appendAll() {
 
     }
     document.querySelector('#achievement-out-of').textContent = `(${playerDataCopy.unlocked} out of ${playerDataCopy.achievements}) Unlocked`
-    document.querySelector('#saved-amount').textContent = playerDataCopy.totalSaved
-    document.querySelector('#saved-times').textContent = playerDataCopy.successfulRolls
-    document.querySelector('#lost-amount').textContent = playerDataCopy.totalLost
-    document.querySelector('#lost-times').textContent = playerDataCopy.failedRolls
+    document.querySelector('#saved-amount').textContent = parseInt(playerDataCopy.totalSaved).toLocaleString()
+    document.querySelector('#saved-times').textContent = parseInt(playerDataCopy.successfullRolls).toLocaleString()
+    document.querySelector('#lost-amount').textContent = parseInt(playerDataCopy.totalLost).toLocaleString()
+    document.querySelector('#lost-times').textContent = parseInt(playerDataCopy.totalRolls).toLocaleString()
 
     // let div = document.createElement('div')
     // statsHeader.append(div)

@@ -12,7 +12,8 @@ const colorObj = {
     darkblue: 'fill-blue-500',
     darkpurple: 'fill-purple-500',
     lightorange: 'fill-orange-100',
-    lightgreen: 'fill-green-100'
+    lightgreen: 'fill-green-100',
+    lightblue: 'fill-blue-100'
 }
 
 const colorDice = (obj) => {
@@ -20,29 +21,29 @@ const colorDice = (obj) => {
     const standard = obj.standardCombo
     if(special.name){
         if(special.name === 'supaquad'){
-            setDataColorAttribute(special.diceNumber1, colorObj.green)
-            setDataColorAttribute(special.diceNumber2, colorObj.lightgreen)
+            setDataColorAttribute(special.diceNumber1, colorObj.darkblue)
+            setDataColorAttribute(special.diceNumber2, colorObj.lightblue)
             return
         } else if (special.name === 'straight'){
-            setDataColorAttribute(1, colorObj.orange)
+            setDataColorAttribute(1, colorObj.yellow)
             setDataColorAttribute(2, colorObj.yellow)
-            setDataColorAttribute(3, colorObj.green)
-            setDataColorAttribute(4, colorObj.blue)
-            setDataColorAttribute(5, colorObj.purple)
-            setDataColorAttribute(6, colorObj.red)
+            setDataColorAttribute(3, colorObj.yellow)
+            setDataColorAttribute(4, colorObj.yellow)
+            setDataColorAttribute(5, colorObj.yellow)
+            setDataColorAttribute(6, colorObj.yellow)
         } else if (special.name === 'triplepair') {
-            setDataColorAttribute(special.diceNumber1, colorObj.orange)
-            setDataColorAttribute(special.diceNumber2, colorObj.lightorange)
+            setDataColorAttribute(special.diceNumber1, colorObj.green)
+            setDataColorAttribute(special.diceNumber2, colorObj.lightgreen)
         } else { console.log('special combo error');}
     } else if (standard.name){
         if(standard.name === 'triple'){
-            setDataColorAttribute(standard.diceNumber, colorObj.orange)
-        } else if (standard.name === 'quad'){
             setDataColorAttribute(standard.diceNumber, colorObj.green)
+        } else if (standard.name === 'quad'){
+            setDataColorAttribute(standard.diceNumber, colorObj.darkblue)
         } else if (standard.name === 'penta'){
-            setDataColorAttribute(standard.diceNumber, colorObj.blue)
-        } else if (standard.name === 'hexa'){
             setDataColorAttribute(standard.diceNumber, colorObj.purple)
+        } else if (standard.name === 'hexa'){
+            setDataColorAttribute(standard.diceNumber, colorObj.orange)
         } else { console.log('standard combo error')}
     }
     

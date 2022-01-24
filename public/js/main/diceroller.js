@@ -1,10 +1,53 @@
 let refreshbtn = document.querySelector('#btn-roll')
 const scoreEL = document.querySelector('#score-element')
+const btnSave = document.querySelector('#btn-save')
 scoreEL.innerHTML = 0
 let diceParents = []
 let unlockedDice = []
 let score = 0
 let roundTotal = 0
+let isSaveActivated = false
+let isRefreshActivated = false
+
+
+const saveBTN = () => {
+    btnSave.removeEventListener('click', saveBTN)
+    rotateSaveIcon()
+    playerDataCopy.successfullRolls += 1
+    playerDataCopy.totalSaved += (score + roundTotal)
+    swapUpdateLocalStorage()
+    toggleRefreshBtnContent()
+    score = 0
+    roundTotal = 0
+    btnSave.classList.toggle('opacity-10')
+    btnSave.classList.toggle('animate-pulse')
+    updatePercentageEL(912)
+    accumulatorUpdate(0)
+}
+
+
+let checkForScore = setInterval(() => {
+    
+    if(roundTotal > 0 || score > 0){
+        // console.log(roundTotal)
+        if(!isSaveActivated){
+            isSaveActivated = true
+            btnSave.addEventListener('click', saveBTN)
+            btnSave.classList.toggle('opacity-10')
+            btnSave.classList.toggle('animate-pulse')
+        }
+    } else {
+        btnSave.removeEventListener('click', saveBTN)
+        if(!btnSave.classList.contains('opacity-10')){
+            
+            btnSave.classList.toggle('opacity-10')
+            btnSave.classList.toggle('animate-pulse')
+        }
+        isSaveActivated = false
+        
+    }
+}, 100);
+
 const startNewRoll = (arr) => {
     let newarr = []
     if (arr) {
@@ -53,30 +96,14 @@ const init = (firstIndex, xxarr) => {
     }, 100);
 }
 
-const diceRotatingAnimation = (index) => {
-    // console.log('rotating', index)
-    if (index >= diceParents.length - 1) { diceReady() }
-    let deg = 0
-    let timer = setInterval(() => {
-        deg += 10
-        if (diceParents[index].getAttribute('rolling') == 'false') {
-            clearInterval(timer)
-            return
-            // console.log(diceELs[index].children[0].style.transform)
-            // diceELs[index].children[0].style.transform = `rotate(0deg)`
-        }
-        if (deg >= 360) { deg = 1 }
-        diceParents[index].children[0].style.transform = `rotate(${deg}deg)`
 
-    }, 1);
-}
 
 const diceReady = () => {
     diceParents.forEach(element => {
-
         element.addEventListener('click', freezeDieEL = (e) => {
-
+            
             if (e.target.classList.contains('dice')) {
+                e.target.classList.toggle('animate-ping')
                 let number = Math.floor(Math.random() * getDiceParentElements().length + 1)  //--------------------------------------------------------------change
                 e.target.innerHTML = diceArr[number - 1];
                 e.target.setAttribute('rolling', 'false');
@@ -84,14 +111,17 @@ const diceReady = () => {
                 e.target.children[0].classList.toggle('fill-zinc-100')
                 if (number === 1 || number === 5) { e.target.children[0].classList.add('fill-zinc-300') }
                 else { e.target.children[0].classList.add('fill-zinc-700') }
-
-
+                
+                
                 // console.log(dupedDice)
                 let old_element = e.target
                 let new_element = old_element.cloneNode(true);
                 old_element.parentNode.replaceChild(new_element, old_element);
-
-
+                let timer = setInterval(() => {
+                    new_element.classList.toggle('animate-ping')
+                    clearInterval(timer)
+                }, 75);
+                
             }
 
 
@@ -314,7 +344,7 @@ const beginPlayerScoreCalculation = (diceObject) => {
 
 }
 
-const animateScoreAccumulator = (scoreObj, diceObj) => {
+const animateScoreAccumulator = (scoreObj) => {
     // let incriment = oldScore
     // let difference = scoreObj - oldScore
     // if (oldScore === scoreObj) { return }
@@ -335,8 +365,7 @@ const animateScoreAccumulator = (scoreObj, diceObj) => {
     } else {
         // if you lose --------------------------------------------------------------
         accumulatorUpdate(0)
-
-
+        console.log('lost')
     }
     // console.log(scoreArr)
 
@@ -461,26 +490,25 @@ function nextRoundStart(obj) {
 
     let percentage = calculatenNextChance(playerPackage, xArr.length)
     waitFor(500, updatePercentageEL, percentage)
-    waitFor(500, activateReRollBtn, xArr)
+    waitFor(100, activateReRollBtn, xArr)
 }
 
 function rerollThis(arr) {
-    if (arr.length === 0) {
+    if (!arr || arr.length === 0) {
         // succesfull round
         arr = getDiceParentElements()
         for (let k = 0; k < arr.length; k++) {
             const element = arr[k];
             element.toggleAttribute('data-type')
         }
+        updatePercentageEL(912)
         // ------------------------------------ win
-        playerDataCopy.successfulRolls += 1
-        playerDataCopy.totalSaved += roundTotal
-        swapUpdateLocalStorage()
+
         score += roundTotal
         roundTotal = 0
-
-
     }
+    playerDataCopy.totalRolls++
+    swapUpdateLocalStorage()
     // console.log(arr)
     // --------------------------------------- else
     for (let i = 0; i < arr.length; i++) {
@@ -499,18 +527,29 @@ function rerollThis(arr) {
 }
 
 function updatePercentageEL(percentage) {
+    // console.log(percentage)
     let eL = document.querySelector('#percentage-element')
     const currentPercentage = parseInt(eL.innerHTML.split("").filter(data => data != '.').join(""))
     let interval = currentPercentage
+    let isDescending;
     let timer = setInterval(() => {
         // console.log(percentage)
         // console.log(currentPercentage,percentage)
         if (currentPercentage == percentage) { clearInterval(timer); return }
-        else if (currentPercentage < percentage) { interval += 2 }
-        else { interval-- }
-        if (interval === percentage) {
-            clearInterval(timer)
-            eL.innerHTML = percentage / 10
+        else if (currentPercentage < percentage) {isDescending = false; interval += 3 }
+        else {isDescending = true; interval-=3 }
+        if(isDescending){
+            if (interval <= percentage) {
+                clearInterval(timer)
+                eL.innerHTML = percentage / 10
+                return
+            }
+        } else {
+            if (interval >= percentage) {
+                clearInterval(timer)
+                eL.innerHTML = percentage / 10
+                return
+            }
         }
         switch (true) {
             case (interval >= 900):
