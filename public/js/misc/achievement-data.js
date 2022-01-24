@@ -468,8 +468,6 @@ function appendAchievements(arr) {
 
 
 function appendAll() {
-
-    const statsHeader = document.querySelector('#stats-header')
     const statsCont = document.querySelector('#stats-container')
     while (statsCont.firstChild) {
         statsCont.removeChild(statsCont.lastChild);
@@ -514,7 +512,6 @@ function appendAll() {
 
 // updateUserData()
 const cleanUserData = () => {
-    playerDataCopy.successfulRolls = 0
     playerDataCopy.achievements = 0
     playerDataCopy.unlocked = 0
     let {game, standard, special } = playerDataCopy;
@@ -526,7 +523,7 @@ const cleanUserData = () => {
         for (let j = 0; j < parents.length; j++) {
             const element = parents[j];
             if(element.status === 'unlocked'){
-                playerDataCopy.successfulRolls += element.total
+
                 playerDataCopy.unlocked++
             }
             playerDataCopy.achievements++
