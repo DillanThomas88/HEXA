@@ -77,7 +77,7 @@ const diceReady = () => {
         element.addEventListener('click', freezeDieEL = (e) => {
 
             if (e.target.classList.contains('dice')) {
-                let number = Math.floor(Math.random() * getDiceParentElements().length + 1)  //--------------------------------------------------------------change
+                let number = Math.floor(Math.random() * 2 + 1)  //--------------------------------------------------------------change
                 e.target.innerHTML = diceArr[number - 1];
                 e.target.setAttribute('rolling', 'false');
                 e.target.classList.add('dice-activated')
@@ -141,7 +141,7 @@ const createPlayerStatsObject = () => {
         five: 0,
         six: 0
     }
-    const scoreEL = document.querySelector('#score-element')
+
     const diceArray = document.querySelectorAll('.dice')
     diceArray.forEach(element => {
         let die = element.children[0]
@@ -180,6 +180,7 @@ const createPlayerStatsObject = () => {
 
 const beginPlayerScoreCalculation = (diceObject) => {
 
+
     const properties = Object.values(diceObject)
     let scoreObj = {
         specialCombo: {},
@@ -194,6 +195,8 @@ const beginPlayerScoreCalculation = (diceObject) => {
         scoreObj.specialCombo.value = 150 
         scoreObj.one = 0
         scoreObj.five = 0
+
+
         return scoreObj
     }
     
@@ -204,13 +207,21 @@ const beginPlayerScoreCalculation = (diceObject) => {
             scoreObj.one = 0
             scoreObj.five = 0
             // console.log(scoreObj);
-            softUpdate(playerData.standard.hexa, playerDataCopy.standard.hexa, scoreObj.standardCombo.diceNumber)
+            softUpdate(
+                playerData.standard.hexa, 
+                playerDataCopy.standard.hexa, 
+                scoreObj.standardCombo.diceNumber
+                )
 
             return scoreObj
         } else if ( element === 5){
 
             standardComboFunc('penta', 200, i)
-            softUpdate(playerData.standard.penta, playerDataCopy.standard.penta, scoreObj.standardCombo.diceNumber)
+            softUpdate(
+                playerData.standard.penta, 
+                playerDataCopy.standard.penta, 
+                scoreObj.standardCombo.diceNumber
+                )
             // console.log(scoreObj);
         } else if(element === 4){
             for (let j = 0; j < properties.length; j++) {
@@ -225,7 +236,11 @@ const beginPlayerScoreCalculation = (diceObject) => {
                     scoreObj.one = 0
                     scoreObj.five = 0
                     // console.log(scoreObj);
-                    softUpdate(playerData.standard.quad, playerDataCopy.standard.quad, scoreObj.specialCombo.diceNumber1)
+                    softUpdate(
+                        playerData.standard.quad, 
+                        playerDataCopy.standard.quad, 
+                        scoreObj.specialCombo.diceNumber1
+                        )
                     return scoreObj
                 }
             }

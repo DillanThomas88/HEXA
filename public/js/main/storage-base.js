@@ -1,41 +1,40 @@
+let playerData = {}
 let playerDataCopy = {}
+let currentVersion = 0.2
+
 
 if(!window.localStorage.getItem('user-data')){
-    let achievementList = newUserSetUp();
-    window.localStorage.setItem('user-data', JSON.stringify(achievementList));
-    playerData = JSON.parse(window.localStorage.getItem('user-data'));
+    setUpNewAchievements();
 } else {
-    
     playerData = JSON.parse(window.localStorage.getItem('user-data'));
-    playerDataCopy = JSON.parse(JSON.stringify(playerData));
+    if(playerData.version != currentVersion){
+        setUpNewAchievements()
+    }
 }
-appendAll();
+
+playerDataCopy = JSON.parse(JSON.stringify(playerData));
 
 
 const swapUpdateLocalStorage = () => {
-    getAllTotalsAndChance()
     window.localStorage.setItem('user-data', JSON.stringify(playerDataCopy));
+    playerData = JSON.parse(window.localStorage.getItem('user-data'));
+    playerDataCopy = JSON.parse(JSON.stringify(playerData));
     let timer = setInterval(() => {
-        playerDataCopy = JSON.parse(JSON.stringify(playerData));
+        getTotalSuccessfulRols()
+        appendAll()
         clearInterval(timer)
     }, 100);
 }
 
 
-const getAllTotalsAndChance = () => {
-    let {saved, standard, special} = playerDataCopy
-    let {hexa, penta, quad, triple} = standard
 
-    let arr = [special,hexa,penta,quad,triple]
-
-    for (let i = 0; i < arr.length; i++) {
-        const parents = arr[i];
-        for (let j = 0; j < parents.length; j++) {
-            const element = parents[j];
-            element.fact = `${((element.total/allTotals)*100).toFixed(2)}%`
-            // console.log(element);
-            
-        }
-    }
-
+function setUpNewAchievements() {
+    let achievementList = newUserSetUp();
+    window.localStorage.setItem('user-data', JSON.stringify(achievementList));
+    playerData = JSON.parse(window.localStorage.getItem('user-data'));
 }
+
+getTotalSuccessfulRols()
+appendAll()
+
+console.log(playerDataCopy)

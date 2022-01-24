@@ -1,7 +1,14 @@
-let playerData = ''
-let allTotals = 0
+
+let totalAchievs = 0
+let unlocked = 0
 function newUserSetUp() {
+
     const achievementList = {
+        version: 0.1,
+        successfulRolls: 0,
+        failedRolls: 0,
+        totalSaved: 0,
+        totalLost: 0,
         saved: [
             novice = {
                 title: 'NOVICE',
@@ -62,7 +69,7 @@ function newUserSetUp() {
             hexa: [
                 {
                     title: 'HEXA 1',
-                    desc: "Six Ones",
+                    desc: "Successfully rolled six one's",
                     fact: '0.012%',
                     image: '',
                     status: 'locked',
@@ -70,7 +77,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'HEXA 2',
-                    desc: "Six Twos",
+                    desc: "Successfully rolled six two's",
                     fact: '0.012%',
                     image: '',
                     status: 'locked',
@@ -78,7 +85,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'HEXA 3',
-                    desc: "Six Threes",
+                    desc: "Successfully rolled six three's",
                     fact: '0.012%',
                     image: '',
                     status: 'locked',
@@ -86,7 +93,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'HEXA 4',
-                    desc: "Six Fours",
+                    desc: "Successfully rolled six four's",
                     fact: '0.012%',
                     image: '',
                     status: 'locked',
@@ -94,7 +101,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'HEXA 5',
-                    desc: "Six Fives",
+                    desc: "Successfully rolled six five's",
                     fact: '0.012%',
                     image: '',
                     status: 'locked',
@@ -102,7 +109,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'HEXA 6',
-                    desc: "Six Sixes",
+                    desc: "Successfully rolled six six's",
                     fact: '0.012%',
                     image: '',
                     status: 'locked',
@@ -112,7 +119,7 @@ function newUserSetUp() {
             penta: [
                 {
                     title: 'PENTA 1',
-                    desc: "Five Ones",
+                    desc: "Successfully rolled five one's",
                     fact: '0.386%',
                     image: '',
                     status: 'locked',
@@ -120,7 +127,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'PENTA 2',
-                    desc: "Five Twos",
+                    desc: "Successfully rolled five two's",
                     fact: '0.386%',
                     image: '',
                     status: 'locked',
@@ -128,7 +135,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'PENTA 3',
-                    desc: "Five Threes",
+                    desc: "Successfully rolled five three's",
                     fact: '0.386%',
                     image: '',
                     status: 'locked',
@@ -136,7 +143,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'PENTA 4',
-                    desc: "Five Fours",
+                    desc: "Successfully rolled five four's",
                     fact: '0.386%',
                     image: '',
                     status: 'locked',
@@ -144,7 +151,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'PENTA 5',
-                    desc: "Five Fives",
+                    desc: "Successfully rolled five five's",
                     fact: '0.386%',
                     image: '',
                     status: 'locked',
@@ -152,7 +159,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'PENTA 6',
-                    desc: "Five Sixes",
+                    desc: "Successfully rolled five six's",
                     fact: '0.386%',
                     image: '',
                     status: 'locked',
@@ -162,7 +169,7 @@ function newUserSetUp() {
             quad: [
                 {
                     title: 'QUAD 1',
-                    desc: "Four Ones",
+                    desc: "Successfully rolled four one's",
                     fact: '4.82%',
                     image: '',
                     status: 'locked',
@@ -170,7 +177,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'QUAD 2',
-                    desc: "Four Twos",
+                    desc: "Successfully rolled four two's",
                     fact: '4.82%',
                     image: '',
                     status: 'locked',
@@ -178,7 +185,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'QUAD 3',
-                    desc: "Four Threes",
+                    desc: "Successfully rolled four three's",
                     fact: '4.82%',
                     image: '',
                     status: 'locked',
@@ -186,7 +193,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'QUAD 4',
-                    desc: "Four Fours",
+                    desc: "Successfully rolled four four's",
                     fact: '4.82%',
                     image: '',
                     status: 'locked',
@@ -194,7 +201,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'QUAD 5',
-                    desc: "Four Fives",
+                    desc: "Successfully rolled four five's",
                     fact: '4.82%',
                     image: '',
                     status: 'locked',
@@ -202,7 +209,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'QUAD 6',
-                    desc: "Four Sixes",
+                    desc: "Successfully rolled four six's",
                     fact: '4.82%',
                     image: '',
                     status: 'locked',
@@ -212,7 +219,7 @@ function newUserSetUp() {
             triple: [
                 {
                     title: 'TRIPLE 1',
-                    desc: "Three Ones",
+                    desc: "Successfully rolled three one's",
                     fact: '30.86%',
                     image: '',
                     status: 'locked',
@@ -220,7 +227,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'TRIPLE 2',
-                    desc: "Three Twos",
+                    desc: "Successfully rolled three twos's",
                     fact: '30.86%',
                     image: '',
                     status: 'locked',
@@ -228,7 +235,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'TRIPLE 3',
-                    desc: "Three Threes",
+                    desc: "Successfully rolled three three's",
                     fact: '30.86%',
                     image: '',
                     status: 'locked',
@@ -236,7 +243,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'TRIPLE 4',
-                    desc: "Three Fours",
+                    desc: "Successfully rolled three four's",
                     fact: '30.86%',
                     image: '',
                     status: 'locked',
@@ -244,7 +251,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'TRIPLE 5',
-                    desc: "Three Fives",
+                    desc: "Successfully rolled three five's",
                     fact: '30.86%',
                     image: '',
                     status: 'locked',
@@ -252,7 +259,7 @@ function newUserSetUp() {
                 },
                 {
                     title: 'TRIPLE 6',
-                    desc: "Three Sixes",
+                    desc: "Successfully rolled three one's",
                     fact: '30.86%',
                     image: '',
                     status: 'locked',
@@ -263,7 +270,7 @@ function newUserSetUp() {
         special: [
             triplepair = {
                 title: 'TRIPLE PAIRS',
-                desc: "Three Pairs Of Two",
+                desc: "Successfully rolled three pairs",
                 fact: '3.86% (1 in 26)',
                 image: '',
                 status: 'locked',
@@ -271,7 +278,7 @@ function newUserSetUp() {
             },
             straight = {
                 title: 'STRAIGHT',
-                desc: "One Of Every Kind",
+                desc: "Successfully rolled one of every kind",
                 fact: '1.54% (1 in 65)',
                 image: '',
                 status: 'locked',
@@ -279,7 +286,7 @@ function newUserSetUp() {
             },
             doubletriple =  {
                 title: 'DOUBLE TRIPLE',
-                desc: "Two Pairs Of Three",
+                desc: "Successfully rolled two triples",
                 fact: '0.64% (1 in 155)',
                 image: '',
                 status: 'locked',
@@ -287,7 +294,7 @@ function newUserSetUp() {
             },
             supaquad = {
                 title: 'SUPER QUAD',
-                desc: "Four Of A Kind With A Pair",
+                desc: "Successfully rolled four of a kind with a pair",
                 fact: 'Unknown',
                 image: '',
                 status: 'locked',
@@ -295,6 +302,7 @@ function newUserSetUp() {
             },
         ],
     };
+    
     let standard = achievementList.standard;
 
     addIndex(achievementList.saved);
@@ -305,8 +313,7 @@ function newUserSetUp() {
     addIndex(achievementList.special);
     return achievementList;
 }
-let totalAchievs = 0
-let unlocked = 0
+
 
 function addIndex(arr) {
     for (let i = 0; i < arr.length; i++) {
@@ -382,19 +389,19 @@ const showAchievement = (obj, color) => {
     div1.append(div2)
     div2.append(div3)
     div3.append(div4, div5)
-    div4.append(span1, span2, span3)
-    div5.append(span4, span5, span6)
+    div4.append(span1,  span3)
+    div5.append(span4,  span6)
     div1.classList.add('pt-4', 'bottom-16', 'w-full')
     div2.classList.add('border-l-4', applyColor, 'normal-case', 'py-2', 'px-3', 'flex', 'flex-col', 'justify-between', 'align-center')
     div3.classList.add('-mt-1')
     div4.classList.add('text-xs', 'text-zinc-100', 'flex', 'justify-between', 'items-center')
     div5.classList.add('text-zinc-100', 'font-bold', 'text-xs', 'flex')
 
-    span1.classList.add('w-3/5', 'text-2xl', 'justify-start')
-    span2.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
+    span1.classList.add('w-5/6', 'text-2xl', 'justify-start')
+    // span2.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
     span3.classList.add('w-1/6', 'flex', 'justify-end')
-    span4.classList.add('w-3/5')
-    span5.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
+    span4.classList.add('w-5/6')
+    // span5.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
     span6.classList.add('w-1/6', 'flex', 'justify-end')
 
     span1.textContent = obj.title
@@ -402,45 +409,22 @@ const showAchievement = (obj, color) => {
     span3.textContent = obj.total
     span4.textContent = obj.desc
     span5.textContent = 'Chance'
-    span6.textContent = obj.fact
-    allTotals += obj.total
-}
 
-
-
-function appendAll() {
-    allTotals = 0
-    const statsHeader = document.querySelector('#stats-header')
-    const statsCont = document.querySelector('#stats-container')
-
-    //   console.log(statsCont)
-    let { saved, standard, special } = playerData;
-    let { hexa, penta, quad, triple } = standard;
-    let { straight, doubletriple, triplepair, supaquad} = special
-    let arr = [saved, special, triple, quad, penta, hexa]
-    let arr2 = ['Regular', 'Special', 'Standard']
-    for (let i = 0; i < arr.length; i++) {
-        const element = arr[i];
-
-        if (arr2[i]) {
-            let hr = document.createElement('hr')
-            hr.classList.add('mt-4', 'bg-zinc-800', 'border-none', 'my-1')
-            hr.style.height = '1px'
-            let div = document.createElement('div')
-            div.textContent = arr2[i]
-            div.classList.add('text-zinc-800', 'text-lg')
-            statsCont.append(hr, div)
-
+    const getPercentage = (int) => {
+        let percentage = (int/playerDataCopy.successfulRolls)* 100
+        if(String(percentage).split("").length != 2){
+            return percentage.toFixed(2)
+        } else {
+            return percentage
         }
-        appendAchievements(element)
-
     }
-    statsHeader.textContent = `(${unlocked} out of ${totalAchievs}) Unlocked`
-    let div = document.createElement('div')
-    statsHeader.append(div)
-    div.classList.add('absolute', '-bottom-5', 'right-0', 'text-zinc-300', 'text-sm')
-    div.textContent = allTotals
+
+    span6.textContent = `${getPercentage(obj.total)}%`
+
 }
+
+
+
 
 function appendAchievements(arr) {
 
@@ -452,8 +436,7 @@ function appendAchievements(arr) {
         } else {
             totalAchievs++
             unlocked++
-            // alltotals += element.value
-            // console.log(element.title)
+            // console.log(element)
             switch (element.title.split(" ")[0].toLowerCase()) {
                 case 'triple':
                     showAchievement(element, 'orange')
@@ -487,3 +470,61 @@ function appendAchievements(arr) {
 }
 
 
+
+function appendAll() {
+
+    const statsHeader = document.querySelector('#stats-header')
+    const statsCont = document.querySelector('#stats-container')
+    while (statsCont.firstChild) {
+        statsCont.removeChild(statsCont.lastChild);
+      }
+
+    //   console.log(playerDataCopy)
+    let { saved, standard, special } = playerDataCopy;
+    let { hexa, penta, quad, triple } = standard;
+    let { straight, doubletriple, triplepair, supaquad} = special
+    let arr = [saved, special, triple, quad, penta, hexa]
+    let arr2 = ['Regular', 'Special', 'Standard']
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+
+        if (arr2[i]) {
+            let hr = document.createElement('hr')
+            hr.classList.add('mt-4', 'bg-zinc-800', 'border-none', 'my-1')
+            hr.style.height = '1px'
+            let div = document.createElement('div')
+            div.textContent = arr2[i]
+            div.classList.add('text-zinc-800', 'text-lg')
+            statsCont.append(hr, div)
+
+        }
+        appendAchievements(element)
+        // console.log(element)
+
+    }
+    statsHeader.textContent = `(${unlocked} out of ${totalAchievs}) Unlocked`
+
+    let div = document.createElement('div')
+    statsHeader.append(div)
+    div.classList.add( '-bottom-5', 'right-0', 'text-zinc-300', 'text-sm')
+    div.textContent = playerDataCopy.successfulRolls
+}
+
+// updateUserData()
+const getTotalSuccessfulRols = () => {
+    playerDataCopy.successfulRolls = 0
+    let { standard, special } = playerDataCopy;
+    let { hexa, penta, quad, triple } = standard;
+    let arr = [ special, triple, quad, penta, hexa]
+
+    for (let i = 0; i < arr.length; i++) {
+        const parents = arr[i];
+        for (let j = 0; j < parents.length; j++) {
+            const element = parents[j];
+            if(element.status === 'unlocked'){
+                playerDataCopy.successfulRolls += element.total
+            }
+        }
+        
+    }
+}
