@@ -48,3 +48,62 @@ const colorDice = (obj) => {
     }
     
 }
+
+function updatePercentageEL(percentage) {
+    // console.log(percentage)
+    let eL = document.querySelector('#percentage-element')
+    const currentPercentage = parseInt(eL.innerHTML.split("").filter(data => data != '.').join(""))
+    let interval = currentPercentage
+    let isDescending;
+    let timer = setInterval(() => {
+        // console.log(percentage)
+        // console.log(currentPercentage,percentage)
+        if (currentPercentage == percentage) { clearInterval(timer); eL.innerHTML = percentage / 10; return }
+        else if (currentPercentage < percentage) { isDescending = false; interval += 3 }
+        else { isDescending = true; interval -= 3 }
+        if (isDescending) {
+            if (interval <= percentage) {
+                clearInterval(timer)
+                eL.innerHTML = percentage / 10
+                return
+            }
+        } else {
+            if (interval >= percentage) {
+                clearInterval(timer)
+                eL.innerHTML = percentage / 10
+                return
+            }
+        }
+        switch (true) {
+            case (interval >= 900):
+                updateColorTo('#3b82f6')
+                break;
+            case (interval >= 800 && interval < 900):
+                updateColorTo('#06b6d4')
+                break;
+            case (interval >= 700 && interval < 800):
+                updateColorTo('#10b981')
+                break;
+            case (interval >= 600 && interval < 700):
+                updateColorTo('#84cc16')
+                break;
+            case (interval >= 500 && interval < 600):
+                updateColorTo('#f59e0b')
+                break;
+            case (interval >= 400 && interval < 500):
+                updateColorTo('#f97316')
+                break;
+            case (interval >= 300 && interval < 400):
+                updateColorTo('#ef4444')
+                break;
+
+
+            default:
+                break;
+        }
+        if (interval > 912) { clearInterval(timer); interval = 912 }
+        if (interval < 333) { clearInterval(timer); interval = 333 }
+        eL.innerHTML = interval / 10
+    }, 1)
+}
+

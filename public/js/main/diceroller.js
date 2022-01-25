@@ -1,6 +1,9 @@
 let refreshbtn = document.querySelector('#btn-roll')
 const scoreEL = document.querySelector('#score-element')
+const saveEL = document.querySelector('#save-element')
 const btnSave = document.querySelector('#btn-save')
+const containerEL = document.querySelector('#add-container')
+
 scoreEL.innerHTML = 0
 let diceParents = []
 let unlockedDice = []
@@ -10,45 +13,9 @@ let isSaveActivated = false
 let isRefreshActivated = false
 
 
-const saveBTN = () => {
-    btnSave.removeEventListener('click', saveBTN)
-    rotateSaveIcon()
-    playerDataCopy.successfullRolls += 1
-    playerDataCopy.totalSaved += (score + roundTotal)
-    swapUpdateLocalStorage()
-    toggleRefreshBtnContent()
-    score = 0
-    roundTotal = 0
-    btnSave.classList.toggle('opacity-10')
-    btnSave.classList.toggle('animate-pulse')
-    updatePercentageEL(912)
-    accumulatorUpdate(0)
-}
-
-
-let checkForScore = setInterval(() => {
-    
-    if(roundTotal > 0 || score > 0){
-        // console.log(roundTotal)
-        if(!isSaveActivated){
-            isSaveActivated = true
-            btnSave.addEventListener('click', saveBTN)
-            btnSave.classList.toggle('opacity-10')
-            btnSave.classList.toggle('animate-pulse')
-        }
-    } else {
-        btnSave.removeEventListener('click', saveBTN)
-        if(!btnSave.classList.contains('opacity-10')){
-            
-            btnSave.classList.toggle('opacity-10')
-            btnSave.classList.toggle('animate-pulse')
-        }
-        isSaveActivated = false
-        
-    }
-}, 100);
 
 const startNewRoll = (arr) => {
+    cleanUpScorChildren()
     let newarr = []
     if (arr) {
         diceParents = arr
@@ -101,7 +68,7 @@ const init = (firstIndex, xxarr) => {
 const diceReady = () => {
     diceParents.forEach(element => {
         element.addEventListener('click', freezeDieEL = (e) => {
-            
+
             if (e.target.classList.contains('dice')) {
                 e.target.classList.toggle('animate-ping')
                 let number = Math.floor(Math.random() * getDiceParentElements().length + 1)  //--------------------------------------------------------------change
@@ -111,8 +78,8 @@ const diceReady = () => {
                 e.target.children[0].classList.toggle('fill-zinc-100')
                 if (number === 1 || number === 5) { e.target.children[0].classList.add('fill-zinc-300') }
                 else { e.target.children[0].classList.add('fill-zinc-700') }
-                
-                
+
+
                 // console.log(dupedDice)
                 let old_element = e.target
                 let new_element = old_element.cloneNode(true);
@@ -120,8 +87,8 @@ const diceReady = () => {
                 let timer = setInterval(() => {
                     new_element.classList.toggle('animate-ping')
                     clearInterval(timer)
-                }, 75);
-                
+                }, 50);
+
             }
 
 
@@ -215,50 +182,50 @@ const beginPlayerScoreCalculation = (diceObject) => {
     let scoreObj = {
         specialCombo: {},
         standardCombo: {},
-        one: properties[0]*10,
-        five: properties[4]*5,
+        one: properties[0] * 10,
+        five: properties[4] * 5,
     }
 
-    
-    if(properties === [1,1,1,1,1,1]){
-        scoreObj.specialCombo.name = 'straight' 
-        scoreObj.specialCombo.value = 150 
+
+    if (properties === [1, 1, 1, 1, 1, 1]) {
+        scoreObj.specialCombo.name = 'straight'
+        scoreObj.specialCombo.value = 150
         scoreObj.one = 0
         scoreObj.five = 0
 
 
         return scoreObj
     }
-    
+
     for (let i = 0; i < properties.length; i++) {
         const element = properties[i];
-        if(element === 6){
+        if (element === 6) {
             standardComboFunc('hexa', 300, i)
             scoreObj.one = 0
             scoreObj.five = 0
             // console.log(scoreObj);
             softUpdate(
-                playerData.standard.hexa, 
-                playerDataCopy.standard.hexa, 
+                playerData.standard.hexa,
+                playerDataCopy.standard.hexa,
                 scoreObj.standardCombo.diceNumber
-                )
+            )
 
             return scoreObj
-        } else if ( element === 5){
+        } else if (element === 5) {
 
             standardComboFunc('penta', 200, i)
             softUpdate(
-                playerData.standard.penta, 
-                playerDataCopy.standard.penta, 
+                playerData.standard.penta,
+                playerDataCopy.standard.penta,
                 scoreObj.standardCombo.diceNumber
-                )
+            )
             // console.log(scoreObj);
-        } else if(element === 4){
+        } else if (element === 4) {
             for (let j = 0; j < properties.length; j++) {
                 const element2 = properties[j];
-                if(element2 === 2){
+                if (element2 === 2) {
                     let add = 0
-                    if(j + 1 === 1){ add = 20} else if ( j + 1 === 5){add = 10}
+                    if (j + 1 === 1) { add = 20 } else if (j + 1 === 5) { add = 10 }
                     scoreObj.specialCombo.name = 'supaquad'
                     scoreObj.specialCombo.diceNumber1 = i + 1
                     scoreObj.specialCombo.diceNumber2 = j + 1
@@ -267,21 +234,21 @@ const beginPlayerScoreCalculation = (diceObject) => {
                     scoreObj.five = 0
                     // console.log(scoreObj);
                     softUpdate(
-                        playerData.standard.quad, 
-                        playerDataCopy.standard.quad, 
+                        playerData.standard.quad,
+                        playerDataCopy.standard.quad,
                         scoreObj.specialCombo.diceNumber1
-                        )
+                    )
                     return scoreObj
                 }
             }
-            standardComboFunc('quad', 100, i)  
-            softUpdate(playerData.standard.quad, playerDataCopy.standard.quad, scoreObj.standardCombo.diceNumber)  
+            standardComboFunc('quad', 100, i)
+            softUpdate(playerData.standard.quad, playerDataCopy.standard.quad, scoreObj.standardCombo.diceNumber)
             // console.log(scoreObj);        
-        } else if (element === 3){
+        } else if (element === 3) {
             for (let j = 0; j < properties.length; j++) {
                 const element2 = properties[j];
-                if(j != i){
-                    if(element2 === 3){
+                if (j != i) {
+                    if (element2 === 3) {
                         scoreObj.specialCombo.name = 'triplepair'
                         scoreObj.specialCombo.diceNumber1 = i + 1
                         scoreObj.specialCombo.diceNumber2 = j + 1
@@ -295,14 +262,14 @@ const beginPlayerScoreCalculation = (diceObject) => {
                     }
                 }
             }
-            if(i + 1 === 1){
-                standardComboFunc('triple',20, i)
+            if (i + 1 === 1) {
+                standardComboFunc('triple', 20, i)
                 softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.standardCombo.diceNumber)
-            } else{ 
-                standardComboFunc('triple',0, i)
+            } else {
+                standardComboFunc('triple', 0, i)
 
                 softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.standardCombo.diceNumber)
-                
+
             }
 
         } else {
@@ -311,15 +278,15 @@ const beginPlayerScoreCalculation = (diceObject) => {
 
     }
     // console.log(scoreObj)
-    
+
     return scoreObj
 
 
-    function softUpdate(original, copy, compair, ) {
+    function softUpdate(original, copy, compair,) {
         // console.log(compair)
         for (let i = 0; i < copy.length; i++) {
             const element = copy[i]
-            
+
             if (element.index === compair - 1) {
                 element.status = 'unlocked'
                 if (element.total === original[i].total) {
@@ -332,14 +299,13 @@ const beginPlayerScoreCalculation = (diceObject) => {
     }
 
     function standardComboFunc(n, num, i) {
-        if(i + 1 == 1){scoreObj.one = 0}
-        if(i + 1 == 5){scoreObj.five = 0}
+        if (i + 1 == 1) { scoreObj.one = 0 }
+        if (i + 1 == 5) { scoreObj.five = 0 }
         scoreObj.standardCombo.name = n
         scoreObj.standardCombo.diceNumber = i + 1
         scoreObj.standardCombo.value = num + ((i + 1) * 10)
-        
+
     }
-    // animateScoreAccumulator(totalObject, diceObject)
     // console.log(totalObject)
 
 }
@@ -360,12 +326,14 @@ const animateScoreAccumulator = (scoreObj) => {
 
     if (totalAndArray.total > roundTotal) {
         // if you win -------------------------------------------------------------
-        accumulatorUpdate(totalAndArray.total )
+        accumulatorUpdate(totalAndArray.total, scoreEL)
         appendScoreChildren(totalAndArray.arr, 0)
+        return false
     } else {
         // if you lose --------------------------------------------------------------
-        accumulatorUpdate(0)
+        accumulatorUpdate(0, scoreEL)
         console.log('lost')
+        return true
     }
     // console.log(scoreArr)
 
@@ -375,7 +343,7 @@ const animateScoreAccumulator = (scoreObj) => {
 const appendScoreChildren = (arr, index) => {
     let appendtimer = 375
     let fadeDuration = 500
-    const containerEL = document.querySelector('#add-container')
+
 
 
     cleanArray = arr.filter(data => typeof data === 'number').filter(data => data != 0)
@@ -406,6 +374,7 @@ const appendScoreChildren = (arr, index) => {
             opacity--
             if (opacity <= 0) {
                 clearInterval(fadeOut)
+                liEL.classList.add('delete')
                 liEL.style.opacity = 0
             }
             liEL.style.top = `${incriment / 5}px`
@@ -425,12 +394,12 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
     // console.log(x.length)
     if (x.length === 6) {
         // console.log(obj)
-         scoreObj = beginPlayerScoreCalculation(obj)
+        scoreObj = beginPlayerScoreCalculation(obj)
         // console.log(scoreObj)
 
         giveDiceAttributes(scoreObj)
 
-         animateScoreAccumulator(scoreObj, obj)
+        let hasFailed = animateScoreAccumulator(scoreObj, obj)
         // const propertyNames = Object.keys(x)
         // console.log(scoreObj)
         let newX = x.filter(die => die.getAttribute('data-type') != 'common')
@@ -441,33 +410,85 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
 
         });
         // console.log(obj)
-        nextRoundStart(obj)
+        if (hasFailed) {
+            const counterEL = document.querySelector('#counter-element')
+            const nextRoundContainer = document.querySelector('#next-round')
+            nextRoundContainer.classList.toggle('hidden')
+            counterEL.classList.toggle('animate-ping')
+            let countdown = 3
+            counterEL.textContent = countdown
+            let timer1 = setInterval(() => {
+                if(!counterEL.classList.contains('animate-ping')){
+                    counterEL.classList.toggle('animate-ping')
+                }
+                countdown--
+                counterEL.textContent = countdown
+                if(countdown === 0){
+                    clearInterval(timer1)
+                    counterEL.classList.toggle('animate-ping')
+                    nextRoundContainer.classList.toggle('hidden')
+                }
+                
+                
+            }, 1000);
+
+            let timer = setInterval(() => {
+                
+                btnSave.removeEventListener('click', saveBTN)
+                swapUpdateLocalStorage()
+                toggleRefreshBtnContent()
+                score = 0
+                roundTotal = 0
+                // btnSave.classList.toggle('opacity-10')
+                // btnSave.classList.toggle('animate-pulse')
+                updatePercentageEL(912)
+                accumulatorUpdate(0, scoreEL)
+                clearInterval(timer)
+            }, 3000);
+        } else {
+            nextRoundStart(obj)
+        }
 
     }
 }
 
-function accumulatorUpdate(goal) {
+function accumulatorUpdate(goal, domEL) {
     let starterNumber = score + roundTotal
     let willcontinue = true
     if (goal === 0) {
         score = 0
         willcontinue = false
+        
     }
     let timer = setInterval(() => {
-
-        if (!willcontinue) { starterNumber -= 5 }
+        // console.log(goal)
+        if (!willcontinue) { 
+            if(!domEL.classList.contains('text-red-200')){
+                domEL.classList.toggle('text-red-200') 
+            }
+            starterNumber -= 2; 
+        }
         else { starterNumber++ }
 
-        if(starterNumber < 0){ 
+        if (starterNumber < 0) {
+            if(!willcontinue){
+                if(domEL.classList.contains('text-red-200')){
+                    domEL.classList.toggle('text-red-200')
+                }
+            }
             starterNumber = 0
-            scoreEL.innerHTML = starterNumber
+            domEL.innerHTML = starterNumber.toLocaleString()
         }
 
         if (starterNumber === goal + score) {
+            if(!willcontinue){
+                if(domEL.classList.contains('text-red-200')){
+                    domEL.classList.toggle('text-red-200')}
+                }
             clearInterval(timer)
-            scoreEL.innerHTML = goal + score
-            if (scoreEL.classList.contains('scale-110')) {
-                scoreEL.classList.toggle('scale-110')
+            domEL.innerHTML = (goal + score).toLocaleString()
+            if (domEL.classList.contains('scale-110')) {
+                domEL.classList.toggle('scale-110')
                 // console.log( goal, score)
                 // --------------------------------------------------- goal score
             }
@@ -475,10 +496,10 @@ function accumulatorUpdate(goal) {
         }
 
         if (starterNumber % 2) {
-            scoreEL.classList.toggle('scale-110')
-            scoreEL.classList.add('opacity-80')
+            domEL.classList.toggle('scale-110')
+            domEL.classList.add('opacity-80')
         }
-        scoreEL.innerHTML = starterNumber
+        domEL.innerHTML = starterNumber.toLocaleString()
     }, 5)
     roundTotal = goal
     // console.log( starterNumber , goal  , roundTotal, score)
@@ -526,70 +547,7 @@ function rerollThis(arr) {
     startNewRoll(arr)
 }
 
-function updatePercentageEL(percentage) {
-    // console.log(percentage)
-    let eL = document.querySelector('#percentage-element')
-    const currentPercentage = parseInt(eL.innerHTML.split("").filter(data => data != '.').join(""))
-    let interval = currentPercentage
-    let isDescending;
-    let timer = setInterval(() => {
-        // console.log(percentage)
-        // console.log(currentPercentage,percentage)
-        if (currentPercentage == percentage) { clearInterval(timer); return }
-        else if (currentPercentage < percentage) {isDescending = false; interval += 3 }
-        else {isDescending = true; interval-=3 }
-        if(isDescending){
-            if (interval <= percentage) {
-                clearInterval(timer)
-                eL.innerHTML = percentage / 10
-                return
-            }
-        } else {
-            if (interval >= percentage) {
-                clearInterval(timer)
-                eL.innerHTML = percentage / 10
-                return
-            }
-        }
-        switch (true) {
-            case (interval >= 900):
-                updateColorTo('#3b82f6')
-                break;
-            case (interval >= 800 && interval < 900):
-                updateColorTo('#06b6d4')
-                break;
-            case (interval >= 700 && interval < 800):
-                updateColorTo('#10b981')
-                break;
-            case (interval >= 600 && interval < 700):
-                updateColorTo('#84cc16')
-                break;
-            case (interval >= 500 && interval < 600):
-                updateColorTo('#f59e0b')
-                break;
-            case (interval >= 400 && interval < 500):
-                updateColorTo('#f97316')
-                break;
-            case (interval >= 300 && interval < 400):
-                updateColorTo('#ef4444')
-                break;
 
-
-            default:
-                break;
-        }
-        if (interval > 912) { clearInterval(timer); interval = 912 }
-        if (interval < 333) { clearInterval(timer); interval = 333 }
-        eL.innerHTML = interval / 10
-    }, 1)
-}
-
-function updateColorTo(color) {
-    document.querySelectorAll('.percentage-value').forEach(element => {
-        element.style.color = color
-
-    })
-}
 
 
 

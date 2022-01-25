@@ -161,3 +161,21 @@ const saveSuccessfulOrFailedTotal = (int) => {
 
     
 }
+
+const cleanUpScorChildren = () => {
+    let deleteChildren = document.querySelectorAll('li')
+    for (let i = 0; i < deleteChildren.length; i++) {
+        const element = deleteChildren[i];
+        if(element.classList.contains('delete')){
+            element.remove()
+        }
+
+    }
+}
+
+function updateColorTo(color) {
+    document.querySelectorAll('.percentage-value').forEach(element => {
+        element.style.color = color
+
+    })
+}
