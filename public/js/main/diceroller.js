@@ -414,21 +414,21 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
             const counterEL = document.querySelector('#counter-element')
             const nextRoundContainer = document.querySelector('#next-round')
             nextRoundContainer.classList.toggle('hidden')
-            counterEL.classList.toggle('animate-ping')
             let countdown = 3
             counterEL.textContent = countdown
+            counterEL.classList.toggle('animate-ping')
             let timer1 = setInterval(() => {
                 if(!counterEL.classList.contains('animate-ping')){
                     counterEL.classList.toggle('animate-ping')
                 }
                 countdown--
-                counterEL.textContent = countdown
                 if(countdown === 0){
+                    nextRoundContainer.classList.toggle('hidden')
                     clearInterval(timer1)
                     counterEL.classList.toggle('animate-ping')
-                    nextRoundContainer.classList.toggle('hidden')
                 }
                 
+                counterEL.textContent = countdown
                 
             }, 1000);
 

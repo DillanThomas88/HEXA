@@ -1,15 +1,14 @@
 const bodyEL = document.querySelector('body')
 const statsEL = document.querySelector('#btn-stats')
 const statsClose = document.querySelector('.stats-modal-close')
+const overlay2 = document.querySelector('.stats-modal')
 
 
 
 
 function statsModal() {
-    
-    const overlay = document.querySelector('.stats-modal')
-    // overlay.classList.toggle('pointer-events-none')
-    overlay.classList.toggle('hidden')
+    // toggleModal(overlay2)
+    overlay2.classList.toggle('hidden')
 }
 
 statsEL.addEventListener('click', statsModal)

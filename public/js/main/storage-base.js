@@ -1,6 +1,6 @@
 let playerData = {}
 let playerDataCopy = {}
-let currentVersion = 0.3
+let currentVersion = 0.4
 
 
 if(!window.localStorage.getItem('user-data')){
