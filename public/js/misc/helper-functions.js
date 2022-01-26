@@ -197,7 +197,20 @@ const gameOver = () => {
     
     playerDataCopy.user.hasFinished = true
     swapUpdateLocalStorage()
-    document.querySelector('#send-link').setAttribute('href',`sms:body=I achieved ${playerDataCopy.user.todayScore} points in HEXA today! \n(${playerDataCopy.user.date})`)
+
+    const shareData = {
+        title: 'HEXA',
+        text: `I achieved a ${playerDataCopy.user.todayScore} in HEXA  today! \n (${playerDataCopy.user.date})`,
+        url: 'dillanthomas88.github.io'
+      }
+    
+      document.querySelector('#share-btn').addEventListener('click', async () => {
+        try {
+          await navigator.share(shareData)
+        } catch(err) {
+          alert('Oops, something went wrong, try again later.')
+        }
+      });
 }
 
 const returnCurrentDay = () => {
