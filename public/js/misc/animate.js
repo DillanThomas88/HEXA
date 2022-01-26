@@ -30,3 +30,14 @@ const rotateSaveIcon = () => {
 
     }, 1);
 }
+
+const pingElement = (element) => {
+    element.classList.toggle('animate-ping')
+    element.classList.toggle('text-yellow-200')
+    let timer = setInterval(() => {
+        element.classList.toggle('animate-ping')
+        element.classList.toggle('text-yellow-200')
+
+        clearInterval(timer)
+    }, 100);
+}

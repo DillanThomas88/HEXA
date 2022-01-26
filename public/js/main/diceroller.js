@@ -11,6 +11,7 @@ let score = 0
 let roundTotal = 0
 let isSaveActivated = false
 let isRefreshActivated = false
+let roundNumber = 3
 
 
 
@@ -90,6 +91,8 @@ const diceReady = () => {
                 }, 50);
 
             }
+
+
 
 
             playerPackage = createPlayerStatsObject()
@@ -331,7 +334,11 @@ const animateScoreAccumulator = (scoreObj) => {
         return false
     } else {
         // if you lose --------------------------------------------------------------
+        playerDataCopy.totalLost += score + roundTotal
+
+
         accumulatorUpdate(0, scoreEL)
+
         console.log('lost')
         return true
     }
@@ -411,6 +418,15 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
         });
         // console.log(obj)
         if (hasFailed) {
+            roundNumber--
+            if(roundNumber === 0){
+                
+                document.querySelector('body').style.backdropFilter = 'blur(5px)'
+                roundEL.textContent = roundNumber
+                pingElement(roundEL)
+                console.log('gameover')
+                return
+            }
             const counterEL = document.querySelector('#counter-element')
             const nextRoundContainer = document.querySelector('#next-round')
             nextRoundContainer.classList.toggle('hidden')
@@ -444,6 +460,12 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
                 updatePercentageEL(912)
                 accumulatorUpdate(0, scoreEL)
                 clearInterval(timer)
+
+                let roundEL = document.querySelector('#round-interval')
+
+                roundEL.textContent = roundNumber
+                pingElement(roundEL)
+                swapUpdateLocalStorage()
             }, 3000);
         } else {
             nextRoundStart(obj)

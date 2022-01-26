@@ -1,5 +1,13 @@
 module.exports = {
-  content: ["./index.html","./public/js/*.js","./public/js/main/*.js",,"./public/js/misc/*.js","./public/js/secondary*.js", "./public/js/secondary/info-modal.js","./public/js/secondary/stats-modal.js"],
+  content: ["./index.html",
+  "./public/js/*.js",
+  "./public/js/main/*.js",
+  "./public/js/misc/*.js",
+  "./public/js/secondary*.js", 
+  "./public/js/secondary/info-modal.js",
+  "./public/js/secondary/stats-modal.js",
+  "./public/js/secondary/result-screen.js"
+],
   theme: {
     extend: {
       fontFamily: {

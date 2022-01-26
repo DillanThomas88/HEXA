@@ -73,8 +73,22 @@ const saveBTN = () => {
     btnSave.classList.toggle('animate-pulse')
     updatePercentageEL(912)
     accumulatorUpdate(0, scoreEL)
+
     score = 0
     roundTotal = 0
+
+    let roundEL = document.querySelector('#round-interval')
+    roundNumber--
+    roundEL.textContent = roundNumber
+    if(roundNumber === 0){
+
+        gameOver()
+        roundEL.textContent = roundNumber
+        pingElement(roundEL)
+        return
+    }
+    pingElement(roundEL)
+
 }
 
 

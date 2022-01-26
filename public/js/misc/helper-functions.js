@@ -157,10 +157,6 @@ const giveDiceAttributes = (obj) => {
     }
 }
 
-const saveSuccessfulOrFailedTotal = (int) => {
-
-    
-}
 
 const cleanUpScorChildren = () => {
     let deleteChildren = document.querySelectorAll('li')
@@ -178,4 +174,20 @@ function updateColorTo(color) {
         element.style.color = color
 
     })
+}
+
+const gameOver = () => {
+    let blurEL = document.querySelector('#blur-container')
+    blurEL.classList.toggle('pointer-events-none')
+    let amount = 0
+    let timer = setInterval(() => {
+        amount++
+        if(amount > 10){
+            clearInterval(timer)
+            resultsSetUp()
+            return
+        }
+        blurEL.style.filter = `blur(${amount}px)`
+    }, 50);
+    
 }

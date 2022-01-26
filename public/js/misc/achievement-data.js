@@ -2,6 +2,10 @@
 function newUserSetUp() {
 
     const achievementList = {
+        userName: 'default',
+        date: Date(),
+        todayScore: 0,
+        hasFinished: false,
         successfullRolls: 0,
         totalSaved: 0,
         totalLost: 0,
@@ -399,7 +403,7 @@ const showAchievement = (obj, color) => {
     span1.classList.add('w-5/6', 'text-2xl', 'justify-start')
     // span2.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
     span3.classList.add('w-1/6', 'flex', 'justify-end')
-    span4.classList.add('w-5/6')
+    span4.classList.add('w-5/6', 'text-zinc-400', 'font-normal')
     // span5.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
     span6.classList.add('w-1/6', 'flex', 'justify-end')
 
@@ -490,7 +494,7 @@ function appendAll() {
             hr.style.height = '1px'
             let div = document.createElement('div')
             div.textContent = arr2[i]
-            div.classList.add('text-zinc-800', 'text-lg')
+            div.classList.add('text-zinc-500', 'text-2xl', 'font-thin')
             statsCont.append(hr, div)
 
         }
@@ -498,7 +502,7 @@ function appendAll() {
         // console.log(element)
 
     }
-    document.querySelector('#achievement-out-of').textContent = `(${playerDataCopy.unlocked} out of ${playerDataCopy.achievements}) Unlocked`
+    // document.querySelector('#achievement-out-of').textContent = `(${playerDataCopy.unlocked} out of ${playerDataCopy.achievements}) Unlocked`
     document.querySelector('#saved-amount').textContent = parseInt(playerDataCopy.totalSaved).toLocaleString()
     document.querySelector('#saved-times').textContent = parseInt(playerDataCopy.successfullRolls).toLocaleString()
     document.querySelector('#lost-amount').textContent = parseInt(playerDataCopy.totalLost).toLocaleString()
