@@ -202,7 +202,7 @@ const gameOver = () => {
     const shareData = {
         title: 'HEXA',
         text: `${playerDataCopy.user.userName} scored ${playerDataCopy.user.todayScore}p in HEXA!\n(${playerDataCopy.user.date})`,
-        url: 'dillanthomas88.github.io'
+        url: 'https://dillanthomas88.github.io/hexa'
     }
 
     shareBtnListener(shareData)
