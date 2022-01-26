@@ -1,11 +1,15 @@
+const turnCount = 3
 
 function newUserSetUp() {
 
     const achievementList = {
-        userName: 'default',
-        date: Date(),
-        todayScore: 0,
-        hasFinished: false,
+        user: {
+            userName: 'default',
+            date: returnCurrentDay(),
+            todayScore: 150,
+            hasFinished: false,
+            availableTurns: turnCount,
+        },
         successfullRolls: 0,
         totalSaved: 0,
         totalLost: 0,

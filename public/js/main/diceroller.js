@@ -420,11 +420,12 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
         if (hasFailed) {
             roundNumber--
             if(roundNumber === 0){
-                
+                let roundEL = document.querySelector('#round-interval')
+                gameOver()
                 document.querySelector('body').style.backdropFilter = 'blur(5px)'
                 roundEL.textContent = roundNumber
                 pingElement(roundEL)
-                console.log('gameover')
+                // console.log('gameover')
                 return
             }
             const counterEL = document.querySelector('#counter-element')

@@ -1,6 +1,6 @@
 let playerData = {}
 let playerDataCopy = {}
-let currentVersion = 0.6
+let currentVersion = 1.0
 
 
 if(!window.localStorage.getItem('user-data')){
@@ -38,4 +38,9 @@ function setUpNewAchievements() {
 
 appendAll()
 
+updateUserInfoDaily(playerDataCopy)
+
+if(playerDataCopy.user.hasFinished === true){
+    gameOver()
+}
 // console.log(playerDataCopy)

@@ -14,8 +14,8 @@ const activateReRollBtn = (arr) => {
 function toggleRefreshBtnContent(arr) {
     isRefreshActivated = false
 
-    refreshbtn.removeEventListener('click', wipeadnRoll)
     if (refreshbtn.classList.contains('animate-pulse')) {
+        refreshbtn.removeEventListener('click', wipeadnRoll)
 
         refreshbtn.children[0].classList.add('fill-zinc-300')
         refreshbtn.children[0].classList.toggle('fill-zinc-200')
@@ -34,35 +34,12 @@ const saveBTN = () => {
     btnSave.removeEventListener('click', saveBTN)
 
     let savedScore = score + roundTotal + currentlySaved
-    saveEL.classList.toggle('text-yellow-200')
+
+
+    playerDataCopy.user.todayScore = savedScore
     let interval = currentlySaved
-    let timer = setInterval(() => {
-
-        interval++
-        if (interval < 0) {
-            interval = 0
-            saveEL.innerHTML = interval.toLocaleString()
-        }
-
-        if (interval >= savedScore) {
-            clearInterval(timer)
-            saveEL.innerHTML = savedScore.toLocaleString()
-            if (saveEL.classList.contains('scale-110')) {
-                saveEL.classList.toggle('scale-110')
-                // console.log( goal, score)
-                // --------------------------------------------------- goal score
-            }
-            saveEL.classList.toggle('text-yellow-200')
-            currentlySaved = savedScore
-            return
-        }
-
-        if (interval % 2) {
-            saveEL.classList.toggle('scale-110')
-            saveEL.classList.add('opacity-80')
-        }
-        saveEL.innerHTML = interval.toLocaleString()
-    }, 1);
+    pointAdder(saveEL, savedScore , interval, 1)
+    currentlySaved = savedScore
 
     rotateSaveIcon()
     playerDataCopy.successfullRolls += 1
@@ -83,6 +60,7 @@ const saveBTN = () => {
     if(roundNumber === 0){
 
         gameOver()
+
         roundEL.textContent = roundNumber
         pingElement(roundEL)
         return

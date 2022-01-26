@@ -189,5 +189,66 @@ const gameOver = () => {
         }
         blurEL.style.filter = `blur(${amount}px)`
     }, 50);
+
+    let timer2 = setInterval(() => {
+        pointAdder(document.querySelector('#your-score'),playerDataCopy.user.todayScore, 0, 1)
+        clearInterval(timer2)
+    }, 1000);
     
+    playerDataCopy.user.hasFinished = true
+    swapUpdateLocalStorage()
+}
+
+const returnCurrentDay = () => {
+    let formal = new Date()
+    let month = formal.getMonth()+1
+    let day = formal.getDate()
+    let year = formal.getFullYear()
+    return `${month}/${day}/${year}`
+}
+
+const updateUserInfoDaily = (obj) => {
+    if (obj.user.date === returnCurrentDay()){
+        return
+    } else {
+        obj.user.date = returnCurrentDay()
+        obj.user.availableTurns = turnCount
+        obj.user.hasFinished = false
+        obj.user.todayScore = 0
+    }
+}
+
+
+
+const pointAdder = (element, goal, interval, speed) => {
+
+    if(interval == undefined){interval = 0}
+    element.classList.toggle('text-yellow-100')
+    let timer = setInterval(() => {
+        interval++
+        if (interval < 0) {
+            interval = 0
+            element.innerHTML = interval.toLocaleString()
+        }
+
+        if (interval >= goal) {
+            clearInterval(timer)
+            element.innerHTML = goal.toLocaleString()
+            if (element.classList.contains('scale-110')) {
+                element.classList.toggle('scale-110')
+                // console.log( goal, score)
+                // --------------------------------------------------- goal score
+            }
+            if(element.classList.contains('text-yellow-100')){
+            element.classList.toggle('text-yellow-100')
+            }
+            return
+        }
+
+        if (interval % 5) {
+            element.classList.toggle('scale-110')
+            element.classList.add('opacity-80')
+        }
+        element.innerHTML = interval.toLocaleString()
+    }, speed);
 }
