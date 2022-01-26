@@ -60,7 +60,7 @@ const saveBTN = () => {
     if(roundNumber === 0){
 
         gameOver()
-
+        
         roundEL.textContent = roundNumber
         pingElement(roundEL)
         return

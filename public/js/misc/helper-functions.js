@@ -197,6 +197,7 @@ const gameOver = () => {
     
     playerDataCopy.user.hasFinished = true
     swapUpdateLocalStorage()
+    document.querySelector('#send-link').setAttribute('href',`sms:body=I achieved ${playerDataCopy.user.todayScore} points in HEXA today! \n(${playerDataCopy.user.date})`)
 }
 
 const returnCurrentDay = () => {
