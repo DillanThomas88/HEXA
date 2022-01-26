@@ -5,6 +5,7 @@ function newUserSetUp() {
     const achievementList = {
         user: {
             userName: 'default',
+            finishedTutorial: false,
             date: returnCurrentDay(),
             todayScore: 150,
             hasFinished: false,
@@ -476,6 +477,8 @@ function appendAchievements(arr) {
 
 
 function appendAll() {
+    document.querySelector('#achievement-header').textContent = `${playerDataCopy.user.userName}'s Statistics`
+    document.querySelector('#version-number').textContent = `version ${playerDataCopy.version}`
     const statsCont = document.querySelector('#stats-container')
     while (statsCont.firstChild) {
         statsCont.removeChild(statsCont.lastChild);

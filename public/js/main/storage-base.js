@@ -1,6 +1,6 @@
 let playerData = {}
 let playerDataCopy = {}
-let currentVersion = 1.0
+let currentVersion = 1.1
 
 
 if(!window.localStorage.getItem('user-data')){
@@ -39,7 +39,12 @@ function setUpNewAchievements() {
 appendAll()
 
 updateUserInfoDaily(playerDataCopy)
-
+if(playerDataCopy.user.finishedTutorial){
+    document.querySelector('#game-container').classList.toggle('hidden')
+} else {
+    document.querySelector('#tutorial-container').classList.toggle('hidden')
+    runTutorial()
+}
 if(playerDataCopy.user.hasFinished === true){
     gameOver()
 }

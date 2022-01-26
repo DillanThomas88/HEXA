@@ -12,18 +12,18 @@ const getScoreArray = (obj) => {
 
     for (let i = 0; i < obj2.arr.length; i++) {
         const element = obj2.arr[i];
-        if(typeof element == 'object'){
-            if(element.value){
-                obj2.arr[i] =  element.value
-            }  else { obj2.arr[i] =  0 }
-        } 
+        if (typeof element == 'object') {
+            if (element.value) {
+                obj2.arr[i] = element.value
+            } else { obj2.arr[i] = 0 }
+        }
     }
     for (let j = 0; j < obj2.arr.length; j++) {
         const element = obj2.arr[j];
-        obj2.total+= element
+        obj2.total += element
     }
     let cleanArr = obj2.arr.filter(int => int != 0)
-    
+
     obj2.arr = cleanArr
     return obj2
 }
@@ -40,26 +40,26 @@ const getDiceParentElements = () => {
 }
 
 const calculatenNextChance = (obj, length) => {
-    let {one, two, three, four, five , six} = obj
-    let arr = [one,two,three,four,five,six]
+    let { one, two, three, four, five, six } = obj
+    let arr = [one, two, three, four, five, six]
     let numOfDifferentDice = 2
     let percentage
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
-        if(element >= 3 && i + 1 != 1 && i + 1 != 5){
+        if (element >= 3 && i + 1 != 1 && i + 1 != 5) {
             numOfDifferentDice++
         }
-        if ((element === 3)){
+        if ((element === 3)) {
             for (let j = 0; j < arr.length; j++) {
                 const el2 = arr[j];
-                if(el2 === 3 && j != i){
+                if (el2 === 3 && j != i) {
                     return percentage = 912
                 }
             }
-        } else if (element === 4){
+        } else if (element === 4) {
             for (let k = 0; k < arr.length; k++) {
                 const el3 = arr[k];
-                if(el3 === 2 && k != i){
+                if (el3 === 2 && k != i) {
                     return percentage = 912
                 }
             }
@@ -67,22 +67,23 @@ const calculatenNextChance = (obj, length) => {
     }
 
 
-    let decimal = (6 - numOfDifferentDice)/6
+    let decimal = (6 - numOfDifferentDice) / 6
     let ratio = Math.pow(decimal, length)
 
     // console.log(decimal, ratio)
-    percentage = ((1 - ratio) * 100).toFixed(1)* 10
+    percentage = ((1 - ratio) * 100).toFixed(1) * 10
     // console.log(percentage)
-    if(percentage === 0){return percentage = 912}
+    if (percentage === 0) { return percentage = 912 }
     return percentage
 }
 
 const checkForSpecialCombo = (arr, diceObj) => {
     // console.log(arr)
     // console.log(diceObj)
-    if (!arr.special) { return
-    } else { 
-        if(arr.special.name === 'supaquad' && !arr.special.fiveOrOne){
+    if (!arr.special) {
+        return
+    } else {
+        if (arr.special.name === 'supaquad' && !arr.special.fiveOrOne) {
 
             let die = document.querySelectorAll(`[data-die='${diceObj.common[0]}']`)
             for (let i = 0; i < die.length; i++) {
@@ -90,7 +91,7 @@ const checkForSpecialCombo = (arr, diceObj) => {
                 element.classList.toggle('fill-zinc-700')
                 element.classList.add('fill-yellow-400')
             }
-        } else if (arr.special.name === 'twotriples'){
+        } else if (arr.special.name === 'twotriples') {
             let die = document.querySelectorAll(`[data-die='${diceObj.orange.value}']`)
             for (let i = 0; i < die.length; i++) {
                 const element = die[i];
@@ -99,7 +100,7 @@ const checkForSpecialCombo = (arr, diceObj) => {
             }
         }
     }
-    
+
 }
 
 const waitFor = (miliseconds, func, param) => {
@@ -117,8 +118,8 @@ function removeAllChildNodes(parent) {
 }
 
 const giveDiceAttributes = (obj) => {
-    let {one, five, specialCombo, standardCombo} = obj
-    if(specialCombo.name){
+    let { one, five, specialCombo, standardCombo } = obj
+    if (specialCombo.name) {
         setDataTypeAttribute(specialCombo.diceNumber1)
         setDataTypeAttribute(specialCombo.diceNumber2)
         // console.log(standardCombo.diceNumber1)
@@ -126,23 +127,23 @@ const giveDiceAttributes = (obj) => {
         return
     }
 
-    if(standardCombo.name){
+    if (standardCombo.name) {
         setDataTypeAttribute(standardCombo.diceNumber)
         // console.log(standardCombo.diceNumber)
     }
-    if(one !== 0){
+    if (one !== 0) {
         setDataTypeAttribute(1)
         // console.log('one')
     }
-    if(five !== 0){
+    if (five !== 0) {
         setDataTypeAttribute(5)
         // console.log('five')
     }
-    
+
     let parents = getDiceParentElements()
     for (let j = 0; j < parents.length; j++) {
         const element = parents[j];
-        if(!element.hasAttribute('data-type')){
+        if (!element.hasAttribute('data-type')) {
             element.setAttribute('data-type', 'common')
         }
     }
@@ -151,7 +152,7 @@ const giveDiceAttributes = (obj) => {
         let x = document.querySelectorAll(`[data-die='${int}']`)
         for (let i = 0; i < x.length; i++) {
             const y = x[i]
-            
+
             y.parentElement.setAttribute('data-type', 'score')
         }
     }
@@ -162,7 +163,7 @@ const cleanUpScorChildren = () => {
     let deleteChildren = document.querySelectorAll('li')
     for (let i = 0; i < deleteChildren.length; i++) {
         const element = deleteChildren[i];
-        if(element.classList.contains('delete')){
+        if (element.classList.contains('delete')) {
             element.remove()
         }
 
@@ -182,7 +183,7 @@ const gameOver = () => {
     let amount = 0
     let timer = setInterval(() => {
         amount++
-        if(amount > 10){
+        if (amount > 10) {
             clearInterval(timer)
             resultsSetUp()
             return
@@ -191,38 +192,43 @@ const gameOver = () => {
     }, 50);
 
     let timer2 = setInterval(() => {
-        pointAdder(document.querySelector('#your-score'),playerDataCopy.user.todayScore, 0, 1)
+        pointAdder(document.querySelector('#your-score'), playerDataCopy.user.todayScore, 0, 1)
         clearInterval(timer2)
     }, 1000);
-    
+
     playerDataCopy.user.hasFinished = true
     swapUpdateLocalStorage()
 
     const shareData = {
         title: 'HEXA',
-        text: `I achieved a ${playerDataCopy.user.todayScore} in HEXA  today! \n (${playerDataCopy.user.date})`,
+        text: `${playerDataCopy.user.userName} scored ${playerDataCopy.user.todayScore}p in HEXA!\n(${playerDataCopy.user.date})`,
         url: 'dillanthomas88.github.io'
-      }
-    
-      document.querySelector('#share-btn').addEventListener('click', async () => {
+    }
+
+    shareBtnListener(shareData)
+}
+
+function shareBtnListener(data) {
+    document.querySelector('#share-btn').addEventListener('click', async () => {
         try {
-          await navigator.share(shareData)
-        } catch(err) {
+            await navigator.share(data)
+            document.querySelector('#share-btn').children[0].children[1].textContent = 'Sent!'
+        } catch (err) {
             document.querySelector('#share-btn').children[0].children[1].textContent = 'error'
         }
-      });
+    })
 }
 
 const returnCurrentDay = () => {
     let formal = new Date()
-    let month = formal.getMonth()+1
+    let month = formal.getMonth() + 1
     let day = formal.getDate()
     let year = formal.getFullYear()
     return `${month}/${day}/${year}`
 }
 
 const updateUserInfoDaily = (obj) => {
-    if (obj.user.date === returnCurrentDay()){
+    if (obj.user.date === returnCurrentDay()) {
         return
     } else {
         obj.user.date = returnCurrentDay()
@@ -236,7 +242,7 @@ const updateUserInfoDaily = (obj) => {
 
 const pointAdder = (element, goal, interval, speed) => {
 
-    if(interval == undefined){interval = 0}
+    if (interval == undefined) { interval = 0 }
     element.classList.toggle('text-yellow-100')
     let timer = setInterval(() => {
         interval++
@@ -253,8 +259,8 @@ const pointAdder = (element, goal, interval, speed) => {
                 // console.log( goal, score)
                 // --------------------------------------------------- goal score
             }
-            if(element.classList.contains('text-yellow-100')){
-            element.classList.toggle('text-yellow-100')
+            if (element.classList.contains('text-yellow-100')) {
+                element.classList.toggle('text-yellow-100')
             }
             return
         }
@@ -266,3 +272,26 @@ const pointAdder = (element, goal, interval, speed) => {
         element.innerHTML = interval.toLocaleString()
     }, speed);
 }
+
+
+let checkForScore = setInterval(() => {
+
+    if (roundTotal > 0 || score > 0) {
+        // console.log(roundTotal)
+        if (!isSaveActivated) {
+            isSaveActivated = true
+            btnSave.addEventListener('click', saveBTN)
+            btnSave.classList.toggle('opacity-10')
+            btnSave.classList.toggle('animate-pulse')
+        }
+    } else {
+        btnSave.removeEventListener('click', saveBTN)
+        if (!btnSave.classList.contains('opacity-10')) {
+
+            btnSave.classList.toggle('opacity-10')
+            btnSave.classList.toggle('animate-pulse')
+        }
+        isSaveActivated = false
+
+    }
+}, 100);

@@ -70,24 +70,5 @@ const saveBTN = () => {
 }
 
 
-let checkForScore = setInterval(() => {
 
-    if (roundTotal > 0 || score > 0) {
-        // console.log(roundTotal)
-        if (!isSaveActivated) {
-            isSaveActivated = true
-            btnSave.addEventListener('click', saveBTN)
-            btnSave.classList.toggle('opacity-10')
-            btnSave.classList.toggle('animate-pulse')
-        }
-    } else {
-        btnSave.removeEventListener('click', saveBTN)
-        if (!btnSave.classList.contains('opacity-10')) {
 
-            btnSave.classList.toggle('opacity-10')
-            btnSave.classList.toggle('animate-pulse')
-        }
-        isSaveActivated = false
-
-    }
-}, 100);
