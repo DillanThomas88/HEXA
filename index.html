@@ -370,7 +370,7 @@
             </div>
         </header>
         <!-- main------------------------------------------------------------------------ -->
-        <div id="blur-container" class="px-6 py-4 overflow-y-hidden  w-full h-full ">
+        <div id="blur-container" class="px-6 py-4 overflow-y-hidden blur-lg w-full h-full ">
             <main class="h-full w-full  overflow-y-hidden  object-contain w-full h-full">
 
                 <div
@@ -475,19 +475,19 @@
                 All Rights Reserved.</span>
         </footer>
         <!-- results screen -->
-        <section id="result-screen"  class="hidden fixed pointer-events-none w-screen h-screen flex justify-center items-center text-zinc-300 overflow-x-hidden pb-16">
-            <div style="background-color: rgba(0, 0, 0, 0.459);"  class="fixed pointer-events-auto flex justify-around flex flex-col w-5/6 h-96 min-h-fit rounded-md  py-6">
+        <section id="result-screen"  class=" fixed pointer-events-none w-screen h-screen flex justify-center items-center text-zinc-300 overflow-x-hidden pb-16">
+            <div style="background-color: rgba(0, 0, 0, 0.459);"  class="fixed pointer-events-auto flex flex-col justify-around  w-5/6 rounded-md  pt-6 pb-14">
                 <div class="">
-                    <div   class="font-semibold text-lg w-full flex justify-center normal-case  ">Today's Score</div>
-                    <div class="flex h-full justify-center items-center pl-7">
-                        <div id="your-score" class="flex justify-center font-thin text-7xl text-zinc-100">0</div> 
+                    <div   class="font-semibold text-lg w-full flex justify-center normal-case pt-8 ">Today's Score</div>
+                    <div class="flex h-full justify-center items-center pl-7 py-2">
+                        <div id="your-score" class="flex justify-center font-thin text-7xl text-zinc-100">1,000</div> 
                         <span class="pt-8 text-zinc-700 font-thin px-1">p</span>
                     </div>
 
                 </div>
-                <div class="flex items-center justify-center -mb-6">
-                    <button id="share-btn" class="bg-zinc-900 focus:bg-green-600 hover:bg-zinc-700 text-zinc-200 font-bold pt-1 pb-2 px-4 rounded ">
-                        <div class="inline-flex items-center animate-pulse">
+                <div class="flex items-center justify-center py-8 ">
+                    <button id="share-btn" class="bg-zinc-900 focus:bg-green-600 hover:bg-zinc-700 text-zinc-200 font-bold py-2 px-4 rounded ">
+                        <div class="inline-flex items-center animate-pulse ">
                             <div>
                                 <svg class="h-6 w-6 mr-2" fill="white" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
@@ -499,9 +499,9 @@
 
                     </button>
                 </div>
-                <div class="flex justify-center pb-2">
+                <div class="flex justify-center">
                     <div class="flex flex-col justify-center items-center ">
-                        <div class="text-lg normal-case ">See you tomorrow!</div>
+                        <div class="text-lg normal-case font-normal pb-3">See you tomorrow!</div>
                         <div id="timer" class="font-thin text-4xl">12:40:13</div>
                     </div>
 
