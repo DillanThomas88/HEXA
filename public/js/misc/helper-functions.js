@@ -208,7 +208,7 @@ const gameOver = () => {
         try {
           await navigator.share(shareData)
         } catch(err) {
-          alert('Oops, something went wrong, try again later.')
+            document.querySelector('#share-btn').children[0].children[1].textContent = 'error'
         }
       });
 }
