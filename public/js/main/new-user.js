@@ -23,7 +23,7 @@ btnName.addEventListener('click', (e) => {
         if(arr.join("") === 'Admin'){
             tutgreeting.textContent = 'giving you unlimited rolls...'
         } else {
-            tutgreeting.textContent = 'Cleasing your bad Ju Ju...'
+            tutgreeting.textContent = 'Cleansing your bad Ju Ju...'
         }
         playerDataCopy.user.finishedTutorial = true
         swapUpdateLocalStorage()

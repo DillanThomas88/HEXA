@@ -10,6 +10,7 @@ function newUserSetUp() {
             todayScore: 0,
             hasFinished: false,
             availableTurns: turnCount,
+            round: [],
             playCount: 0,
         },
         successfullRolls: 0,
