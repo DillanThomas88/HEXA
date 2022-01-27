@@ -1827,6 +1827,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-yellow-300 {
+  --tw-text-opacity: 1;
+  color: rgb(253 224 71 / var(--tw-text-opacity));
+}
+
 .placeholder-zinc-600::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(82 82 91 / var(--tw-placeholder-opacity));
@@ -2135,6 +2140,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .\31 2pro\:h-16 {
     height: 4rem;
+  }
+
+  .\31 2pro\:h-12 {
+    height: 3rem;
   }
 
   .\31 2pro\:scale-95 {

@@ -30,9 +30,9 @@
                 <div class=" flex justify-center items-center flex-col">
                     <p class=" flex justify-center align-center text-7xl font-semibold normal-case text-zinc-800 pt-4 ">
                         HEXA</p>
-                        <div  class="text-xs text-zinc-800">
-                            Information
-                        </div>
+                    <div class="text-xs text-zinc-800">
+                        Information
+                    </div>
                     <div class=" fixed top-3 right-3  info-modal-close cursor-pointer z-50">
                         <svg class="fill-current text-white mt-1" xmlns="http://www.w3.org/2000/svg" width="18"
                             height="18" viewBox="0 0 18 18">
@@ -271,19 +271,20 @@
                         </div>
                     </section>
                 </div>
-                <!--Footer-->
-                <div class="flex justify-end pt-2">
+                <!-- footer ---------------------------------------------------------------------- -->
+                <footer class=" w-full flex justify-center text-xs font-semibold opacity-80 pb-3 ">
 
-                </div>
+                    <span>Copyright 2022 </span><span class="font-thin opacity-30">dt88</span>. <span>
+                        All Rights Reserved.</span>
+                </footer>
 
             </div>
         </div>
     </div>
     <!-- stats modal -->
-    <div
-        class="stats-modal info-modal info-active hidden fixed w-screen ipadair:px-96 h-full z-50 overflow-y-auto">
-        <div class="fixed w-screen h-screen bg-black opacity-50 pointer-events-none"></div>
-        <div class="z-20 px-10 backdrop-blur-lg ">
+    <div class="stats-modal info-modal info-active hidden fixed w-screen ipadair:px-96 h-full z-50 overflow-y-auto">
+        <!-- <div class="fixed w-screen h-screen bg-black opacity-50 pointer-events-none"></div> -->
+        <div style="background-color: rgb(10, 10, 10);" class="z-20 px-10 overflow-y-auto">
             <div class=" fixed top-3 right-3 ipadair:top-10 ipadair:right-20  stats-modal-close cursor-pointer z-50">
                 <svg class="fill-current text-white mt-1" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                     viewBox="0 0 18 18">
@@ -302,19 +303,19 @@
                         <div class="mb-4 border-x-2  px-2 border-zinc-700">
                             <div class="flex flex-row justify-between">
                                 <span class="">Earned
-    
+
                                 </span>
                                 <span class="">
-    
+
                                     successfully saved</span>
                             </div>
                             <div class="flex justify-between">
                                 <div>
-                                    <span id="saved-amount" class="text-zinc-400 text-lg font-thin">0</span>
+                                    <span id="saved-amount" class="text-blue-500 text-lg font-thin">0</span>
                                     <span class="lowercase text-zinc-700">p</span>
                                 </div>
                                 <div>
-                                    <span id="saved-times" class="text-zinc-400 text-lg font-thin">0</span>
+                                    <span id="saved-times" class="text-blue-500 text-lg font-thin">0</span>
                                     <span class="text-zinc-700 normal-case">Times</span>
                                 </div>
                             </div>
@@ -326,31 +327,37 @@
                             </div>
                             <div class="flex justify-between">
                                 <div>
-                                    <span id="lost-amount" class="text-zinc-400 text-lg font-thin">0</span>
+                                    <span id="lost-amount" class="text-blue-500 text-lg font-thin">0</span>
                                     <span class="lowercase text-zinc-700">p</span>
                                 </div>
                                 <div>
-                                    <span id="lost-times" class="text-zinc-400 text-lg font-thin">0</span>
+                                    <span id="lost-times" class="text-blue-500 text-lg font-thin">0</span>
                                     <span class="text-zinc-700 normal-case">Times</span>
                                 </div>
                             </div>
                         </div>
-    
-    
+
+
                     </section>
                     <div id="achievement-out-of" class="flex justify-center text-lg uppercase"></div>
                     <!-- header -->
                 </header>
                 <section id="stats-container" class="overflow-y-auto pb-8">
                     <!-- Achievement list -->
-    
+
                 </section>
                 <!-- <footer class="fixed w-screen h-10 bg-gradient-to-b from-zinc-900 top-0"></footer>
                 <footer class="fixed w-screen h-10 bg-gradient-to-t from-zinc-900 bottom-0"></footer> -->
-    
+
             </div>
+            <!-- footer ---------------------------------------------------------------------- -->
+            <footer class=" w-full flex justify-center text-xs font-semibold opacity-80 pb-3 ">
+
+                <span>Copyright 2022 </span><span class="font-thin opacity-30">dt88</span>. <span>
+                    All Rights Reserved.</span>
+            </footer>
         </div>
-       
+
 
 
     </div>
@@ -358,26 +365,36 @@
     <section id="game-container" class="z-20 hidden flex h-full flex-col items-center justify-between  ">
         <!-- header--------------------------------------------------------------------- -->
         <header class=" w-screen border-b border-zinc-400 bg-zinc-300 shadow-sm shadow-black flex justify-center">
-        <div class="  text-black  flex items-center font-bold 
-        py-1 px-6 ipadair:px-16 h-10 12pro:h-16  ipadair:h-16  flex flex-row justify-between 2xl:w-5/6 w-full ">
-            <div class=" flex justify-start">
-                <svg class="info-modal-open h-8 w-8 ipadair:h-12 ipadair:w-12  fill-zinc-900 cursor-pointer transition duration-150 ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110" enable-background="new 0 0 24 24" viewBox="0 0 24 24"><g><rect fill="none" height="24" width="24"/></g><g><path d="M11.07,12.85c0.77-1.39,2.25-2.21,3.11-3.44c0.91-1.29,0.4-3.7-2.18-3.7c-1.69,0-2.52,1.28-2.87,2.34L6.54,6.96 C7.25,4.83,9.18,3,11.99,3c2.35,0,3.96,1.07,4.78,2.41c0.7,1.15,1.11,3.3,0.03,4.9c-1.2,1.77-2.35,2.31-2.97,3.45 c-0.25,0.46-0.35,0.76-0.35,2.24h-2.89C10.58,15.22,10.46,13.95,11.07,12.85z M14,20c0,1.1-0.9,2-2,2s-2-0.9-2-2c0-1.1,0.9-2,2-2 S14,18.9,14,20z"/></g></svg>
-                <!-- <button class=" bg-transparent border border-zinc-500 hover:border-indigo-500 text-zinc-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal</button> -->
+            <div class="  text-black  flex items-center font-bold 
+        py-1 px-6 ipadair:px-16 h-10 12pro:h-12  ipadair:h-16  flex flex-row justify-between 2xl:w-5/6 w-full ">
+                <div class=" flex justify-start">
+                    <svg class="info-modal-open h-8 w-8 ipadair:h-12 ipadair:w-12  fill-zinc-900 cursor-pointer transition duration-150 ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
+                        enable-background="new 0 0 24 24" viewBox="0 0 24 24">
+                        <g>
+                            <rect fill="none" height="24" width="24" />
+                        </g>
+                        <g>
+                            <path
+                                d="M11.07,12.85c0.77-1.39,2.25-2.21,3.11-3.44c0.91-1.29,0.4-3.7-2.18-3.7c-1.69,0-2.52,1.28-2.87,2.34L6.54,6.96 C7.25,4.83,9.18,3,11.99,3c2.35,0,3.96,1.07,4.78,2.41c0.7,1.15,1.11,3.3,0.03,4.9c-1.2,1.77-2.35,2.31-2.97,3.45 c-0.25,0.46-0.35,0.76-0.35,2.24h-2.89C10.58,15.22,10.46,13.95,11.07,12.85z M14,20c0,1.1-0.9,2-2,2s-2-0.9-2-2c0-1.1,0.9-2,2-2 S14,18.9,14,20z" />
+                        </g>
+                    </svg>
+                    <!-- <button class=" bg-transparent border border-zinc-500 hover:border-indigo-500 text-zinc-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal</button> -->
+                </div>
+                <div class=" flex justify-center  tracking-widest text-3xl 12pro:text-4xl ipadair:text-5xl  font-thin">
+                    hexa</div>
+                <div class="flex justify-end ">
+                    <svg id="btn-stats"
+                        class="h-8 w-8 ipadair:h-12 ipadair:w-12   fill-black cursor-pointer transition duration-150  ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
+                        viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none" />
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                    </svg>
+                </div>
             </div>
-            <div class=" flex justify-center  tracking-widest text-3xl 12pro:text-5xl ipadair:text-5xl  font-thin">
-                hexa</div>
-            <div class="flex justify-end ">
-                <svg id="btn-stats"
-                    class="h-8 w-8 ipadair:h-12 ipadair:w-12   fill-black cursor-pointer transition duration-150  ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
-                    viewBox="0 0 24 24">
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-                </svg>
-            </div>
-        </div>
         </header>
         <!-- main------------------------------------------------------------------------ -->
-        <div id="blur-container" class="fixed pointer-events-none flex h-screen justify-center items-center px-6 py-4  text  w-screen 2xl:w-2/6 ipadair:w-3/6  ipadair:scale-150 ">
+        <div id="blur-container"
+            class="fixed pointer-events-none flex h-screen justify-center items-center px-6 py-4  text  w-screen 2xl:w-2/6 ipadair:w-3/6  ipadair:scale-150 ">
             <main class="  object-contain pointer-events-auto -mt-6">
 
                 <div
@@ -427,11 +444,11 @@
                         class=" hidden flex flex-col justify-center items-center row-start-1 col-start-1 row-span-2 text-sm font-medium">
                         <span id="counter-element" class=" text-4xl pb-4 text-yellow-200 -mt-8 ">2</span>
                         <span class=" font-thin text-xs  pb-2 ">next roundin</span>
-                        <span class=" text-yellow-200">- Lost -</span> 
+                        <span class=" text-yellow-200">- Lost -</span>
                     </p>
                     <p class="flex justify-center items-center row-start-3 col-start-3 row-span-2 font-medium text-2xl">
-                        <span class="opacity-50"></span> <span
-                            class="opacity-50 font-thin   pb-2 percentage-value" style="color: #3b82f6"></span>
+                        <span class="opacity-50"></span> <span class="opacity-50 font-thin   pb-2 percentage-value"
+                            style="color: #3b82f6"></span>
                         <span class="  font-thin  pb-2 percentage-value" style="color: #3b82f6">save</span>
                     </p>
                     <p
@@ -475,12 +492,7 @@
             </main>
 
         </div>
-        <!-- footer ---------------------------------------------------------------------- -->
-        <footer class=" w-screen ipadair:w-full flex justify-center text-xs font-semibold opacity-80 pb-3 ">
 
-            <span>Copyright 2022 </span><span class="font-thin opacity-30">dt88</span>. <span>
-                All Rights Reserved.</span>
-        </footer>
         <!-- results screen -->
         <section id="result-screen"
             class="hidden fixed pointer-events-none w-screen h-screen flex justify-center items-center text-zinc-300 overflow-x-hidden pb-16">
@@ -496,20 +508,21 @@
                 </div>
                 <div class="flex items-center justify-center py-8 ">
 
-                        <button id="share-btn"
-                            class="bg-zinc-900 focus:bg-green-600 hover:bg-zinc-700 text-zinc-200 font-bold py-2 px-4 rounded ">
-                            <div class="pointer-events-none inline-flex items-center animate-pulse ">
-                                <div>
-                                    <svg class="pointer-events-none h-6 w-6 mr-2" fill="white" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                                    </svg>
-                                </div>
-                                <div class="pointer-events-none uppercase text-ipadair ">Share</div>
-
+                    <button id="share-btn"
+                        class="bg-zinc-900 focus:bg-green-600 hover:bg-zinc-700 text-zinc-200 font-bold py-2 px-4 rounded ">
+                        <div class="pointer-events-none inline-flex items-center animate-pulse ">
+                            <div>
+                                <svg class="pointer-events-none h-6 w-6 mr-2" fill="white" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                </svg>
                             </div>
+                            <div class="pointer-events-none uppercase text-ipadair ">Share</div>
 
-                        </button>
+                        </div>
+
+                    </button>
                 </div>
                 <div class="flex justify-center">
                     <div class="flex flex-col justify-center items-center ">
@@ -525,36 +538,43 @@
     <section id="tutorial-container" class=" z-50 hidden w-screen flex flex-col items-center">
         <header id="tut-title" class="text-8xl py-12 text-zinc-200">
             HEXA
-            <div id="version-number" class="text-sm opacity-10 text-blue-500 animate-pulse flex justify-center">version 1.0</div>
+            <div id="version-number" class="text-sm opacity-10 text-blue-500 animate-pulse flex justify-center">version
+                1.0</div>
         </header>
-        
-        
-        
-            <div id="tut-form" class=" px-8 pt-6 w-full flex justify-between items-center text-lg ">
-              <div class="w-3/6">
-                <input id="tut-content-name" class="placeholder-zinc-600 font-thin border-l-4 border-zinc-200  items-center py-2 px-3 text-zinc-100 bg-transparent focus:outline-none focus:bg-transparent"  type="text" placeholder="Type in your name">
-              </div>
 
-              <div class="flex items-center ">
-                <button id="tut-btn-name" class="bg-zinc-200  font-bold h-10 w-32  focus:outline-none focus:shadow-outline flex justify-start pl-2 items-center" type="button">
-                    <svg  class="h-5 w-5 fill-zinc-800" viewBox="0 0 20 20" >
-                        <path fill-rule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z" clip-rule="evenodd" />
-                      </svg>
-                      <span class="text-zinc-900 w-4/6 font-medium text-xl">Start</span>
+
+
+        <div id="tut-form" class=" px-8 pt-6 w-full flex justify-between items-center text-lg ">
+            <div class="w-3/6">
+                <input id="tut-content-name"
+                    class="placeholder-zinc-600 font-thin border-l-4 border-zinc-200  items-center py-2 px-3 text-zinc-100 bg-transparent focus:outline-none focus:bg-transparent"
+                    type="text" placeholder="Type in your name">
+            </div>
+
+            <div class="flex items-center ">
+                <button id="tut-btn-name"
+                    class="bg-zinc-200  font-bold h-10 w-32  focus:outline-none focus:shadow-outline flex justify-start pl-2 items-center"
+                    type="button">
+                    <svg class="h-5 w-5 fill-zinc-800" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-zinc-900 w-4/6 font-medium text-xl">Start</span>
                 </button>
-              </div>
             </div>
+        </div>
 
-            <div id="tut-welcome" class="w-full pointer-events-none  text-sm flex flex-col justify-center items-center">
-                <div class="flex animate-bounce normal-case">
-                    <span class="font-thin">Welcome </span>
-                    <span id="welcome-user" class="pl-1">Dillan</span>
-                </div>
-                <div class="relative w-3/6 h-1 bg-zinc-700 rounded-full my-6">
-                    <div id="loading-bar" class="h-full absolute rounded-full left-0 bg-zinc-100"></div>
-                </div>
-                <span id="tut-facts" class="font-thin text-zinc-600 normal-case">Cleansing your bad JuJu...</span>
+        <div id="tut-welcome" class="w-full pointer-events-none  text-sm flex flex-col justify-center items-center">
+            <div class="flex animate-bounce normal-case">
+                <span class="font-thin">Welcome </span>
+                <span id="welcome-user" class="pl-1">Dillan</span>
             </div>
+            <div class="relative w-3/6 h-1 bg-zinc-700 rounded-full my-6">
+                <div id="loading-bar" class="h-full absolute rounded-full left-0 bg-zinc-100"></div>
+            </div>
+            <span id="tut-facts" class="font-thin text-zinc-600 normal-case">Cleansing your bad JuJu...</span>
+        </div>
 
     </section>
 
