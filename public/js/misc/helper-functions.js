@@ -197,11 +197,12 @@ const gameOver = () => {
     }, 1000);
 
     playerDataCopy.user.hasFinished = true
+
     swapUpdateLocalStorage()
 
     const shareData = {
         title: 'HEXA',
-        text: `${playerDataCopy.user.userName} scored ${playerDataCopy.user.todayScore}p in HEXA!\n(${playerDataCopy.user.date})`,
+        text: `${playerDataCopy.user.userName}'s Daily Hexa Stats\n\nScored: ${playerDataCopy.user.todayScore}p\nRounds:${playerDataCopy.user.round[0]} - ${playerDataCopy.user.round[1]} - ${playerDataCopy.user.round[2]}\nDate: ${playerDataCopy.user.date}\nPlay Count: ${playerDataCopy.user.playCount}`,
         url: 'https://dillanthomas88.github.io/hexa'
     }
 
@@ -235,6 +236,8 @@ const updateUserInfoDaily = (obj) => {
         obj.user.availableTurns = turnCount
         obj.user.hasFinished = false
         obj.user.todayScore = 0
+        obj.user.round = []
+        obj.user.availableTurns = turnCount
     }
 }
 

@@ -44,6 +44,8 @@ const saveBTN = () => {
     rotateSaveIcon()
     playerDataCopy.successfullRolls += 1
     playerDataCopy.totalSaved += (score + roundTotal)
+    playerDataCopy.user.availableTurns -= 1 
+    playerDataCopy.user.round.push(roundTotal)
     swapUpdateLocalStorage()
     toggleRefreshBtnContent()
     btnSave.classList.toggle('opacity-10')
@@ -58,7 +60,7 @@ const saveBTN = () => {
     roundNumber--
     roundEL.textContent = roundNumber
     if(roundNumber === 0){
-
+        playerDataCopy.user.playCount += 1
         gameOver()
         
         roundEL.textContent = roundNumber

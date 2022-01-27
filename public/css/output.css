@@ -535,6 +535,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   bottom: -1.25rem;
 }
 
+.top-1 {
+  top: 0.25rem;
+}
+
+.right-1 {
+  right: 0.25rem;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -713,6 +721,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 2rem;
 }
 
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -797,6 +810,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: -2rem;
 }
 
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.-mt-12 {
+  margin-top: -3rem;
+}
+
+.-mt-4 {
+  margin-top: -1rem;
+}
+
+.mr-10 {
+  margin-right: 2.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -859,6 +888,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-12 {
   height: 3rem;
+}
+
+.h-7 {
+  height: 1.75rem;
 }
 
 .max-h-max {
@@ -931,6 +964,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: auto;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.w-7 {
+  width: 1.75rem;
+}
+
 .scale-90 {
   --tw-scale-x: .9;
   --tw-scale-y: .9;
@@ -940,6 +985,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .scale-110 {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-150 {
+  --tw-scale-x: 1.5;
+  --tw-scale-y: 1.5;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1103,6 +1154,14 @@ Ensure the default browser behavior of the `hidden` attribute.
        column-gap: 2.5rem;
 }
 
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
 .overflow-y-auto {
   overflow-y: auto;
 }
@@ -1147,12 +1206,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 0.5rem;
 }
 
+.rounded-none {
+  border-radius: 0px;
+}
+
 .border {
   border-width: 1px;
 }
 
 .border-4 {
   border-width: 4px;
+}
+
+.border-0 {
+  border-width: 0px;
 }
 
 .border-x-2 {
@@ -1166,6 +1233,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .border-l-4 {
   border-left-width: 4px;
+}
+
+.border-l-8 {
+  border-left-width: 8px;
 }
 
 .border-none {
@@ -1220,6 +1291,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-zinc-400 {
   --tw-border-opacity: 1;
   border-color: rgb(161 161 170 / var(--tw-border-opacity));
+}
+
+.border-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
 .bg-zinc-900 {
@@ -1535,6 +1611,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 2.5rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .pt-4 {
   padding-top: 1rem;
 }
@@ -1615,6 +1701,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 3rem;
 }
 
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.pl-3 {
+  padding-left: 0.75rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
+}
+
+.pb-40 {
+  padding-bottom: 10rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1679,6 +1781,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .font-bold {
@@ -1830,6 +1937,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-yellow-300 {
   --tw-text-opacity: 1;
   color: rgb(253 224 71 / var(--tw-text-opacity));
+}
+
+.text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
 .placeholder-zinc-600::-moz-placeholder {
@@ -2169,12 +2281,46 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 820px) {
+  .ipadair\:pointer-events-none {
+    pointer-events: none;
+  }
+
+  .ipadair\:pointer-events-auto {
+    pointer-events: auto;
+  }
+
+  .ipadair\:fixed {
+    position: fixed;
+  }
+
   .ipadair\:top-10 {
     top: 2.5rem;
   }
 
   .ipadair\:right-20 {
     right: 5rem;
+  }
+
+  .ipadair\:right-8 {
+    right: 2rem;
+  }
+
+  .ipadair\:right-3 {
+    right: 0.75rem;
+  }
+
+  .ipadair\:right-4 {
+    right: 1rem;
+  }
+
+  .ipadair\:my-12 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .ipadair\:my-4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .ipadair\:mt-40 {
@@ -2193,6 +2339,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-top: -10rem;
   }
 
+  .ipadair\:mt-64 {
+    margin-top: 16rem;
+  }
+
+  .ipadair\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
   .ipadair\:h-screen {
     height: 100vh;
   }
@@ -2207,6 +2361,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .ipadair\:h-16 {
     height: 4rem;
+  }
+
+  .ipadair\:h-8 {
+    height: 2rem;
+  }
+
+  .ipadair\:h-4 {
+    height: 1rem;
+  }
+
+  .ipadair\:h-5 {
+    height: 1.25rem;
   }
 
   .ipadair\:w-12 {
@@ -2229,6 +2395,18 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 50%;
   }
 
+  .ipadair\:w-8 {
+    width: 2rem;
+  }
+
+  .ipadair\:w-4 {
+    width: 1rem;
+  }
+
+  .ipadair\:w-5 {
+    width: 1.25rem;
+  }
+
   .ipadair\:scale-100 {
     --tw-scale-x: 1;
     --tw-scale-y: 1;
@@ -2241,8 +2419,18 @@ Ensure the default browser behavior of the `hidden` attribute.
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
+  .ipadair\:scale-110 {
+    --tw-scale-x: 1.1;
+    --tw-scale-y: 1.1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
   .ipadair\:items-center {
     align-items: center;
+  }
+
+  .ipadair\:justify-center {
+    justify-content: center;
   }
 
   .ipadair\:px-16 {
@@ -2255,8 +2443,110 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-right: 24rem;
   }
 
+  .ipadair\:px-40 {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .ipadair\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .ipadair\:px-80 {
+    padding-left: 20rem;
+    padding-right: 20rem;
+  }
+
+  .ipadair\:px-56 {
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+
+  .ipadair\:px-60 {
+    padding-left: 15rem;
+    padding-right: 15rem;
+  }
+
+  .ipadair\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .ipadair\:pb-40 {
+    padding-bottom: 10rem;
+  }
+
+  .ipadair\:pb-64 {
+    padding-bottom: 16rem;
+  }
+
+  .ipadair\:pt-10 {
+    padding-top: 2.5rem;
+  }
+
+  .ipadair\:pb-4 {
+    padding-bottom: 1rem;
+  }
+
+  .ipadair\:pb-10 {
+    padding-bottom: 2.5rem;
+  }
+
+  .ipadair\:pb-20 {
+    padding-bottom: 5rem;
+  }
+
+  .ipadair\:pb-12 {
+    padding-bottom: 3rem;
+  }
+
   .ipadair\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .ipadair\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .ipadair\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .ipadair\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
+  .ipadair\:text-9xl {
+    font-size: 8rem;
+    line-height: 1;
+  }
+
+  .ipadair\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .ipadair\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .ipadair\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .ipadair\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .ipadair\:font-thin {
+    font-weight: 100;
   }
 }

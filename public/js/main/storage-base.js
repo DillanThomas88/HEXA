@@ -1,6 +1,6 @@
 let playerData = {}
 let playerDataCopy = {}
-let currentVersion = 1.1
+let currentVersion = 1.2
 
 
 if(!window.localStorage.getItem('user-data')){
@@ -8,16 +8,15 @@ if(!window.localStorage.getItem('user-data')){
 
 } else {
     playerData = JSON.parse(window.localStorage.getItem('user-data'));
-    if(playerData.version != currentVersion){
-        setUpNewAchievements()
-    }
 }
 
 playerDataCopy = JSON.parse(JSON.stringify(playerData));
 
 
 const swapUpdateLocalStorage = () => {
-    admin()
+    if(playerDataCopy.user.availableTurns < turnCount){
+        playerDataCopy.user.hasFinished = true
+    }
     window.localStorage.setItem('user-data', JSON.stringify(playerDataCopy));
     playerData = JSON.parse(window.localStorage.getItem('user-data'));
     playerDataCopy = JSON.parse(JSON.stringify(playerData));

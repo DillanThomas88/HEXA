@@ -7,9 +7,10 @@ function newUserSetUp() {
             userName: 'default',
             finishedTutorial: false,
             date: returnCurrentDay(),
-            todayScore: 150,
+            todayScore: 0,
             hasFinished: false,
             availableTurns: turnCount,
+            playCount: 0,
         },
         successfullRolls: 0,
         totalSaved: 0,
@@ -350,7 +351,7 @@ const createLockedAchievement = (title) => {
     div1.classList.add('pt-4', 'bottom-16', 'w-full')
     div2.classList.add('border-l-4', 'border-zinc-700', 'normal-case', 'py-2', 'px-3', 'flex', 'flex-col', 'justify-between', 'align-center')
     div3.classList.add('-mt-1', 'flex', 'items-center')
-    div4.classList.add('text-zinc-600', 'font-bold', 'text-xs',)
+    div4.classList.add('text-zinc-600', 'font-thin', 'text-xs', 'ipadair:text-4xl')
 
     p.classList.add('text-2xl', 'text-zinc-800', 'flex', 'items-center', 'uppercase')
     p.innerHTML = locked
@@ -400,12 +401,12 @@ const showAchievement = (obj, color) => {
     div4.append(span1,  span3)
     div5.append(span4,  span6)
     div1.classList.add('pt-4', 'bottom-16', 'w-full')
-    div2.classList.add('border-l-4', applyColor, 'normal-case', 'py-2', 'px-3', 'flex', 'flex-col', 'justify-between', 'align-center')
+    div2.classList.add('border-l-8', applyColor, 'normal-case', 'py-2', 'px-3', 'flex', 'flex-col', 'justify-between', 'align-center')
     div3.classList.add('-mt-1')
-    div4.classList.add('text-xs', 'text-zinc-100', 'flex', 'justify-between', 'items-center')
-    div5.classList.add('text-zinc-100', 'font-bold', 'text-xs', 'flex')
+    div4.classList.add('text-xs','ipadair:text-4xl', 'text-zinc-100', 'flex', 'justify-between', 'items-center')
+    div5.classList.add('text-zinc-100', 'font-bold', 'text-xs','ipadair:text-2xl', 'flex')
 
-    span1.classList.add('w-5/6', 'text-2xl', 'justify-start')
+    span1.classList.add('w-5/6', 'text-2xl','ipadair:text-5xl', 'justify-start')
     // span2.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
     span3.classList.add('w-1/6', 'flex', 'justify-end')
     span4.classList.add('w-5/6', 'text-zinc-400', 'font-normal')

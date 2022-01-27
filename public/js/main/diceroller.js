@@ -419,8 +419,12 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
         // console.log(obj)
         if (hasFailed) {
             roundNumber--
+            playerDataCopy.user.availableTurns -= 1 
+            playerDataCopy.user.round.push(0)
+            console.log(playerDataCopy.user.availableTurns);
             if(roundNumber === 0){
                 let roundEL = document.querySelector('#round-interval')
+                playerDataCopy.user.playCount += 1
                 gameOver()
                 document.querySelector('body').style.backdropFilter = 'blur(5px)'
                 roundEL.textContent = roundNumber
@@ -466,7 +470,7 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
 
                 roundEL.textContent = roundNumber
                 pingElement(roundEL)
-                swapUpdateLocalStorage()
+
             }, 3000);
         } else {
             nextRoundStart(obj)

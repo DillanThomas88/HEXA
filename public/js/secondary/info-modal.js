@@ -18,7 +18,7 @@ const infoToggle = () => {
 }
 
 const overlay = document.querySelector('.info-modal-overlay')
-overlay.addEventListener('click', infoToggle)
+// overlay.addEventListener('click', infoToggle)
 
 var closemodal = document.querySelectorAll('.info-modal-close')
 for (var i = 0; i < closemodal.length; i++) {
