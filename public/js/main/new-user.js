@@ -68,34 +68,3 @@ const waitForThis = (miliseconds, func, param1,param2,param3) => {
     }, miliseconds);
 }
 
-const fade = (instruction, element, speed) => {
-
-    let incriment
-    let goal
-    
-    if(instruction === 'in'){
-        incriment = 0
-        goal = speed
-    } else if (instruction === 'out'){
-        incriment = speed
-        goal = 0
-    } else {
-        console.log('fade error');
-        return
-    }
-
-    let timer = setInterval(() => {
-        if(instruction === 'in'){
-            incriment++
-        } else {
-            incriment--
-        }
-        if(incriment < 0 || incriment > speed){
-            element.style.opacity = goal / speed
-            clearInterval(timer)
-            return
-        }
-
-        element.style.opacity = incriment / speed
-    }, 1);
-}

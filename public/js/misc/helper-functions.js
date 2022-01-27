@@ -202,7 +202,7 @@ const gameOver = () => {
 
     const shareData = {
         title: 'HEXA',
-        text: `${playerDataCopy.user.userName}'s Daily Hexa Stats\n\nScored: ${playerDataCopy.user.todayScore}p\nRounds:${playerDataCopy.user.round[0]} - ${playerDataCopy.user.round[1]} - ${playerDataCopy.user.round[2]}\nDate: ${playerDataCopy.user.date}\nPlay Count: ${playerDataCopy.user.playCount}`,
+        text: `${playerDataCopy.user.userName}'s Hexa Stats\n\nScored: ${playerDataCopy.user.todayScore}p\nRounds: ${playerDataCopy.user.round[0]} - ${playerDataCopy.user.round[1]} - ${playerDataCopy.user.round[2]}\nDate: ${playerDataCopy.user.date}\nPlay Count: ${playerDataCopy.user.playCount}`,
         url: 'https://dillanthomas88.github.io/hexa'
     }
 
@@ -232,12 +232,12 @@ const updateUserInfoDaily = (obj) => {
     if (obj.user.date === returnCurrentDay()) {
         return
     } else {
+        // let { date, availableTurns, hasFinished, todayScore, round, } = obj.user
         obj.user.date = returnCurrentDay()
         obj.user.availableTurns = turnCount
         obj.user.hasFinished = false
         obj.user.todayScore = 0
         obj.user.round = []
-        obj.user.availableTurns = turnCount
     }
 }
 
@@ -298,3 +298,35 @@ let checkForScore = setInterval(() => {
 
     }
 }, 100);
+
+const fade = (instruction, element, speed) => {
+
+    let incriment
+    let goal
+    
+    if(instruction === 'in'){
+        incriment = 0
+        goal = speed
+    } else if (instruction === 'out'){
+        incriment = speed
+        goal = 0
+    } else {
+        console.log('fade error');
+        return
+    }
+
+    let timer = setInterval(() => {
+        if(instruction === 'in'){
+            incriment++
+        } else {
+            incriment--
+        }
+        if(incriment < 0 || incriment > speed){
+            element.style.opacity = goal / speed
+            clearInterval(timer)
+            return
+        }
+
+        element.style.opacity = incriment / speed
+    }, 1);
+}

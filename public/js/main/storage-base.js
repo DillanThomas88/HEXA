@@ -52,6 +52,10 @@ if(playerDataCopy.user.finishedTutorial){
 if(!admin()){
     if(playerDataCopy.user.hasFinished === true){
         gameOver()
-    }
+    } 
+}else {
+    playerDataCopy.user.round = []
+    playerDataCopy.user.availableTurns = turnCount
+    swapUpdateLocalStorage()
 }
 // console.log(playerDataCopy)

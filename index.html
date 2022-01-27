@@ -429,10 +429,6 @@
                     <!-- <div class="row-start-1 col-start-2 row-span-6 rounded-full -my-5 mx-2 pointer-events-none bg-zinc-800  opacity-0 animate-pulse"></div> -->
                     <button id="btn-roll"
                         class="relative flex justify-center items-center uppercase row-start-2 col-start-1 col-span-1 row-span-2 opacity-10  ">
-                        <div
-                            class=" pointer-events-none absolute bottom-8 right-8 text-xl font-medium row-start-1 col-start-1 col-span-1 row-span-2">
-
-                        </div>
                         <svg class="pointer-events-none h-16 w-16 fill-zinc-300 " viewBox="0 0 24 24">
                             <path d="M0 0h24v24H0z" fill="none" />
                             <path
@@ -444,6 +440,13 @@
                         <span id="counter-element" class=" text-4xl pb-4 text-yellow-200 -mt-6 ">2</span>
                         <span class=" font-thin text-xs  pb-2 ">next roundin</span>
                         <span class=" text-yellow-200">- Lost -</span>
+                    </p>
+                    <p id="bonus-text"
+                        class="hidden pointer-events-none  flex flex-col justify-center items-center row-start-1 col-start-1 row-span-2 text-sm font-medium animate-pulse pb-14">
+                        <span>
+                            <svg class="w-12 h-12 fill-yellow-200" viewBox="0 0 24 24" ><path d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="19" r="2"/><path d="M10 3h4v12h-4z"/></svg>
+                        </span>
+                        <span  class=" text-yellow-200 pt-2">bonus-roll</span>
                     </p>
                     <p class="flex justify-center items-center row-start-3 col-start-3 row-span-2 font-medium text-2xl">
                         <span class="opacity-50"></span> <span class="opacity-50 font-thin   pb-2 percentage-value"
@@ -480,7 +483,7 @@
                         3
                     </div>
                     <div
-                        class="  flex justify-center items-center flex-col  row-start-1 col-start-3 col-span-1 row-span-2 text-sm pb-4 font-thin text-zinc-400">
+                        class="  flex justify-center items-center flex-col  row-start-1 col-start-3 col-span-1 row-span-2 text-sm  font-thin text-zinc-400">
                         <!-- <div>Rounds</div> -->
                         <div>Remaining</div>
                     </div>

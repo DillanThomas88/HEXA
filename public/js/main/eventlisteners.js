@@ -1,13 +1,22 @@
+const bonusEL = document.querySelector('#bonus-text')
 const activateReRollBtn = (arr) => {
     // console.log(arr)
     isRefreshActivated = true
     refreshbtn.addEventListener('click', wipeadnRoll = (e) => {
         toggleRefreshBtnContent(arr)
     })
+    refreshbtn.children[0].classList.toggle('fill-zinc-300')
+    if(document.querySelectorAll('.locked').length === 6){
+        refreshbtn.children[0].classList.toggle('fill-yellow-200')
+        bonusEL.classList.toggle('hidden')
+        fade('in', bonusEL, 100)
+    } else {
+        refreshbtn.children[0].classList.toggle('fill-zinc-200')
+    }
+
     refreshbtn.classList.toggle('opacity-10')
     refreshbtn.classList.toggle('animate-pulse')
-    refreshbtn.children[0].classList.toggle('fill-zinc-300')
-    refreshbtn.children[0].classList.add('fill-zinc-200')
+
 
 }
 
@@ -16,9 +25,13 @@ function toggleRefreshBtnContent(arr) {
 
     if (refreshbtn.classList.contains('animate-pulse')) {
         refreshbtn.removeEventListener('click', wipeadnRoll)
-
-        refreshbtn.children[0].classList.add('fill-zinc-300')
-        refreshbtn.children[0].classList.toggle('fill-zinc-200')
+        if(refreshbtn.children[0].classList.contains('fill-yellow-200')){
+            refreshbtn.children[0].classList.toggle('fill-yellow-200')
+            bonusEL.classList.toggle('hidden')
+        } else {
+            refreshbtn.children[0].classList.toggle('fill-zinc-200')
+        }
+        refreshbtn.children[0].classList.toggle('fill-zinc-300')
         refreshbtn.classList.toggle('animate-pulse')
         refreshbtn.classList.toggle('opacity-10')
     }
@@ -45,7 +58,7 @@ const saveBTN = () => {
     playerDataCopy.successfullRolls += 1
     playerDataCopy.totalSaved += (score + roundTotal)
     playerDataCopy.user.availableTurns -= 1 
-    playerDataCopy.user.round.push(roundTotal)
+    playerDataCopy.user.round.push(score + roundTotal)
     swapUpdateLocalStorage()
     toggleRefreshBtnContent()
     btnSave.classList.toggle('opacity-10')
