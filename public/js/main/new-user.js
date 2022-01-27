@@ -29,8 +29,8 @@ btnName.addEventListener('click', (e) => {
 
 
 const runTutorial = () => {
-    waitForThis(200, fade, 'in', titleEL, 300)
-    waitForThis(200, fade, 'in', formEL, 500)
+    waitForThis(200, fade, 'in', titleEL, 100)
+    waitForThis(200, fade, 'in', formEL, 100)
 }
 
 const loadingBar = () => {
@@ -43,7 +43,10 @@ const loadingBar = () => {
             if(interval >= length){
                 clearInterval(timer)
                 waitForThis(0,fade, 'out', tutContainer, 300)
-                location.reload()
+                let t = setInterval(() => {
+                    clearInterval(t)
+                    location.reload()
+                }, 1500);
             }
             let percentage = Math.floor((interval/length) * 100)
             loader.style.width = `${percentage}%`
