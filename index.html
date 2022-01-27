@@ -377,11 +377,11 @@
         </div>
         </header>
         <!-- main------------------------------------------------------------------------ -->
-        <div id="blur-container" class="fixed flex h-screen justify-center items-center px-6 py-4  text  w-full 2xl:w-2/6 ipadair:w-3/6  ipadair:scale-150 ">
-            <main class="  object-contain">
+        <div id="blur-container" class="fixed pointer-events-none flex h-screen justify-center items-center px-6 py-4  text  w-screen 2xl:w-2/6 ipadair:w-3/6  ipadair:scale-150 ">
+            <main class="  object-contain pointer-events-auto -mt-6">
 
                 <div
-                    class=" scale-90  12pro:scale-95  ipadair:scale-100 dice-container grid grid-cols-3 grid-rows-6 gap-x-0 gap-y-5 w-full justify-end  ">
+                    class=" scale-90  12pro:scale-95  ipadair:scale-100 dice-container grid grid-cols-3 grid-rows-6 gap-x-10 gap-y-5 w-full justify-end  ">
                     <button id="btn-save"
                         class="relative flex justify-center items-center row-start-2 col-start-3 row-span-2 opacity-10">
                         <svg class="pointer-events-none h-20 w-20 fill-zinc-200 " viewBox="0 0 24 24">
@@ -391,7 +391,7 @@
 
                     </button>
                     <p
-                        class="flex justify-center items-center row-start-3 col-start-1 col-span-1 row-span-2 font-medium">
+                        class="flex justify-center items-center row-start-3 col-start-1 col-span-1 row-span-2 font-medium text-2xl">
                         <span id="percentage-element" class="  pb-2 percentage-value font-thin"
                             style="color: #3b82f6">91.2</span> <span
                             class=" opacity-50  pb-2 percentage-value font-thin" style="color: #3b82f6">
@@ -429,7 +429,7 @@
                         <span class=" font-thin text-xs  pb-2 ">next roundin</span>
                         <span class=" text-yellow-200">- Lost -</span> 
                     </p>
-                    <p class="flex justify-center items-center row-start-3 col-start-3 row-span-2 font-medium">
+                    <p class="flex justify-center items-center row-start-3 col-start-3 row-span-2 font-medium text-2xl">
                         <span class="opacity-50"></span> <span
                             class="opacity-50 font-thin   pb-2 percentage-value" style="color: #3b82f6"></span>
                         <span class="  font-thin  pb-2 percentage-value" style="color: #3b82f6">save</span>
