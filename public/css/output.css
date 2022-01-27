@@ -769,6 +769,26 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 1.5rem;
 }
 
+.-mt-40 {
+  margin-top: -10rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
+.-mt-20 {
+  margin-top: -5rem;
+}
+
+.-mt-16 {
+  margin-top: -4rem;
+}
+
+.-mt-24 {
+  margin-top: -6rem;
+}
+
 .flex {
   display: flex;
 }
@@ -1014,6 +1034,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .content-center {
   align-content: center;
+}
+
+.content-end {
+  align-content: flex-end;
+}
+
+.items-end {
+  align-items: flex-end;
 }
 
 .items-center {
@@ -2071,8 +2099,24 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-top: 4rem;
   }
 
+  .\31 2pro\:-mt-20 {
+    margin-top: -5rem;
+  }
+
+  .\31 2pro\:mt-20 {
+    margin-top: 5rem;
+  }
+
+  .\31 2pro\:-mt-40 {
+    margin-top: -10rem;
+  }
+
   .\31 2pro\:h-20 {
     height: 5rem;
+  }
+
+  .\31 2pro\:h-16 {
+    height: 4rem;
   }
 
   .\31 2pro\:scale-95 {
@@ -2098,6 +2142,30 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 820px) {
+  .ipadair\:top-10 {
+    top: 2.5rem;
+  }
+
+  .ipadair\:right-20 {
+    right: 5rem;
+  }
+
+  .ipadair\:mt-40 {
+    margin-top: 10rem;
+  }
+
+  .ipadair\:mt-56 {
+    margin-top: 14rem;
+  }
+
+  .ipadair\:-mb-40 {
+    margin-bottom: -10rem;
+  }
+
+  .ipadair\:-mt-40 {
+    margin-top: -10rem;
+  }
+
   .ipadair\:h-screen {
     height: 100vh;
   }
@@ -2110,6 +2178,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 3rem;
   }
 
+  .ipadair\:h-16 {
+    height: 4rem;
+  }
+
   .ipadair\:w-12 {
     width: 3rem;
   }
@@ -2118,15 +2190,42 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 100%;
   }
 
+  .ipadair\:w-5\/6 {
+    width: 83.333333%;
+  }
+
+  .ipadair\:w-2\/6 {
+    width: 33.333333%;
+  }
+
+  .ipadair\:w-3\/6 {
+    width: 50%;
+  }
+
   .ipadair\:scale-100 {
     --tw-scale-x: 1;
     --tw-scale-y: 1;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
+  .ipadair\:scale-150 {
+    --tw-scale-x: 1.5;
+    --tw-scale-y: 1.5;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .ipadair\:items-center {
+    align-items: center;
+  }
+
   .ipadair\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
+  }
+
+  .ipadair\:px-96 {
+    padding-left: 24rem;
+    padding-right: 24rem;
   }
 
   .ipadair\:text-5xl {
