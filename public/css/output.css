@@ -789,6 +789,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: -6rem;
 }
 
+.-mt-10 {
+  margin-top: -2.5rem;
+}
+
+.-mt-8 {
+  margin-top: -2rem;
+}
+
 .flex {
   display: flex;
 }

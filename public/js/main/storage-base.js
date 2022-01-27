@@ -17,6 +17,7 @@ playerDataCopy = JSON.parse(JSON.stringify(playerData));
 
 
 const swapUpdateLocalStorage = () => {
+    admin()
     window.localStorage.setItem('user-data', JSON.stringify(playerDataCopy));
     playerData = JSON.parse(window.localStorage.getItem('user-data'));
     playerDataCopy = JSON.parse(JSON.stringify(playerData));
@@ -26,7 +27,11 @@ const swapUpdateLocalStorage = () => {
     }, 100);
 }
 
-
+const admin = () => {
+    if(playerDataCopy.user.userName === 'Admin'){
+        return true
+    } else { return false}
+}
 
 function setUpNewAchievements() {
     let achievementList = newUserSetUp();
@@ -45,7 +50,9 @@ if(playerDataCopy.user.finishedTutorial){
     document.querySelector('#tutorial-container').classList.toggle('hidden')
     runTutorial()
 }
-if(playerDataCopy.user.hasFinished === true){
-    gameOver()
+if(!admin()){
+    if(playerDataCopy.user.hasFinished === true){
+        gameOver()
+    }
 }
 // console.log(playerDataCopy)
