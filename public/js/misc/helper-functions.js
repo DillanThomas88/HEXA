@@ -192,7 +192,7 @@ const gameOver = () => {
     }, 50);
 
     let timer2 = setInterval(() => {
-        pointAdder(document.querySelector('#your-score'), playerDataCopy.user.todayScore, 0, 1)
+        pointUpdater(document.querySelector('#your-score'), 'upto', playerDataCopy.user.todayScore, 0, 1)
         clearInterval(timer2)
     }, 1000);
 
@@ -243,37 +243,64 @@ const updateUserInfoDaily = (obj) => {
 
 
 
-const pointAdder = (element, goal, interval, speed) => {
+const pointUpdater = (element, direction, goal, interval, speed) => {
+    if(direction === 'upto'){
 
-    if (interval == undefined) { interval = 0 }
-    element.classList.toggle('text-yellow-100')
-    let timer = setInterval(() => {
-        interval++
-        if (interval < 0) {
-            interval = 0
-            element.innerHTML = interval.toLocaleString()
-        }
-
-        if (interval >= goal) {
-            clearInterval(timer)
-            element.innerHTML = goal.toLocaleString()
-            if (element.classList.contains('scale-110')) {
+        element.classList.toggle('text-yellow-100')
+        let timer = setInterval(() => {
+            let difference = goal - interval
+            if(difference > 100){interval += 10}
+            else { interval++ }
+            if (interval >= goal) {
+                clearInterval(timer)
+                element.innerHTML = goal.toLocaleString()
+                if (element.classList.contains('scale-110')) {
+                    element.classList.toggle('scale-110')
+                    // console.log( goal, score)
+                    // --------------------------------------------------- goal score
+                }
+                if (element.classList.contains('text-yellow-100')) {
+                    element.classList.toggle('text-yellow-100')
+                }
+                return
+            }
+    
+            if (interval % 5) {
                 element.classList.toggle('scale-110')
-                // console.log( goal, score)
-                // --------------------------------------------------- goal score
+                element.classList.add('opacity-80')
             }
-            if (element.classList.contains('text-yellow-100')) {
-                element.classList.toggle('text-yellow-100')
-            }
-            return
-        }
+            element.innerHTML = interval.toLocaleString()
+        }, speed);
 
-        if (interval % 5) {
-            element.classList.toggle('scale-110')
-            element.classList.add('opacity-80')
-        }
-        element.innerHTML = interval.toLocaleString()
-    }, speed);
+
+    } else if( direction === 'downto'){
+        element.classList.toggle('text-red-100')
+        let timer = setInterval(() => {
+            if(interval > 100){interval -= 10}
+            else { interval-- }
+    
+            if (interval <= 0) {
+                interval = 0
+                clearInterval(timer)
+                element.innerHTML = interval.toLocaleString()
+                if (element.classList.contains('scale-110')) {
+                    element.classList.toggle('scale-110')
+                    // console.log( goal, score)
+                    // --------------------------------------------------- goal score
+                }
+                if (element.classList.contains('text-red-100')) {
+                    element.classList.toggle('text-red-100')
+                }
+                return
+            }
+    
+            if (interval % 5) {
+                element.classList.toggle('scale-110')
+                element.classList.add('opacity-80')
+            }
+            element.innerHTML = interval.toLocaleString()
+        }, speed);
+    } else {console.log('points error');}
 }
 
 

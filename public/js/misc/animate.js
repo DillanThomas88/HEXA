@@ -41,3 +41,20 @@ const pingElement = (element) => {
         clearInterval(timer)
     }, 100);
 }
+
+const allScoringDice = () => {
+    
+    let arr = Array.from(document.querySelectorAll('.locked')).map(data => data = data.children[0])
+    
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        element.classList.toggle('animate-ping')
+        console.log(element);
+        element.classList.toggle('animate-pulse')
+        let t = setInterval(() => {
+            element.classList.toggle('animate-ping')
+            clearInterval(t)
+        }, 10);
+
+    }
+}

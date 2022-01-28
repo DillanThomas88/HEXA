@@ -699,6 +699,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: -0.25rem;
 }
 
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
 .flex {
   display: flex;
 }
@@ -857,12 +865,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.scale-150 {
-  --tw-scale-x: 1.5;
-  --tw-scale-y: 1.5;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -934,6 +936,23 @@ Ensure the default browser behavior of the `hidden` attribute.
 .animate-ping {
   -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
           animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@-webkit-keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
 }
 
 .cursor-pointer {
@@ -1646,6 +1665,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(254 249 195 / var(--tw-text-opacity));
 }
 
+.text-red-100 {
+  --tw-text-opacity: 1;
+  color: rgb(254 226 226 / var(--tw-text-opacity));
+}
+
 .placeholder-zinc-600::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(82 82 91 / var(--tw-placeholder-opacity));
@@ -1782,13 +1806,37 @@ Ensure the default browser behavior of the `hidden` attribute.
   outline-offset: 2px;
 }
 
+@media (min-width: 1920px) {
+  .\31 920\:w-2\/6 {
+    width: 33.333333%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:h-40 {
+    height: 10rem;
+  }
+}
+
 @media (min-width: 1536px) {
-  .\32xl\:w-5\/6 {
-    width: 83.333333%;
+  .\32xl\:mr-20 {
+    margin-right: 5rem;
   }
 
-  .\32xl\:w-2\/6 {
-    width: 33.333333%;
+  .\32xl\:h-40 {
+    height: 10rem;
+  }
+
+  .\32xl\:scale-100 {
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .\32xl\:scale-110 {
+    --tw-scale-x: 1.1;
+    --tw-scale-y: 1.1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 }
 
@@ -1880,20 +1928,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 50%;
   }
 
-  .ipadair\:w-8 {
-    width: 2rem;
-  }
-
   .ipadair\:w-80 {
     width: 20rem;
   }
 
-  .ipadair\:w-56 {
-    width: 14rem;
-  }
-
-  .ipadair\:w-4\/6 {
-    width: 66.666667%;
+  .ipadair\:w-8 {
+    width: 2rem;
   }
 
   .ipadair\:scale-150 {
@@ -1905,6 +1945,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   .ipadair\:scale-100 {
     --tw-scale-x: 1;
     --tw-scale-y: 1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .ipadair\:scale-110 {
+    --tw-scale-x: 1.1;
+    --tw-scale-y: 1.1;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 

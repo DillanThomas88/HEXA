@@ -10,7 +10,7 @@
 </head>
 
 <body style="background-color: rgb(12, 12, 12);"
-    class="relative flex flex-col w-screen ipadair:h-screen text-zinc-200 uppercase text-4xl font-bold  overflow-x-hidden">
+    class="relative flex flex-col w-screen ipadair:h-screen text-zinc-200 uppercase text-4xl font-bold  overflow-x-hidden 2xl:mr-20">
     <!--Information Modal-->
     <div style="background-color: rgb(12, 12, 12);"
         class=" z-30 info-modal info-active pointer-events-none fixed w-screen  h-full flex items-center justify-center opacity-0">
@@ -322,17 +322,16 @@
                             </div>
                         </div>
                         <div class="mb-4 border-x-2  px-2 border-zinc-700 flex justify-between items-center">
-                            <span>successfully saved</span>
+                            <span>saves</span>
                             <div>
-                                <span id="saved-times" class="text-zinc-100  font-thin">0</span>
-                                <span class="text-zinc-700 normal-case">Times</span>
+                                <span id="saved-times" class="text-zinc-100  font-thin mr-3">0</span>
                             </div>
                         </div>
                         <div class="mb-4 border-x-2  px-2 border-zinc-700 flex justify-between items-center">
-                            <span>Rolled</span>
+                            <span>rolls</span>
                             <div>
-                                <span id="lost-times" class="text-zinc-100 s font-thin">0</span>
-                                <span class="text-zinc-700 normal-case">Times</span>
+                                <span id="lost-times" class="text-zinc-100 s font-thin mr-3">0</span>
+
                             </div>
                         </div>
 
@@ -363,11 +362,11 @@
     <!-- <div class="fixed z-10 w-screen h-full bg-black opacity-50 pointer-events-none"></div> -->
     <section id="game-container" class="z-20 hidden flex h-full flex-col items-center justify-between  ">
         <!-- header--------------------------------------------------------------------- -->
-        <header class=" w-screen border-b border-zinc-400 bg-zinc-300 shadow-sm shadow-black flex justify-center">
+        <header class="z-50 w-screen border-b border-zinc-400 bg-zinc-300 shadow-sm shadow-black flex justify-center">
             <div class="  text-black  flex items-center font-bold 
-        py-1 px-6 ipadair:px-16 h-10 12pro:h-12  ipadair:h-16  flex flex-row justify-between 2xl:w-5/6 w-full ">
+        py-1 px-6 ipadair:px-16 h-10 12pro:h-12 ipadair:h-16   flex flex-row justify-between  w-full ">
                 <div class=" flex justify-start">
-                    <svg class="info-modal-open h-7 w-7 ipadair:h-12 ipadair:w-12  fill-zinc-900 cursor-pointer transition duration-150 ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
+                    <svg class="info-modal-open h-7 w-7 ipadair:h-12 ipadair:w-12 fill-zinc-900 cursor-pointer transition duration-150 ease-in-out hover:ease-in hover:fill-zinc-900 hover:opacity-100 hover:scale-110"
                         enable-background="new 0 0 24 24" viewBox="0 0 24 24">
                         <g>
                             <rect fill="none" height="24" width="24" />
@@ -393,7 +392,7 @@
         </header>
         <!-- main------------------------------------------------------------------------ -->
         <div id="blur-container"
-            class="fixed  flex h-screen justify-center items-center px-6 py-4  ipadair:w-full 2xl:w-2/6 ipadair:w-3/6  ipadair:scale-150 overflow-x-hidden">
+            class="fixed  z-10 flex h-screen justify-center items-center px-6 py-4  ipadair:w-full ipadair:w-3/6  ipadair:scale-150  overflow-x-hidden">
             <main class="  object-contain pointer-events-auto -mt-6 w-screen">
 
                 <div
@@ -539,7 +538,7 @@
     <!-- TUTORIAL -->
     <section id="tutorial-container"
         class="fixed z-50 hidden w-screen ipadair:mt-64 ipadair:pointer-events-none flex flex-col items-center ipadair:justify-center ipadair:pb-64">
-        <header id="tut-title" class="text-8xl py-12 text-zinc-200 ipadair:text-9xl ipadair:scale-150">
+        <header id="tut-title" class=" text-8xl py-12 text-zinc-200 ipadair:text-9xl ipadair:scale-150">
             HEXA
             <div id="version-number"
                 class="text-sm ipadair:text-xl opacity-10 text-blue-500 animate-pulse flex justify-center">version

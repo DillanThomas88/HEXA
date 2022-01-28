@@ -1,3 +1,5 @@
+
+
 let refreshbtn = document.querySelector('#btn-roll')
 const scoreEL = document.querySelector('#score-element')
 const saveEL = document.querySelector('#save-element')
@@ -12,6 +14,7 @@ let roundTotal = 0
 let isSaveActivated = false
 let isRefreshActivated = false
 let roundNumber = 3
+let failcheck = 0
 
 
 
@@ -320,31 +323,35 @@ const animateScoreAccumulator = (scoreObj) => {
     const addEL = document.querySelector('#add-element')
 
     let totalAndArray = getScoreArray(scoreObj)
-
+    console.log('total:',totalAndArray.total);
     // checkForSpecialCombo(scoreObj, diceObj)
 
     // console.log(diceObj)
     // console.log(scoreArr)
 
-
-    if (totalAndArray.total > roundTotal) {
+    
+    if (totalAndArray.total > failcheck) {
         // if you win -------------------------------------------------------------
-        accumulatorUpdate(totalAndArray.total, scoreEL)
+        failcheck = totalAndArray.total
+        let interval = score + roundTotal
+        let goal = totalAndArray.total + score
+        pointUpdater(scoreEL, 'upto', goal, interval, 1)
+        roundTotal = goal
+        // accumulatorUpdate(totalAndArray.total, scoreEL)
         appendScoreChildren(totalAndArray.arr, 0)
         return false
     } else {
         // if you lose --------------------------------------------------------------
+        failcheck = 0
         playerDataCopy.totalLost += score + roundTotal
-
-
-        accumulatorUpdate(0, scoreEL)
-
-        console.log('lost')
+        
+        pointUpdater(scoreEL, 'downto', 0, score, 1)
+        // accumulatorUpdate(0, scoreEL)
         return true
     }
-    // console.log(scoreArr)
-
-
+    console.log(scoreArr)
+    
+    
 }
 
 const appendScoreChildren = (arr, index) => {
@@ -418,10 +425,10 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
         });
         // console.log(obj)
         if (hasFailed) {
+
             roundNumber--
             playerDataCopy.user.availableTurns -= 1 
             playerDataCopy.user.round.push(0)
-            console.log(playerDataCopy.user.availableTurns);
             if(roundNumber === 0){
                 let roundEL = document.querySelector('#round-interval')
                 playerDataCopy.user.playCount += 1
@@ -463,7 +470,7 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
                 // btnSave.classList.toggle('opacity-10')
                 // btnSave.classList.toggle('animate-pulse')
                 updatePercentageEL(912)
-                accumulatorUpdate(0, scoreEL)
+                // accumulatorUpdate(0, scoreEL)
                 clearInterval(timer)
 
                 let roundEL = document.querySelector('#round-interval')
@@ -481,6 +488,7 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
 
 function accumulatorUpdate(goal, domEL) {
     let starterNumber = score + roundTotal
+    let difference = goal - starterNumber
     let willcontinue = true
     if (goal === 0) {
         score = 0
@@ -495,7 +503,11 @@ function accumulatorUpdate(goal, domEL) {
             }
             starterNumber -= 2; 
         }
-        else { starterNumber++ }
+        else { 
+            if(difference > 100){starterNumber += 10}
+            else { starterNumber++ }
+            // starterNumber++
+        }
 
         if (starterNumber < 0) {
             if(!willcontinue){
@@ -524,8 +536,8 @@ function accumulatorUpdate(goal, domEL) {
 
         if (starterNumber % 2) {
             domEL.classList.toggle('scale-110')
-            domEL.classList.add('opacity-80')
         }
+        domEL.classList.add('opacity-80')
         domEL.innerHTML = starterNumber.toLocaleString()
     }, 5)
     roundTotal = goal
@@ -554,6 +566,7 @@ function rerollThis(arr) {
 
         score += roundTotal
         roundTotal = 0
+        failcheck = 0
     }
     playerDataCopy.totalRolls++
     swapUpdateLocalStorage()

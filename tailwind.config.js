@@ -14,8 +14,6 @@ module.exports = {
         'montserrat': ['Montserrat'],
     },
     screens: {
-      '13mini': '375px',
-
       '12pro': '390px',
 
       'sm': '640px',
@@ -29,6 +27,8 @@ module.exports = {
       'xl': '1280px',
 
       '2xl': '1536px',
+
+      '1920': '1920px'
     }
   },
 },
