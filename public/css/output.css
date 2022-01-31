@@ -667,6 +667,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1rem;
 }
 
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
 .-mt-6 {
   margin-top: -1.5rem;
 }
@@ -697,14 +701,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .-mt-1 {
   margin-top: -0.25rem;
-}
-
-.mr-4 {
-  margin-right: 1rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
 }
 
 .flex {
@@ -938,23 +934,6 @@ Ensure the default browser behavior of the `hidden` attribute.
           animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-@-webkit-keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin {
-  -webkit-animation: spin 1s linear infinite;
-          animation: spin 1s linear infinite;
-}
-
 .cursor-pointer {
   cursor: pointer;
 }
@@ -1090,11 +1069,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(63 63 70 / var(--tw-border-opacity));
 }
 
-.border-zinc-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(161 161 170 / var(--tw-border-opacity));
-}
-
 .border-zinc-500 {
   --tw-border-opacity: 1;
   border-color: rgb(113 113 122 / var(--tw-border-opacity));
@@ -1128,6 +1102,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-purple-500 {
   --tw-border-opacity: 1;
   border-color: rgb(168 85 247 / var(--tw-border-opacity));
+}
+
+.border-neutral-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(115 115 115 / var(--tw-border-opacity));
 }
 
 .bg-zinc-800 {
@@ -1185,11 +1164,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
-.bg-zinc-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(212 212 216 / var(--tw-bg-opacity));
-}
-
 .bg-transparent {
   background-color: transparent;
 }
@@ -1226,12 +1200,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   fill: currentColor;
 }
 
-.fill-zinc-900 {
-  fill: #18181b;
+.fill-zinc-100 {
+  fill: #f4f4f5;
 }
 
-.fill-black {
-  fill: #000;
+.fill-zinc-400 {
+  fill: #a1a1aa;
 }
 
 .fill-zinc-200 {
@@ -1248,10 +1222,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .fill-zinc-800 {
   fill: #27272a;
-}
-
-.fill-zinc-100 {
-  fill: #f4f4f5;
 }
 
 .fill-zinc-700 {
@@ -1324,6 +1294,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .fill-zinc-600 {
   fill: #52525b;
+}
+
+.fill-neutral-300 {
+  fill: #d4d4d4;
+}
+
+.fill-neutral-500 {
+  fill: #737373;
 }
 
 .object-contain {
@@ -1775,6 +1753,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
 }
 
+.hover\:fill-zinc-100:hover {
+  fill: #f4f4f5;
+}
+
 .hover\:fill-zinc-900:hover {
   fill: #18181b;
 }
@@ -1806,37 +1788,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   outline-offset: 2px;
 }
 
-@media (min-width: 1920px) {
-  .\31 920\:w-2\/6 {
-    width: 33.333333%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:h-40 {
-    height: 10rem;
-  }
-}
-
 @media (min-width: 1536px) {
   .\32xl\:mr-20 {
     margin-right: 5rem;
-  }
-
-  .\32xl\:h-40 {
-    height: 10rem;
-  }
-
-  .\32xl\:scale-100 {
-    --tw-scale-x: 1;
-    --tw-scale-y: 1;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .\32xl\:scale-110 {
-    --tw-scale-x: 1.1;
-    --tw-scale-y: 1.1;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 }
 
@@ -1908,6 +1862,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 4rem;
   }
 
+  .ipadair\:h-10 {
+    height: 2.5rem;
+  }
+
   .ipadair\:h-8 {
     height: 2rem;
   }
@@ -1918,6 +1876,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .ipadair\:w-5 {
     width: 1.25rem;
+  }
+
+  .ipadair\:w-10 {
+    width: 2.5rem;
   }
 
   .ipadair\:w-full {
@@ -1945,12 +1907,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   .ipadair\:scale-100 {
     --tw-scale-x: 1;
     --tw-scale-y: 1;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .ipadair\:scale-110 {
-    --tw-scale-x: 1.1;
-    --tw-scale-y: 1.1;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
