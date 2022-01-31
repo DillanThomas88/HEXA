@@ -436,7 +436,7 @@ const ifAllDiceRolledReadyNextRoll = (obj) => {
                 document.querySelector('body').style.backdropFilter = 'blur(5px)'
                 roundEL.textContent = roundNumber
                 pingElement(roundEL)
-                // console.log('gameover')
+                location.reload()
                 return
             }
             const counterEL = document.querySelector('#counter-element')

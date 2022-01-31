@@ -60,6 +60,9 @@ const saveBTN = () => {
     rotateSaveIcon()
     playerDataCopy.successfullRolls += 1
     playerDataCopy.totalSaved += (score + roundTotal)
+
+    // update highscore achievements
+
     playerDataCopy.user.availableTurns -= 1 
     playerDataCopy.user.round.push(savedScore)
     swapUpdateLocalStorage()

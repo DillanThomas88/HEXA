@@ -197,16 +197,20 @@ const gameOver = () => {
     }, 1000);
 
     playerDataCopy.user.hasFinished = true
+    if(playerDataCopy.user.todayScore > playerDataCopy.user.highestDailyScore){playerDataCopy.user.highestDailyScore = playerDataCopy.user.todayScore}
+    
+    
 
+    checkHighestScoreAchievement()
     swapUpdateLocalStorage()
-
     const shareData = {
         title: 'HEXA',
-        text: `${playerDataCopy.user.userName}'s Hexa Stats\n\nScored: ${playerDataCopy.user.todayScore}p\nRounds: ${playerDataCopy.user.round[0]} - ${playerDataCopy.user.round[1]} - ${playerDataCopy.user.round[2]}\nDate: ${playerDataCopy.user.date}\nPlay Count: ${playerDataCopy.user.playCount}`,
+        text: `${playerDataCopy.user.userName}'s Hexa Stats\n\nScored: ${playerDataCopy.user.todayScore.toLocaleString()}p\nRounds: ${playerDataCopy.user.round[0].toLocaleString()} - ${playerDataCopy.user.round[1].toLocaleString} - ${playerDataCopy.user.round[2].toLocaleString()}\nDate: ${playerDataCopy.user.date}\nPlay Count: ${playerDataCopy.user.playCount.toLocaleString()}`,
         url: 'https://dillanthomas88.github.io/hexa'
     }
 
     shareBtnListener(shareData)
+
 }
 
 function shareBtnListener(data) {
@@ -356,4 +360,15 @@ const fade = (instruction, element, speed) => {
 
         element.style.opacity = incriment / speed
     }, 1);
+}
+
+const checkHighestScoreAchievement = () => {
+    highscore = playerDataCopy.user.highestDailyScore
+    for (let i = 0; i < playerDataCopy.game.length; i++) {
+        const element = playerDataCopy.game[i];
+        
+        if(highscore >= element.amount){
+            element.status = 'unlocked'
+        }
+    }
 }

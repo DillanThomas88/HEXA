@@ -12,6 +12,7 @@ function newUserSetUp() {
             availableTurns: turnCount,
             round: [],
             playCount: 0,
+            highestDailyScore: 0,
         },
         successfullRolls: 0,
         totalSaved: 0,
@@ -22,57 +23,66 @@ function newUserSetUp() {
         game: [
             novice = {
                 title: 'NOVICE',
-                desc: "Save a total of 250 in a day!",
+                desc: "Save a total of 2,500 in a day!",
                 image: '',
                 status: 'locked',
+                amount: 2500
             },
             beginner = {
                 title: 'BEGINNER',
-                desc: "Save a total of 500 in a day!",
+                desc: "Save a total of 5,000 in a day!",
                 image: '',
                 status: 'locked',
+                amount: 5000
             },
             adept = {
                 title: 'ADEPT',
-                desc: "Save a total of 750 in a day!",
+                desc: "Save a total of 7,500 in a day!",
                 image: '',
                 status: 'locked',
+                amount: 7500
             },
             expert = {
                 title: 'EXPERT',
-                desc: "Save a total of 1000 in a day!",
+                desc: "Save a total of 10,000 in a day!",
                 image: '',
                 status: 'locked',
+                amount: 10000
             },
             master = {
                 title: 'MASTER',
-                desc: "Save a total of 1250 in a day!",
+                desc: "Save a total of 12,500 in a day!",
                 image: '',
                 status: 'locked',
+                amount: 12500
             },
             grandmaster = {
                 title: 'GRAND MASTER',
-                desc: "Save a total of 1500 in a day!",
+                desc: "Save a total of 15,000 in a day!",
                 image: '',
                 status: 'locked',
+                amount: 15000
             },
             legend = {
                 title: 'LEGEND',
-                desc: "Save a total of 1750 in a day!",
+                desc: "Save a total of 17,500 in a day!",
                 image: '',
                 status: 'locked',
+                amount: 17500
             },
             god = {
                 title: 'GOD',
-                desc: "Save a total of 2000 in a day!",
+                desc: "Save a total of 20,000 in a day!",
                 image: '',
                 status: 'locked',
+                amount: 20000
             },
             unreal = {
                 title: 'UNREAL',
-                desc: "Save a total of 2250 in a day!",
+                desc: "Save a total of 22,500 in a day!",
                 image: '',
                 status: 'locked',
+                amount: 22500
             },
         ],
         standard: {
@@ -294,7 +304,7 @@ function newUserSetUp() {
                 status: 'locked',
                 total: 0,
             },
-            doubletriple =  {
+            doubletriple = {
                 title: 'DOUBLE TRIPLE',
                 desc: "Successfully rolled two triples",
                 fact: '0.64% (1 in 155)',
@@ -312,7 +322,7 @@ function newUserSetUp() {
             },
         ],
     };
-    
+
     let standard = achievementList.standard;
 
     addIndex(achievementList.game);
@@ -363,7 +373,47 @@ const createLockedAchievement = (title) => {
 
 }
 
-const showAchievement = (obj, color) => {
+const showAchievementGame = (obj, color) => {
+    let applyColor = ''
+    switch (color) {
+        case 'white':
+            applyColor = 'border-zinc-100'
+            break;
+        default:
+            break;
+    }
+    let statsContainer = document.querySelector('#stats-container')
+    let div1 = document.createElement('div')
+    let div2 = document.createElement('div')
+    let div3 = document.createElement('div')
+    let div4 = document.createElement('div')
+    let div5 = document.createElement('div')
+    let span1 = document.createElement('span')
+    let span4 = document.createElement('span')
+
+
+    statsContainer.append(div1)
+    div1.append(div2)
+    div2.append(div3)
+    div3.append(div4, div5)
+    div4.append(span1)
+    div5.append(span4)
+    div1.classList.add('pt-4', 'bottom-16', 'w-full')
+    div2.classList.add('border-l-8', applyColor, 'normal-case', 'py-2', 'px-3', 'flex', 'flex-col', 'justify-between', 'align-center')
+    div3.classList.add('-mt-1')
+    div4.classList.add('text-xs', 'ipadair:text-4xl', 'text-zinc-100', 'flex', 'justify-between', 'items-center')
+    div5.classList.add('text-zinc-100', 'font-bold', 'text-xs', 'ipadair:text-2xl', 'flex')
+
+    span1.classList.add('w-5/6', 'text-2xl', 'ipadair:text-5xl', 'justify-start')
+    span4.classList.add('w-5/6', 'text-zinc-400', 'font-normal')
+
+
+    span1.textContent = obj.title
+    span4.textContent = obj.desc
+
+}
+
+const showAchievementSpecAndStand = (obj, color) => {
     let applyColor = ''
     switch (color) {
         case 'orange':
@@ -399,15 +449,15 @@ const showAchievement = (obj, color) => {
     div1.append(div2)
     div2.append(div3)
     div3.append(div4, div5)
-    div4.append(span1,  span3)
-    div5.append(span4,  span6)
+    div4.append(span1, span3)
+    div5.append(span4, span6)
     div1.classList.add('pt-4', 'bottom-16', 'w-full')
     div2.classList.add('border-l-8', applyColor, 'normal-case', 'py-2', 'px-3', 'flex', 'flex-col', 'justify-between', 'align-center')
     div3.classList.add('-mt-1')
-    div4.classList.add('text-xs','ipadair:text-4xl', 'text-zinc-100', 'flex', 'justify-between', 'items-center')
-    div5.classList.add('text-zinc-100', 'font-bold', 'text-xs','ipadair:text-2xl', 'flex')
+    div4.classList.add('text-xs', 'ipadair:text-4xl', 'text-zinc-100', 'flex', 'justify-between', 'items-center')
+    div5.classList.add('text-zinc-100', 'font-bold', 'text-xs', 'ipadair:text-2xl', 'flex')
 
-    span1.classList.add('w-5/6', 'text-2xl','ipadair:text-5xl', 'justify-start')
+    span1.classList.add('w-5/6', 'text-2xl', 'ipadair:text-5xl', 'justify-start')
     // span2.classList.add('w-2/6', 'flex', 'justify-start', 'text-zinc-700')
     span3.classList.add('w-1/6', 'flex', 'justify-end')
     span4.classList.add('w-5/6', 'text-zinc-400', 'font-normal')
@@ -421,8 +471,8 @@ const showAchievement = (obj, color) => {
     span5.textContent = 'Chance'
 
     const getPercentage = (int) => {
-        let percentage = (int/playerDataCopy.totalRolls)* 100
-        if(String(percentage).split("").length != 2){
+        let percentage = (int / playerDataCopy.totalRolls) * 100
+        if (String(percentage).split("").length != 2) {
             return percentage.toFixed(2)
         } else {
             return percentage
@@ -434,9 +484,55 @@ const showAchievement = (obj, color) => {
 }
 
 
+function appendAchievementsGame(arr) {
+
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        if (element.status === 'locked') {
+            createLockedAchievement(element.title);
+        } else {
+            // console.log(element)
+            switch (element.title.toLowerCase()) {
+                case 'novice':
+                    showAchievementGame(element, 'white')
+                    break;
+                case 'beginner':
+                    showAchievementGame(element, 'white')
+                    break;
+                case 'adept':
+                    showAchievementGame(element, 'white')
+                    break;
+                case 'expert':
+                    showAchievementGame(element, 'white')
+                    break;
+                case 'master':
+                    showAchievementGame(element, 'white')
+                    break;
+                case 'grand master':
+                    showAchievementGame(element, 'white')
+                    break;
+                case 'legend':
+                    showAchievementGame(element, 'white')
+                    break;
+                case 'god':
+                    showAchievementGame(element, 'white')
+                    break;
+                case 'unreal':
+                    showAchievementGame(element, 'white')
+                    break;
+                default:
+                    // showAchievement(element, 'yellow')
+                    break;
+            }
+
+        }
+    }
 
 
-function appendAchievements(arr) {
+
+}
+
+function appendAchievementsSpecAndStand(arr) {
 
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
@@ -446,24 +542,23 @@ function appendAchievements(arr) {
             // console.log(element)
             switch (element.title.split(" ")[0].toLowerCase()) {
                 case 'triple':
-                    showAchievement(element, 'green')
+                    showAchievementSpecAndStand(element, 'green')
                     break;
                 case 'quad':
-                    showAchievement(element, 'blue')
+                    showAchievementSpecAndStand(element, 'blue')
                     break;
                 case 'penta':
-                    showAchievement(element, 'purple')
+                    showAchievementSpecAndStand(element, 'purple')
                     break;
                 case 'hexa':
-                    showAchievement(element, 'orange')
+                    showAchievementSpecAndStand(element, 'orange')
                     break;
                 case 'double':
-                    showAchievement(element, 'green')
+                    showAchievementSpecAndStand(element, 'green')
                     break;
                 case 'straight':
-                    showAchievement(element, 'rose')
+                    showAchievementSpecAndStand(element, 'rose')
                     break;
-
                 default:
                     // showAchievement(element, 'yellow')
                     break;
@@ -479,19 +574,20 @@ function appendAchievements(arr) {
 
 
 function appendAll() {
+    checkHighestScoreAchievement()
     document.querySelector('#achievement-header').textContent = `${playerDataCopy.user.userName}'s Statistics`
     document.querySelector('#version-number').textContent = `version ${playerDataCopy.version}`
     const statsCont = document.querySelector('#stats-container')
     while (statsCont.firstChild) {
         statsCont.removeChild(statsCont.lastChild);
-      }
+    }
 
-      cleanUserData()
+    cleanUserData()
 
     //   console.log(playerDataCopy)
     let { game, standard, special } = playerDataCopy;
     let { hexa, penta, quad, triple } = standard;
-    let { straight, doubletriple, triplepair, supaquad} = special
+    let { straight, doubletriple, triplepair, supaquad } = special
     let arr = [game, special, triple, quad, penta, hexa]
     let arr2 = ['Regular', 'Special', 'Standard']
     for (let i = 0; i < arr.length; i++) {
@@ -507,7 +603,11 @@ function appendAll() {
             statsCont.append(hr, div)
 
         }
-        appendAchievements(element)
+        if(element === arr[0]){
+            appendAchievementsGame(element)
+        } else {
+            appendAchievementsSpecAndStand(element)
+        }
         // console.log(element)
 
     }
@@ -516,6 +616,7 @@ function appendAll() {
     document.querySelector('#saved-times').textContent = parseInt(playerDataCopy.successfullRolls).toLocaleString()
     document.querySelector('#lost-amount').textContent = parseInt(playerDataCopy.totalLost).toLocaleString()
     document.querySelector('#lost-times').textContent = parseInt(playerDataCopy.totalRolls).toLocaleString()
+    document.querySelector('#highest-daily-amount').textContent = parseInt(playerDataCopy.user.highestDailyScore).toLocaleString()
 
     // let div = document.createElement('div')
     // statsHeader.append(div)
@@ -527,20 +628,20 @@ function appendAll() {
 const cleanUserData = () => {
     playerDataCopy.achievements = 0
     playerDataCopy.unlocked = 0
-    let {game, standard, special } = playerDataCopy;
+    let { game, standard, special } = playerDataCopy;
     let { hexa, penta, quad, triple } = standard;
-    let arr = [ game, special, triple, quad, penta, hexa]
+    let arr = [game, special, triple, quad, penta, hexa]
 
     for (let i = 0; i < arr.length; i++) {
         const parents = arr[i];
         for (let j = 0; j < parents.length; j++) {
             const element = parents[j];
-            if(element.status === 'unlocked'){
+            if (element.status === 'unlocked') {
 
                 playerDataCopy.unlocked++
             }
             playerDataCopy.achievements++
         }
-        
+
     }
 }
