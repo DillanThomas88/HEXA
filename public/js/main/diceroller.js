@@ -188,14 +188,14 @@ const beginPlayerScoreCalculation = (diceObject) => {
     let scoreObj = {
         specialCombo: {},
         standardCombo: {},
-        one: properties[0] * 10,
-        five: properties[4] * 5,
+        one: properties[0] * 100,
+        five: properties[4] * 50,
     }
 
 
     if (properties === [1, 1, 1, 1, 1, 1]) {
         scoreObj.specialCombo.name = 'straight'
-        scoreObj.specialCombo.value = 150
+        scoreObj.specialCombo.value = 1500
         scoreObj.one = 0
         scoreObj.five = 0
 
@@ -206,7 +206,7 @@ const beginPlayerScoreCalculation = (diceObject) => {
     for (let i = 0; i < properties.length; i++) {
         const element = properties[i];
         if (element === 6) {
-            standardComboFunc('hexa', 300, i)
+            standardComboFunc('hexa', 3000, i)
             scoreObj.one = 0
             scoreObj.five = 0
             // console.log(scoreObj);
@@ -219,7 +219,7 @@ const beginPlayerScoreCalculation = (diceObject) => {
             return scoreObj
         } else if (element === 5) {
 
-            standardComboFunc('penta', 200, i)
+            standardComboFunc('penta', 2000, i)
             softUpdate(
                 playerData.standard.penta,
                 playerDataCopy.standard.penta,
@@ -231,11 +231,11 @@ const beginPlayerScoreCalculation = (diceObject) => {
                 const element2 = properties[j];
                 if (element2 === 2) {
                     let add = 0
-                    if (j + 1 === 1) { add = 20 } else if (j + 1 === 5) { add = 10 }
+                    if (j + 1 === 1) { add = 200 } else if (j + 1 === 5) { add = 100 }
                     scoreObj.specialCombo.name = 'supaquad'
                     scoreObj.specialCombo.diceNumber1 = i + 1
                     scoreObj.specialCombo.diceNumber2 = j + 1
-                    scoreObj.specialCombo.value = 125 + add
+                    scoreObj.specialCombo.value = 1250 + add
                     scoreObj.one = 0
                     scoreObj.five = 0
                     // console.log(scoreObj);
@@ -247,7 +247,7 @@ const beginPlayerScoreCalculation = (diceObject) => {
                     return scoreObj
                 }
             }
-            standardComboFunc('quad', 100, i)
+            standardComboFunc('quad', 1000, i)
             softUpdate(playerData.standard.quad, playerDataCopy.standard.quad, scoreObj.standardCombo.diceNumber)
             // console.log(scoreObj);        
         } else if (element === 3) {
@@ -258,7 +258,7 @@ const beginPlayerScoreCalculation = (diceObject) => {
                         scoreObj.specialCombo.name = 'triplepair'
                         scoreObj.specialCombo.diceNumber1 = i + 1
                         scoreObj.specialCombo.diceNumber2 = j + 1
-                        scoreObj.specialCombo.value = 250
+                        scoreObj.specialCombo.value = 2500
                         scoreObj.one = 0
                         scoreObj.five = 0
                         // console.log(scoreObj);
@@ -269,7 +269,7 @@ const beginPlayerScoreCalculation = (diceObject) => {
                 }
             }
             if (i + 1 === 1) {
-                standardComboFunc('triple', 20, i)
+                standardComboFunc('triple', 200, i)
                 softUpdate(playerData.standard.triple, playerDataCopy.standard.triple, scoreObj.standardCombo.diceNumber)
             } else {
                 standardComboFunc('triple', 0, i)
@@ -309,7 +309,7 @@ const beginPlayerScoreCalculation = (diceObject) => {
         if (i + 1 == 5) { scoreObj.five = 0 }
         scoreObj.standardCombo.name = n
         scoreObj.standardCombo.diceNumber = i + 1
-        scoreObj.standardCombo.value = num + ((i + 1) * 10)
+        scoreObj.standardCombo.value = num + ((i + 1) * 100)
 
     }
     // console.log(totalObject)
