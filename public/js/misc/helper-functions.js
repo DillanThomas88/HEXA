@@ -205,7 +205,7 @@ const gameOver = () => {
     swapUpdateLocalStorage()
     const shareData = {
         title: 'HEXA',
-        text: `${playerDataCopy.user.userName}'s Hexa Stats\n\nScored: ${playerDataCopy.user.todayScore.toLocaleString()}p\nRounds: ${playerDataCopy.user.round[0].toLocaleString()} - ${playerDataCopy.user.round[1].toLocaleString} - ${playerDataCopy.user.round[2].toLocaleString()}\nDate: ${playerDataCopy.user.date}\nPlay Count: ${playerDataCopy.user.playCount.toLocaleString()}`,
+        text: `${playerDataCopy.user.userName}'s Hexa Stats\n\nScored: ${playerDataCopy.user.todayScore.toLocaleString()}p\nRounds: ${playerDataCopy.user.round[0].toLocaleString()} - ${playerDataCopy.user.round[1].toLocaleString()} - ${playerDataCopy.user.round[2].toLocaleString()}\nDate: ${playerDataCopy.user.date}\nPlay Count: ${playerDataCopy.user.playCount.toLocaleString()}`,
         url: 'https://dillanthomas88.github.io/hexa'
     }
 
