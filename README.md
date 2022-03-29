@@ -14,7 +14,7 @@ Hexa is a luck based game. Inspired by the classic 'Farckle'. Get combos like a 
 6. Pressing the Save button, will gather all the points you recieved that round and add them to you total score and will conclude that round.
 
 
-check out [HEXA](https://dillanthomas88.github.io/hexa/)
+check out [HEXA](https://dillanthomas88.github.io/HEXA/)
 <hr>
 
 ![](./public/images/hexa.png)
